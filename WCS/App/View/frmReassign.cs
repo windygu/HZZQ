@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using IDAL;
+using Util;
 
 namespace App.View
 {
@@ -66,14 +66,13 @@ namespace App.View
         {
             this.txtTaskNo.Text = dr["TaskNo"].ToString();
             this.txtCellCode.Text = dr["CellCode"].ToString();
-            this.txtCarNo.Text = dr["CarNo"].ToString();
             this.txtCraneNo.Text = dr["CraneNo"].ToString();
             this.txtProductCode.Text = dr["ProductCode"].ToString();
             this.txtProductName.Text = dr["ProductName"].ToString();
             
             CraneNo = dr["CraneNo"].ToString();
 
-            string filter = string.Format("CMD_Cell.ProductCode='{0}' and CMD_Cell.IsLock='0' and CMD_Cell.IsActive='1' and CMD_Cell.ErrorFlag!='1' and CMD_Shelf.CraneNo='{1}' and CMD_Shelf.CarNo='{2}'", this.txtProductCode.Text,CraneNo,this.txtCarNo.Text);
+            string filter = string.Format("CMD_Cell.ProductCode='{0}' and CMD_Cell.IsLock='0' and CMD_Cell.IsActive='1' and CMD_Cell.ErrorFlag!='1' and CMD_Shelf.CraneNo='{1}'", this.txtProductCode.Text,CraneNo);
 
             DataTable dt = bll.FillDataTable("WCS.SelectCellByFilter", new DataParameter[] { new DataParameter("{0}", filter) });
 

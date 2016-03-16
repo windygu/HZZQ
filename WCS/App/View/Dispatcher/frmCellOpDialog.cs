@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using IDAL;
+using Util;
 
 namespace App.View.Dispatcher
 {
@@ -38,9 +38,6 @@ namespace App.View.Dispatcher
             drNew["BillTypeCode"] = "";
             drNew["BillTypeName"] = "请选择";
             dtBillType.Rows.InsertAt(drNew, 0);
-            this.cmbInStockType.DataSource = dtBillType.DefaultView;
-            this.cmbInStockType.ValueMember = "BillTypeCode";
-            this.cmbInStockType.DisplayMember = "BillTypeName";
 
             CellCode = dr["CellCode"].ToString();
             AreaCode = dr["AreaCode"].ToString();
@@ -49,9 +46,6 @@ namespace App.View.Dispatcher
             this.txtBillNo.Text = dr["BillNo"].ToString();
             this.txtProductCode.Text = dr["ProductCode"].ToString();
             BillTypeCode = dr["BillTypeCode"].ToString();
-            this.cmbInStockType.SelectedValue = BillTypeCode;
-            this.txtStateNo.Text = dr["StateNo"].ToString();
-            this.txtPalletCode.Text = dr["PalletCode"].ToString();
             this.checkBox1.Checked = dr["IsLock"].ToString() == "1";
             this.checkBox2.Checked = dr["IsActive"].ToString() == "0";
             this.checkBox3.Checked = dr["ErrorFlag"].ToString() == "1";
@@ -81,17 +75,13 @@ namespace App.View.Dispatcher
             ProductFields.Add("ProductName", "产品名称");
             ProductFields.Add("ProductTypeName", "产品类型");
 
-            StateFields.Add("StateNo", "状态编号");
-            StateFields.Add("StateName", "产品状态");
-
             TaskFields.Add("BillID", "单据号码");
             TaskFields.Add("TaskNo", "任务编号");
-            TaskFields.Add("BillTypeName", "任务类型");
+            TaskFields.Add("BillTypeName", "单据类型");
             TaskFields.Add("ProductCode", "产品编号");
             TaskFields.Add("ProductName", "产品名称");
             TaskFields.Add("ProductTypeName", "产品类型");
             TaskFields.Add("CraneNo", "堆垛机");
-            TaskFields.Add("CarNo", "小车编号");
             TaskFields.Add("StartDate", "起始时间");
             TaskFields.Add("FinishDate", "结束时间");
 
@@ -110,7 +100,7 @@ namespace App.View.Dispatcher
                 }
                 else if (this.radioButton2.Checked)
                 {
-                    param = new DataParameter[] { new DataParameter("{0}", "IsLock='0',ProductCode='',PalletCode='',Quantity=0,InDate=NULL,BillNo=''"), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
+                    param = new DataParameter[] { new DataParameter("{0}", "IsLock='0',ProductCode='',Quantity=0,InDate=NULL,BillNo=''"), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
                     bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
                 }
                 else if (this.radioButton3.Checked)
@@ -120,7 +110,7 @@ namespace App.View.Dispatcher
                 }
                 else if (this.radioButton4.Checked)
                 {
-                    param = new DataParameter[] { new DataParameter("{0}", "ErrorFlag='',ProductCode='',PalletCode='',Quantity=0,InDate=NULL,BillNo=''"), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
+                    param = new DataParameter[] { new DataParameter("{0}", "ErrorFlag='',ProductCode='',Quantity=0,InDate=NULL,BillNo=''"), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
                     bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
                 }
                 else if (this.radioButton6.Checked)
@@ -140,11 +130,6 @@ namespace App.View.Dispatcher
 
                     //if (this.txtProductCode.Text.Trim().Length > 0)
                         sql += string.Format(",ProductCode='{0}'", this.txtProductCode.Text.Trim());
-
-                        sql += string.Format(",StateNo='{0}'", this.txtStateNo.Text.Trim());
-                    //if (this.txtPalletCode.Text.Trim().Length > 0)
-                        sql += string.Format(",PalletCode='{0}'", this.txtPalletCode.Text.Trim());
-
                     //if (this.txtBillNo.Text.Trim().Length > 0)
                         sql += string.Format(",BillNo='{0}'", this.txtBillNo.Text.Trim());
 
@@ -153,21 +138,7 @@ namespace App.View.Dispatcher
 
                     param = new DataParameter[] { new DataParameter("{0}", sql), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
                     bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
-
-                    //更改入库类型
-                    if (this.cmbInStockType.SelectedValue != null)
-                    {
-                        if (BillTypeCode != this.cmbInStockType.SelectedValue.ToString())
-                        {
-                            //更新入库类型
-                            param = new DataParameter[] 
-                        { 
-                            new DataParameter("@BillID", this.txtBillNo.Text),
-                            new DataParameter("@BillTypeCode", this.cmbInStockType.SelectedValue.ToString())                   
-                        };
-                            bll.ExecNonQueryTran("WCS.Sp_UpdateBillTypeCode", param);
-                        }
-                    }
+                    
                 }
 
                 
@@ -184,7 +155,6 @@ namespace App.View.Dispatcher
             if (selectDialog.ShowDialog() == DialogResult.OK)
             {
                 this.txtBillNo.Text = selectDialog["BillID"];
-                this.cmbInStockType.SelectedValue = selectDialog["BillTypeCode"];
             }
         }
 
@@ -255,15 +225,6 @@ namespace App.View.Dispatcher
             this.groupBox2.Enabled = !radioButton6.Checked;
             this.groupBox3.Enabled = radioButton6.Checked;
         }
-
-        private void btnState_Click(object sender, EventArgs e)
-        {
-            DataTable dt = bll.FillDataTable("CMD.SelectProductState");
-            SelectDialog selectDialog = new SelectDialog(dt, StateFields, false);
-            if (selectDialog.ShowDialog() == DialogResult.OK)
-            {
-                this.txtStateNo.Text = selectDialog["StateNo"];
-            }
-        }
+        
     }
 }

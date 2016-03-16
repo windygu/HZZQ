@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MCP;
 using System.Data;
-using IDAL;
+using Util;
 
 namespace Dispatching.Process
 {

@@ -17,7 +17,7 @@ namespace App.View.Param
         private DBConfig config = new DBConfig();
 
 
-        MCP.Service.TCP.Config.Configuration TcpConfg = new MCP.Service.TCP.Config.Configuration("Crane.xml");
+        //MCP.Service.TCP.Config.Configuration TcpConfg = new MCP.Service.TCP.Config.Configuration("Crane.xml");
 
         MCP.Service.Siemens.Config.Configuration PLC1 = new MCP.Service.Siemens.Config.Configuration("CranePLC1.xml");
        
@@ -38,9 +38,9 @@ namespace App.View.Param
 
 
             //扫描枪--由于使用USB接口，而屏蔽
-            //ConfigUtil configUtil = new ConfigUtil();
-            //attributes = configUtil.GetAttribute();          
-
+            ConfigUtil configUtil = new ConfigUtil();
+            attributes = configUtil.GetAttribute();
+            parameter.TimeDiff = attributes["TimeDiff"];
             //PLC1
             parameter.PLC1ServerName = PLC1.ProgID;
             parameter.PLC1ServerIP = PLC1.ServerName;
@@ -64,7 +64,7 @@ namespace App.View.Param
 
                 //由于扫码枪使用USB接口，而屏蔽。
                 ////保存Context参数
-                //attributes["ScanPortName"] = parameter.ScanPortName;
+                attributes["TimeDiff"] = parameter.TimeDiff;
                 //attributes["ScanBaudRate"] = parameter.ScanBaudRate;
 
                 //attributes["IsOutOrder"] = parameter.IsOutOrder;

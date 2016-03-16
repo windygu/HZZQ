@@ -60,48 +60,6 @@ namespace App.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap _111 {
-            get {
-                object obj = ResourceManager.GetObject("111", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap _1111 {
-            get {
-                object obj = ResourceManager.GetObject("1111", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap _12 {
-            get {
-                object obj = ResourceManager.GetObject("12", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap _123 {
-            get {
-                object obj = ResourceManager.GetObject("123", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap _1234 {
-            get {
-                object obj = ResourceManager.GetObject("1234", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap _551fb5a24da28a97739ca06c843ac6ff {
-            get {
-                object obj = ResourceManager.GetObject("551fb5a24da28a97739ca06c843ac6ff", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap add {
             get {
                 object obj = ResourceManager.GetObject("add", resourceCulture);
@@ -266,6 +224,20 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap Shelf {
             get {
                 object obj = ResourceManager.GetObject("Shelf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap start {
+            get {
+                object obj = ResourceManager.GetObject("start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap stop {
+            get {
+                object obj = ResourceManager.GetObject("stop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

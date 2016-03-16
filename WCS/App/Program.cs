@@ -32,7 +32,7 @@ namespace App
 
             if (ExisFlag)
             {
-                MessageBox.Show("仓储调度监控系统！", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("仓储调度监控系统已开启！", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else

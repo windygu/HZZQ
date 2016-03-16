@@ -5,6 +5,7 @@
     <Attribute Name="ScanPortName" Value="COM2" />
     <Attribute Name="ScanBaudRate" Value="19200" />
     <Attribute Name="IsShowFlag" Value="1" />
+    <Attribute Name="TimeDiff" Value="60" />
   </Attributes>
   <Services>
     <Service Name="CranePLC1" Type="MCP.Service.Siemens.dll, MCP.Service.Siemens.OPCService" ConfigFile="CranePLC1.xml" />

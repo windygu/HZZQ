@@ -60,7 +60,14 @@ namespace App.View.Param
         //    get { return port; }
         //    set { port = value; }
         //}
+        private string timeDiff;
 
+        [CategoryAttribute("双货位时间间隔"), DescriptionAttribute("双货位时间间隔"), Chinese("双货位时间间隔")]
+        public string TimeDiff
+        {
+            get { return timeDiff; }
+            set { timeDiff = value; }
+        }
 
         private string plc1ServerName;
         [CategoryAttribute("1号堆垛机PLC通信参数"), DescriptionAttribute("服务名称"), Chinese("服务名称")]
@@ -77,7 +84,6 @@ namespace App.View.Param
             get { return plc1ServerIp; }
             set { plc1ServerIp = value; }
         }
-
 
         private string plc1GroupString;
         [CategoryAttribute("1号堆垛机PLC通信参数"), DescriptionAttribute("1号堆垛机PLC通讯连接名称"), Chinese("连接名称")]
@@ -96,22 +102,21 @@ namespace App.View.Param
         }
 
 
-        private string plc2ServerName;
-        [CategoryAttribute("2号堆垛机PLC通信参数"), DescriptionAttribute("服务名称"), Chinese("服务名称")]
-        public string PLC2ServerName
-        {
-            get { return plc2ServerName; }
-            set { plc2ServerName = value; }
-        }
+        //private string plc2ServerName;
+        //[CategoryAttribute("2号堆垛机PLC通信参数"), DescriptionAttribute("服务名称"), Chinese("服务名称")]
+        //public string PLC2ServerName
+        //{
+        //    get { return plc2ServerName; }
+        //    set { plc2ServerName = value; }
+        //}
 
-        private string plc2ServerIp;
-        [CategoryAttribute("2号堆垛机PLC通信参数"), DescriptionAttribute("服务地址IP"), Chinese("服务IP")]
-        public string PLC2ServerIP
-        {
-            get { return plc2ServerIp; }
-            set { plc2ServerIp = value; }
-        }
-
+        //private string plc2ServerIp;
+        //[CategoryAttribute("2号堆垛机PLC通信参数"), DescriptionAttribute("服务地址IP"), Chinese("服务IP")]
+        //public string PLC2ServerIP
+        //{
+        //    get { return plc2ServerIp; }
+        //    set { plc2ServerIp = value; }
+        //}
 
         //private string plc2GroupString;
         //[CategoryAttribute("2号堆垛机PLC通信参数"), DescriptionAttribute("2号堆垛机通讯连接名称"), Chinese("连接名称")]

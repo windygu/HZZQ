@@ -37,14 +37,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.cmbCarNo = new System.Windows.Forms.ComboBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnRequest = new System.Windows.Forms.Button();
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtCellCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTaskNo = new System.Windows.Forms.TextBox();
@@ -166,17 +164,6 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // cmbCarNo
-            // 
-            this.cmbCarNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCarNo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmbCarNo.FormattingEnabled = true;
-            this.cmbCarNo.Location = new System.Drawing.Point(255, 12);
-            this.cmbCarNo.Name = "cmbCarNo";
-            this.cmbCarNo.Size = new System.Drawing.Size(70, 29);
-            this.cmbCarNo.TabIndex = 78;
-            this.cmbCarNo.SelectedIndexChanged += new System.EventHandler(this.cmbCarNo_SelectedIndexChanged);
-            // 
             // txtProductName
             // 
             this.txtProductName.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -238,16 +225,6 @@
             this.label4.Size = new System.Drawing.Size(74, 21);
             this.label4.TabIndex = 72;
             this.label4.Text = "产品代码";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(179, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 21);
-            this.label3.TabIndex = 71;
-            this.label3.Text = "小车编号";
             // 
             // txtCellCode
             // 
@@ -314,14 +291,12 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.cmbCarNo);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRequest);
             this.Controls.Add(this.txtProductCode);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCellCode);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTaskNo);
@@ -349,14 +324,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ComboBox cmbCarNo;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnRequest;
         private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCellCode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTaskNo;

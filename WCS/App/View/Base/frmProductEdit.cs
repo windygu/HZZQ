@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using IDAL;
+using Util;
 
 namespace App.View.Base
 {
@@ -98,10 +98,11 @@ namespace App.View.Base
                 this.txtValidPeriod.Text = dr["ValidPeriod"].ToString();
                 this.txtWeight.Text = dr["Weight"].ToString();
                 this.txtMemo.Text = dr["Memo"].ToString();
-                if (dr["IsProduce"].ToString() == "是")
+                if (dr["IsProduce"].ToString() == "1")
                     this.ckbIsProduce.Checked = true;
                 else
                     this.ckbIsProduce.Checked = false;
+                this.txtProductCode.ReadOnly = true;
             }
         }
 

@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using IDAL;
+using Util;
 
 namespace App.View
 {
@@ -27,8 +27,7 @@ namespace App.View
         private void frmReassignEmptyCell_Load(object sender, EventArgs e)
         {
             this.txtTaskNo.Text = dr["TaskNo"].ToString();
-            this.txtCellCode.Text = dr["CellCode"].ToString();
-            this.txtCarNo.Text = dr["CarNo"].ToString();
+            this.txtCellCode.Text = dr["CellCode"].ToString();            
             this.txtCraneNo.Text = dr["CraneNo"].ToString();
             this.txtProductCode.Text = dr["ProductCode"].ToString();
             this.txtProductName.Text = dr["ProductName"].ToString();
@@ -120,7 +119,9 @@ namespace App.View
             param = new DataParameter[] 
             { 
                 new DataParameter("@CraneNo", this.txtCraneNo.Text), 
-                new DataParameter("@CarNo", this.txtCarNo.Text) 
+                new DataParameter("@ProductCode", this.txtProductCode.Text),
+                new DataParameter("@TimeDiff", Program.mainForm.TimeDiff),
+                new DataParameter("@CellCode","")
             };
             if (this.radioButton1.Checked)
             {

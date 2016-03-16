@@ -52,7 +52,7 @@
   <!--货架信息-->
   <Command ID="SelectShelf">
     <CommandString>
-      SELECT * FROM CMD_Shelf where {0} ORDER BY ShelfCode,AreaCode
+      SELECT *,substring(ShelfCode,4,3) ShelfRow FROM CMD_Shelf where {0} ORDER BY ShelfCode,AreaCode
     </CommandString>
   </Command>
   <Command ID="DeleteShelf">
@@ -282,7 +282,7 @@
   </Command>
   <Command ID="DeleteProduct">
     <CommandString>
-      delete from CMD_PRODUCT WHERE ProductCode in({0})
+      delete from CMD_PRODUCT WHERE ProductCode in('{0}')
     </CommandString>
   </Command>
   <Command ID="InsertProduct">

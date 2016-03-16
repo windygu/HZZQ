@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MCP;
 using System.Data;
-using IDAL;
+using Util;
 using System.Timers;
 
 namespace Dispatching.Process
@@ -79,17 +79,21 @@ namespace Dispatching.Process
             {
                 case "CraneTaskFinished":
                     object obj = ObjectUtil.GetObject(stateItem.State);
-                    if (obj.ToString() == "50")
+                    if (obj.ToString() == "2")
                     {
                         
                         string TaskNo = Util.ConvertStringChar.BytesToString(ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(stateItem.Name, "CraneTaskNo")));
                         //存储过程处理
                         Logger.Info(stateItem.ItemName + "完成标志,任务号:" + TaskNo);
+                        sbyte[] taskNo = new sbyte[10];
+                        Util.ConvertStringChar.stringToBytes("", 10).CopyTo(taskNo, 0);
+
+                        Context.ProcessDispatcher.WriteToService(stateItem.Name, "TaskNo", taskNo);
                         //更新任务状态
                         DataParameter[] param = new DataParameter[] { new DataParameter("@TaskNo", TaskNo)};
                         bll.ExecNonQueryTran("WCS.Sp_TaskProcess", param);
 
-                        WriteToService(stateItem.Name, "ReplyFinished", 49);
+                        WriteToService(stateItem.Name, "ReplyFinished", 1);
                     }
                     break;
                 case "Run":
@@ -164,10 +168,11 @@ namespace Dispatching.Process
 
                 string plcTaskNo = Util.ConvertStringChar.BytesToString(ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo")));
 
+                //craneInfo 0 
                 int[] craneInfo = new int[7];
                 object[] obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneInfo"));
-                for (int j = 0; j < obj.Length; j++)
-                    craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
+                //for (int j = 0; j < obj.Length; j++)
+                //    craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
 
                 if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3]==1 && craneInfo[4]==5) || (craneInfo[3]==2 && craneInfo[4]==6)))
                     return true;
@@ -273,8 +278,8 @@ namespace Dispatching.Process
 
             int[] craneInfo = new int[6];
             object[] obj = ObjectUtil.GetObjects(WriteToService(serviceName, "CraneInfo"));
-            for (int j = 0; j < obj.Length; j++)
-                craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
+            //for (int j = 0; j < obj.Length; j++)
+            //    craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
 
             obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
             string plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
@@ -308,7 +313,7 @@ namespace Dispatching.Process
                     }
                 }
 
-                if (plcTaskNo != "0000000000" && TaskNo != plcTaskNo.Trim())
+                if (plcTaskNo != "" && TaskNo != plcTaskNo.Trim())
                     return;
 
                 //if (taskType == 2)
@@ -356,8 +361,8 @@ namespace Dispatching.Process
                 if (WriteToService(serviceName, "WriteFinished", 49))
                 {
                     //更新任务状态为执行中
-                    bll.ExecNonQuery("WCS.UpdateTaskTimeByTaskNo", new DataParameter[] { new DataParameter("@State", 3), new DataParameter("@TaskNo", TaskNo) });
-                    bll.ExecNonQuery("WCS.UpdateBillStateByBillID", new DataParameter[] { new DataParameter("@State", 3), new DataParameter("@BillID", BillID) });
+                    bll.ExecNonQuery("WCS.UpdateTaskTimeByTaskNo", new DataParameter[] { new DataParameter("@State", 1), new DataParameter("@TaskNo", TaskNo) });
+                    //bll.ExecNonQuery("WCS.UpdateBillStateByBillID", new DataParameter[] { new DataParameter("@State", 3), new DataParameter("@BillID", BillID) });
                 }
                 Logger.Info("任务:" + dr["TaskNo"].ToString() + "已下发给" + craneNo + "堆垛机;起始地址:" + fromStation + ",目标地址:" + toStation);
             }
@@ -465,12 +470,12 @@ namespace Dispatching.Process
                 WriteToService(serviceName, "ProductType", 49);
                 if (WriteToService(serviceName, "WriteFinished", 49))
                 {
-                    string State = "3";
+                    string State = "1";
                     if (taskType == 4)
                         State = "6";
                     //更新任务状态为执行中
                     bll.ExecNonQuery("WCS.UpdateTaskTimeByTaskNo", new DataParameter[] { new DataParameter("@State", State), new DataParameter("@TaskNo", TaskNo) });
-                    bll.ExecNonQuery("WCS.UpdateBillStateByBillID", new DataParameter[] { new DataParameter("@State", 3), new DataParameter("@BillID", BillID) });
+                    //bll.ExecNonQuery("WCS.UpdateBillStateByBillID", new DataParameter[] { new DataParameter("@State", 3), new DataParameter("@BillID", BillID) });
                 }
                 Logger.Info("任务:" + dr["TaskNo"].ToString() + "已下发给" + craneNo + "堆垛机;起始地址:" + fromStation + ",目标地址:" + toStation);
             }

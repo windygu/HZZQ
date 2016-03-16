@@ -1,0 +1,96 @@
+2016/3/11 10:35:09 [ERROR]2016/3/11 10:35:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:35:23 [ERROR]2016/3/11 10:35:23读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:35:38 [ERROR]2016/3/11 10:35:38读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:35:53 [ERROR]2016/3/11 10:35:53读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:36:08 [ERROR]2016/3/11 10:36:08读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:36:23 [ERROR]2016/3/11 10:36:23读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:36:39 [ERROR]2016/3/11 10:36:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:36:54 [ERROR]2016/3/11 10:36:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:37:09 [ERROR]2016/3/11 10:37:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:37:24 [ERROR]2016/3/11 10:37:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:37:39 [ERROR]2016/3/11 10:37:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:37:54 [ERROR]2016/3/11 10:37:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:38:09 [ERROR]2016/3/11 10:38:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:38:24 [ERROR]2016/3/11 10:38:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:38:39 [ERROR]2016/3/11 10:38:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:38:54 [ERROR]2016/3/11 10:38:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:39:09 [ERROR]2016/3/11 10:39:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:39:24 [ERROR]2016/3/11 10:39:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:39:39 [ERROR]2016/3/11 10:39:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:39:54 [ERROR]2016/3/11 10:39:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:40:09 [ERROR]2016/3/11 10:40:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:40:24 [ERROR]2016/3/11 10:40:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:40:39 [ERROR]2016/3/11 10:40:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:40:54 [ERROR]2016/3/11 10:40:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:41:09 [ERROR]2016/3/11 10:41:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:41:24 [ERROR]2016/3/11 10:41:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:41:39 [ERROR]2016/3/11 10:41:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:41:54 [ERROR]2016/3/11 10:41:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:42:09 [ERROR]2016/3/11 10:42:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:42:24 [ERROR]2016/3/11 10:42:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:42:39 [ERROR]2016/3/11 10:42:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:42:54 [ERROR]2016/3/11 10:42:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:43:09 [ERROR]2016/3/11 10:43:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:43:24 [ERROR]2016/3/11 10:43:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:43:39 [ERROR]2016/3/11 10:43:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:43:54 [ERROR]2016/3/11 10:43:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:44:09 [ERROR]2016/3/11 10:44:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:44:24 [ERROR]2016/3/11 10:44:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:44:39 [ERROR]2016/3/11 10:44:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:44:54 [ERROR]2016/3/11 10:44:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:45:09 [ERROR]2016/3/11 10:45:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:45:24 [ERROR]2016/3/11 10:45:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:45:39 [ERROR]2016/3/11 10:45:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:45:54 [ERROR]2016/3/11 10:45:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:51:45 [INFO]2016/3/11 10:51:45堆垛机脱机 
+2016/3/11 10:51:54 [ERROR]2016/3/11 10:51:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:52:09 [ERROR]2016/3/11 10:52:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:52:24 [ERROR]2016/3/11 10:52:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:52:39 [ERROR]2016/3/11 10:52:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:52:54 [ERROR]2016/3/11 10:52:54读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:53:09 [ERROR]2016/3/11 10:53:09读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:53:24 [ERROR]2016/3/11 10:53:24读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:53:39 [ERROR]2016/3/11 10:53:39读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 10:53:51 [INFO]2016/3/11 10:53:51退出系统 
+2016/3/11 10:55:10 [INFO]2016/3/11 10:55:10堆垛机脱机 
+2016/3/11 11:02:02 [INFO]2016/3/11 11:02:02堆垛机脱机 
+2016/3/11 11:02:10 [ERROR]2016/3/11 11:02:10读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:02:25 [ERROR]2016/3/11 11:02:25读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:02:40 [ERROR]2016/3/11 11:02:40读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:02:55 [ERROR]2016/3/11 11:02:55读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:03:10 [ERROR]2016/3/11 11:03:10读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:03:25 [ERROR]2016/3/11 11:03:25读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:03:29 [INFO]2016/3/11 11:03:29退出系统 
+2016/3/11 11:16:10 [INFO]2016/3/11 11:16:09堆垛机脱机 
+2016/3/11 11:16:22 [ERROR]2016/3/11 11:16:22读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:16:37 [ERROR]2016/3/11 11:16:37读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:16:52 [ERROR]2016/3/11 11:16:52读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:17:07 [ERROR]2016/3/11 11:17:07读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:17:22 [ERROR]2016/3/11 11:17:22读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:17:37 [ERROR]2016/3/11 11:17:37读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:17:52 [ERROR]2016/3/11 11:17:52读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:18:07 [ERROR]2016/3/11 11:18:07读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 11:18:17 [INFO]2016/3/11 11:18:17退出系统 
+2016/3/11 17:32:24 [INFO]2016/3/11 17:32:24堆垛机脱机 
+2016/3/11 17:54:16 [INFO]2016/3/11 17:54:16堆垛机脱机 
+2016/3/11 17:56:06 [ERROR]2016/3/11 17:56:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 17:56:11 [ERROR]2016/3/11 17:56:11读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:35:21 [INFO]2016/3/11 18:35:21堆垛机脱机 
+2016/3/11 18:35:34 [ERROR]2016/3/11 18:35:34读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:35:49 [ERROR]2016/3/11 18:35:49读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:36:04 [ERROR]2016/3/11 18:36:04读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:36:19 [ERROR]2016/3/11 18:36:19读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:36:34 [ERROR]2016/3/11 18:36:34读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:36:49 [ERROR]2016/3/11 18:36:49读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:37:04 [ERROR]2016/3/11 18:37:04读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:37:19 [ERROR]2016/3/11 18:37:19读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:37:34 [ERROR]2016/3/11 18:37:34读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:37:38 [INFO]2016/3/11 18:37:38退出系统 
+2016/3/11 18:38:07 [INFO]2016/3/11 18:38:07堆垛机脱机 
+2016/3/11 18:38:21 [ERROR]2016/3/11 18:38:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:38:30 [INFO]2016/3/11 18:38:30退出系统 
+2016/3/11 18:48:46 [INFO]2016/3/11 18:48:46堆垛机脱机 
+2016/3/11 18:49:00 [ERROR]2016/3/11 18:49:00读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/3/11 18:49:15 [INFO]2016/3/11 18:49:15退出系统 
+2016/3/11 18:50:14 [INFO]2016/3/11 18:50:14堆垛机脱机 
+2016/3/11 18:50:21 [INFO]2016/3/11 18:50:21退出系统 

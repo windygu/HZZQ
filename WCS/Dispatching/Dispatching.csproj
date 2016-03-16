@@ -66,6 +66,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\MCP.dll</HintPath>
     </Reference>
+    <Reference Include="MCP.Service.Siemens">
+      <HintPath>..\..\..\Lib\MCP.Service.Siemens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -81,15 +84,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\Util.dll</HintPath>
     </Reference>
-    <Reference Include="XPanderControl">
-      <HintPath>..\..\..\Lib\XPanderControl.dll</HintPath>
+    <Reference Include="XPanderControl, Version=1.2.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib_2015\XPanderControl.dll</HintPath>
     </Reference>
-    <Reference Include="XPExplorerBar">
-      <HintPath>..\..\..\Lib\XPExplorerBar.dll</HintPath>
+    <Reference Include="XPExplorerBar, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Lib_2015\XPExplorerBar.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Process\CarProcess.cs" />
+    <Compile Include="Process\StockInToStationProcess.cs" />
     <Compile Include="Process\CraneProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

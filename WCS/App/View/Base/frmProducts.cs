@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using IDAL;
+using Util;
 using DataGridViewAutoFilter;
 
 namespace App.View.Base
@@ -71,7 +71,11 @@ namespace App.View.Base
                         MessageBox.Show("此产品已被单据使用，不可删除！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    bll.ExecNonQuery("Cmd.DeleteProduct", new DataParameter[] { new DataParameter("{0}", ProductCode) });
+                    if (MessageBox.Show("您确定要删除此产品吗?", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        bll.ExecNonQuery("Cmd.DeleteProduct", new DataParameter[] { new DataParameter("{0}", ProductCode) });
+                        this.BindData();
+                    }
                 }
                 else
                 {

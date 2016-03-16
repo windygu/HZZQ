@@ -16,7 +16,7 @@ namespace App
         public bool IsActiveTab = false;
         private Context context = null;
         private System.Timers.Timer tmWorkTimer = new System.Timers.Timer();
-
+        public int TimeDiff;
         public Main()
         {
             InitializeComponent();
@@ -346,6 +346,22 @@ namespace App
         {
             App.View.Base.frmProducts f = new App.View.Base.frmProducts();
             ShowForm(f);
+        }
+
+        private void toolStripButton_Start_Click(object sender, EventArgs e)
+        {
+            if (this.toolStripButton_Start.Text == "开始运行")
+            {
+                //context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 1);
+                this.toolStripButton_Start.Image = App.Properties.Resources.stop;
+                this.toolStripButton_Start.Text = "停止运行";
+            }
+            else
+            {
+                //context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 0);
+                this.toolStripButton_Start.Image = App.Properties.Resources.start;
+                this.toolStripButton_Start.Text = "开始运行";
+            }     
         }
     }
 }

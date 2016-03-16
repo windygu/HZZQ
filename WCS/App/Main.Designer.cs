@@ -44,6 +44,9 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.pnlTab = new System.Windows.Forms.Panel();
+            this.tabForm = new System.Windows.Forms.TabControl();
+            this.toolStripButton_Start = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Product = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Plan = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_InStockTask = new System.Windows.Forms.ToolStripButton();
@@ -54,8 +57,6 @@
             this.toolStripButton_StartCrane = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_MoveStock = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
-            this.pnlTab = new System.Windows.Forms.Panel();
-            this.tabForm = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -191,6 +192,7 @@
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_Start,
             this.toolStripButton_Product,
             this.toolStripButton_Plan,
             this.toolStripButton_InStockTask,
@@ -206,6 +208,39 @@
             this.toolStrip1.Size = new System.Drawing.Size(1276, 52);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pnlTab
+            // 
+            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
+            this.pnlTab.Controls.Add(this.tabForm);
+            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTab.Location = new System.Drawing.Point(0, 77);
+            this.pnlTab.Name = "pnlTab";
+            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
+            this.pnlTab.TabIndex = 14;
+            this.pnlTab.Visible = false;
+            // 
+            // tabForm
+            // 
+            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabForm.Location = new System.Drawing.Point(0, 0);
+            this.tabForm.Name = "tabForm";
+            this.tabForm.SelectedIndex = 0;
+            this.tabForm.Size = new System.Drawing.Size(1276, 23);
+            this.tabForm.TabIndex = 6;
+            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
+            // 
+            // toolStripButton_Start
+            // 
+            this.toolStripButton_Start.AutoSize = false;
+            this.toolStripButton_Start.Image = global::App.Properties.Resources.start;
+            this.toolStripButton_Start.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Start.Name = "toolStripButton_Start";
+            this.toolStripButton_Start.Size = new System.Drawing.Size(60, 50);
+            this.toolStripButton_Start.Text = "开始运行";
+            this.toolStripButton_Start.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_Start.Click += new System.EventHandler(this.toolStripButton_Start_Click);
             // 
             // toolStripButton_Product
             // 
@@ -227,6 +262,7 @@
             this.toolStripButton_Plan.Size = new System.Drawing.Size(60, 50);
             this.toolStripButton_Plan.Text = "用料计划";
             this.toolStripButton_Plan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_Plan.Visible = false;
             this.toolStripButton_Plan.Click += new System.EventHandler(this.toolStripButton_Plan_Click);
             // 
             // toolStripButton_InStockTask
@@ -260,6 +296,7 @@
             this.toolStripButton_Inventor.Size = new System.Drawing.Size(60, 50);
             this.toolStripButton_Inventor.Text = "盘点任务";
             this.toolStripButton_Inventor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_Inventor.Visible = false;
             this.toolStripButton_Inventor.Click += new System.EventHandler(this.toolStripButton_Inventor_Click);
             // 
             // toolStripButton1
@@ -293,6 +330,7 @@
             this.toolStripButton_StartCrane.Size = new System.Drawing.Size(70, 50);
             this.toolStripButton_StartCrane.Text = "堆垛机联机";
             this.toolStripButton_StartCrane.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_StartCrane.Visible = false;
             this.toolStripButton_StartCrane.Click += new System.EventHandler(this.toolStripButton_StartCrane_Click);
             // 
             // toolStripButton_MoveStock
@@ -304,6 +342,7 @@
             this.toolStripButton_MoveStock.Size = new System.Drawing.Size(60, 50);
             this.toolStripButton_MoveStock.Text = "移库任务";
             this.toolStripButton_MoveStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_MoveStock.Visible = false;
             this.toolStripButton_MoveStock.Click += new System.EventHandler(this.toolStripButton_MoveStock_Click);
             // 
             // toolStripButton_Close
@@ -316,28 +355,6 @@
             this.toolStripButton_Close.Text = "退出系统";
             this.toolStripButton_Close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton_Close.Click += new System.EventHandler(this.toolStripButton_Close_Click);
-            // 
-            // pnlTab
-            // 
-            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
-            this.pnlTab.Controls.Add(this.tabForm);
-            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTab.Location = new System.Drawing.Point(0, 77);
-            this.pnlTab.Name = "pnlTab";
-            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
-            this.pnlTab.TabIndex = 14;
-            this.pnlTab.Visible = false;
-            // 
-            // tabForm
-            // 
-            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabForm.Location = new System.Drawing.Point(0, 0);
-            this.tabForm.Name = "tabForm";
-            this.tabForm.SelectedIndex = 0;
-            this.tabForm.Size = new System.Drawing.Size(1276, 23);
-            this.tabForm.TabIndex = 6;
-            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
             // 
             // Main
             // 
@@ -397,5 +414,6 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Param;
         private System.Windows.Forms.ToolStripButton toolStripButton_Plan;
         private System.Windows.Forms.ToolStripButton toolStripButton_Product;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Start;
     }
 }

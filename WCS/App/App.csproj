@@ -42,7 +42,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\BLL.dll</HintPath>
     </Reference>
-    <Reference Include="DataGridViewAutoFilter">
+    <Reference Include="DataGridViewAutoFilter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\DataGridViewAutoFilter.dll</HintPath>
     </Reference>
     <Reference Include="IDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -57,9 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\MCP.Service.Siemens.dll</HintPath>
     </Reference>
-    <Reference Include="MCP.Service.TCP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Lib\MCP.Service.TCP.dll</HintPath>
+    <Reference Include="OPC">
+      <HintPath>..\..\..\Lib\OPC.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -109,6 +109,12 @@
     </Compile>
     <Compile Include="View\Base\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmChangeMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmChangeMode.Designer.cs">
+      <DependentUpon>frmChangeMode.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TaskCarNo.cs">
       <SubType>Form</SubType>
@@ -238,6 +244,12 @@
     <Compile Include="View\Task\frmProducePlans.Designer.cs">
       <DependentUpon>frmProducePlans.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Task\frmSelectCell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Task\frmSelectCell.Designer.cs">
+      <DependentUpon>frmSelectCell.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Base\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmChangeMode.resx">
+      <DependentUpon>frmChangeMode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TaskCarNo.resx">
       <DependentUpon>TaskCarNo.cs</DependentUpon>
@@ -318,6 +333,9 @@
     <EmbeddedResource Include="View\Task\frmProducePlans.resx">
       <DependentUpon>frmProducePlans.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Task\frmSelectCell.resx">
+      <DependentUpon>frmSelectCell.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Help.chm" />
     <None Include="Properties\Settings.settings">
@@ -336,6 +354,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CarPLC.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConveyorPLC.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -370,6 +392,7 @@
     <None Include="Resources\delete.png" />
     <None Include="Resources\document_edit1.png" />
     <None Include="Resources\check.png" />
+    <None Include="Resources\0e7ec362cdeb447f0351b75791ca5305.gif" />
     <Content Include="Resources\down.png" />
     <None Include="Resources\monitor.png" />
     <None Include="Resources\main.png" />
@@ -380,6 +403,8 @@
     <None Include="Resources\process_remove.png" />
     <None Include="Resources\ProducePlan.png" />
     <Content Include="Resources\remove.png" />
+    <None Include="Resources\start.png" />
+    <None Include="Resources\stop.png" />
     <Content Include="Resources\up.png" />
     <None Include="Resources\用料计划_32.png" />
     <Content Include="ViewConfig.xml">
