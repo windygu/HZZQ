@@ -67,6 +67,7 @@ namespace App.View.Base
                             new DataParameter("@WarehouseCode", "001"),
                             new DataParameter("@AreaCode", "001"),
                             new DataParameter("@Memo", this.txtMemo.Text.Trim()),
+                            new DataParameter("@ProductNo", this.cmbProductNo.Text.Trim()),
                             new DataParameter("@Creator", "admin"),
                             new DataParameter("@Updater", "admin")
                           
@@ -82,6 +83,7 @@ namespace App.View.Base
                             new DataParameter("@IsProduce", this.ckbIsProduce.Checked?"1":"0"),                           
                             new DataParameter("@ValidPeriod", this.txtValidPeriod.Text.Trim()),
                             new DataParameter("@Memo", this.txtMemo.Text.Trim()),
+                            new DataParameter("@ProductNo", this.cmbProductNo.Text.Trim()),
                             new DataParameter("@Updater", "admin")
                  });
             }
@@ -90,10 +92,15 @@ namespace App.View.Base
 
         private void frmProductEdit_Load(object sender, EventArgs e)
         {
+            DataTable dt = bll.FillDataTable("CMD.SelectRelationNo");
+            this.cmbProductNo.DataSource = dt.DefaultView;
+            this.cmbProductNo.ValueMember = "ProductNo";
+            this.cmbProductNo.DisplayMember = "ProductNo";
             if (this.ProductCode.Length > 0)
             {
                 this.txtProductCode.Text = dr["ProductCode"].ToString();
                 this.txtProductName.Text = dr["ProductName"].ToString();
+                this.cmbProductNo.Text = dr["ProductNo"].ToString();
                 this.txtSpec.Text = dr["Spec"].ToString();
                 this.txtValidPeriod.Text = dr["ValidPeriod"].ToString();
                 this.txtWeight.Text = dr["Weight"].ToString();
@@ -104,6 +111,7 @@ namespace App.View.Base
                     this.ckbIsProduce.Checked = false;
                 this.txtProductCode.ReadOnly = true;
             }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

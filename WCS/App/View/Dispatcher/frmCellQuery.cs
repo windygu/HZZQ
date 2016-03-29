@@ -22,7 +22,7 @@ namespace App.View.Dispatcher
         private bool filtered = false;
 
         private int columns = 5;
-        private int rows = 12;
+        private int rows = 11;
         private int cellWidth = 0;
         private int cellHeight = 0;
         private int currentPage = 1;

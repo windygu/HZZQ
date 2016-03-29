@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\IDAL.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.Microsoft.Office.Core">
+      <HintPath>..\..\..\Lib\Interop.Microsoft.Office.Core.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MCP, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\MCP.dll</HintPath>
@@ -57,6 +61,11 @@
     <Reference Include="MCP.Service.Siemens, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Lib\MCP.Service.Siemens.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.office.interop.excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\..\..\Lib\microsoft.office.interop.excel.dll</HintPath>
     </Reference>
     <Reference Include="OPC">
       <HintPath>..\..\..\Lib\OPC.dll</HintPath>
@@ -78,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crane.cs" />
+    <Compile Include="Dispatching\Process\CarProcess.cs" />
+    <Compile Include="Dispatching\Process\CraneProcess.cs" />
+    <Compile Include="Dispatching\Process\StockInToStationProcess.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,11 +122,36 @@
     <Compile Include="View\Base\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ExcelHelper.cs" />
     <Compile Include="View\frmChangeMode.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmChangeMode.Designer.cs">
       <DependentUpon>frmChangeMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\StockTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Report\StockTotal.Designer.cs">
+      <DependentUpon>StockTotal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\StockQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Report\StockQuery.Designer.cs">
+      <DependentUpon>StockQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\InStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Report\InStock.Designer.cs">
+      <DependentUpon>InStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\InStockDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Report\InStockDialog.Designer.cs">
+      <DependentUpon>InStockDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TaskCarNo.cs">
       <SubType>Form</SubType>
@@ -270,6 +307,18 @@
     <EmbeddedResource Include="View\frmChangeMode.resx">
       <DependentUpon>frmChangeMode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\StockTotal.resx">
+      <DependentUpon>StockTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\StockQuery.resx">
+      <DependentUpon>StockQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\InStock.resx">
+      <DependentUpon>InStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\InStockDialog.resx">
+      <DependentUpon>InStockDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TaskCarNo.resx">
       <DependentUpon>TaskCarNo.cs</DependentUpon>
     </EmbeddedResource>
@@ -357,7 +406,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ConveyorPLC.xml">
+    <Content Include="ConveyorPLC1.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ConveyorPLC2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -402,6 +455,9 @@
     <None Include="Resources\process_accept.png" />
     <None Include="Resources\process_remove.png" />
     <None Include="Resources\ProducePlan.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\page_down.png" />
+    <None Include="Resources\page_up.png" />
     <Content Include="Resources\remove.png" />
     <None Include="Resources\start.png" />
     <None Include="Resources\stop.png" />
@@ -415,10 +471,6 @@
     <ProjectReference Include="..\..\SQLDAL\SQLDAL.csproj">
       <Project>{3D2E8955-A851-42EC-BE68-F1EB02B7834B}</Project>
       <Name>SQLDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dispatching\Dispatching.csproj">
-      <Project>{7C262527-51F1-4586-B590-9F2AD56EDAAC}</Project>
-      <Name>Dispatching</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

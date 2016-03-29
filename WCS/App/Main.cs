@@ -17,6 +17,10 @@ namespace App
         private Context context = null;
         private System.Timers.Timer tmWorkTimer = new System.Timers.Timer();
         public int TimeDiff;
+        public int WorkMode = 0;
+        public bool Run = false;
+        public string ProductCode = "";
+
         public Main()
         {
             InitializeComponent();
@@ -39,6 +43,7 @@ namespace App
                 ContextInitialize initialize = new ContextInitialize();
                 initialize.InitializeContext(context);
 
+                this.TimeDiff = int.Parse(context.Attributes["TimeDiff"].ToString());
                 View.frmMonitor f = new View.frmMonitor();
                 ShowForm(f);
 
@@ -350,18 +355,49 @@ namespace App
 
         private void toolStripButton_Start_Click(object sender, EventArgs e)
         {
-            if (this.toolStripButton_Start.Text == "开始运行")
+            try
             {
-                //context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 1);
-                this.toolStripButton_Start.Image = App.Properties.Resources.stop;
-                this.toolStripButton_Start.Text = "停止运行";
+
+                if (this.toolStripButton_Start.Text == "开始运行")
+                {
+                    Run = true;
+                    context.ProcessDispatcher.WriteToService("ConveyorPLC1", "StartSignal", 1);
+                    context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 1);
+                    this.toolStripButton_Start.Image = App.Properties.Resources.stop;
+                    this.toolStripButton_Start.Text = "停止运行";
+                }
+                else
+                {
+                    Run = false;
+                    context.ProcessDispatcher.WriteToService("ConveyorPLC1", "StartSignal", 0);
+                    context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 0);
+                    this.toolStripButton_Start.Image = App.Properties.Resources.start;
+                    this.toolStripButton_Start.Text = "开始运行";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 0);
-                this.toolStripButton_Start.Image = App.Properties.Resources.start;
-                this.toolStripButton_Start.Text = "开始运行";
-            }     
+                Logger.Error(ex.Message);
+            }
+        }
+
+        private void toolStripButton_RptInStock_Click(object sender, EventArgs e)
+        {
+            App.View.Report.InStock f = new View.Report.InStock("11");
+            ShowForm(f);            
+        }
+
+        private void toolStripButton_RptOutStock_Click(object sender, EventArgs e)
+        {
+            App.View.Report.InStock f = new View.Report.InStock("12");
+            f.Text = "出库明细表";
+            ShowForm(f);   
+        }
+
+        private void toolStripButton_Stock_Click(object sender, EventArgs e)
+        {
+            App.View.Report.StockQuery f = new View.Report.StockQuery();
+            ShowForm(f);     
         }
     }
 }

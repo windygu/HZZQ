@@ -12,11 +12,11 @@ F:\XJWLMQ\ChangLV\SQLDAL\obj\Debug\SQLDAL.dll
 F:\XJWLMQ\ChangLV\SQLDAL\obj\Debug\SQLDAL.pdb
 F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\SQLDAL.dll
 F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\SQLDAL.pdb
+F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\IDAL.dll
+F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\Util.dll
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\ResolveAssemblyReference.cache
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\SQLDAL.Properties.Resources.resources
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\GenerateResource.read.1.tlog
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\GenerateResource.write.1.tlog
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\SQLDAL.dll
 F:\XJWLMQ\HZZQ\SQLDAL\obj\Debug\SQLDAL.pdb
-F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\IDAL.dll
-F:\XJWLMQ\HZZQ\SQLDAL\bin\Debug\Util.dll

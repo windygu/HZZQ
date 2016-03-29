@@ -66,7 +66,7 @@ namespace Dispatching.Process
             }
             catch (Exception ex)
             {
-                Logger.Error("THOK.XC.Process.Process_Crane.CraneProcess堆垛机初始化出错，原因：" + ex.Message);
+                Logger.Error("Dispatching.Process.Process_Crane.CraneProcess堆垛机初始化出错，原因：" + ex.Message);
             }
         }
         protected override void StateChanged(StateItem stateItem, IProcessDispatcher dispatcher)
@@ -80,8 +80,7 @@ namespace Dispatching.Process
                 case "CraneTaskFinished":
                     object obj = ObjectUtil.GetObject(stateItem.State);
                     if (obj.ToString() == "2")
-                    {
-                        
+                    {                        
                         string TaskNo = Util.ConvertStringChar.BytesToString(ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(stateItem.Name, "CraneTaskNo")));
                         //存储过程处理
                         Logger.Info(stateItem.ItemName + "完成标志,任务号:" + TaskNo);
@@ -98,20 +97,20 @@ namespace Dispatching.Process
                     break;
                 case "Run":
                     blRun = (int)stateItem.State == 1;
+                    if (blRun)
+                    {
+                        tmWorkTimer.Start();
+                        Logger.Info("堆垛机联机");
+                    }
+                    else
+                    {
+                        tmWorkTimer.Stop();
+                        Logger.Info("堆垛机脱机");
+                    }
                     break;
                 default:
                     break;
-            }
-            if (blRun)
-            {
-                tmWorkTimer.Start();
-                Logger.Info("堆垛机联机");
-            }
-            else
-            {
-                tmWorkTimer.Stop();
-                Logger.Info("堆垛机脱机");
-            }
+            }            
             
             return;
         }
@@ -171,10 +170,12 @@ namespace Dispatching.Process
                 //craneInfo 0 
                 int[] craneInfo = new int[7];
                 object[] obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneInfo"));
-                //for (int j = 0; j < obj.Length; j++)
-                //    craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
 
-                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3]==1 && craneInfo[4]==5) || (craneInfo[3]==2 && craneInfo[4]==6)))
+                //0 0-无故障货叉在原位无货
+                //2 3-联机自动
+                //3 0-待机 1-入库 2-出库
+                //4 0-无故障 5-满货位入库，6-空货位出库
+                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3] == 1 && craneInfo[4] == 5) || (craneInfo[3] == 2 && craneInfo[4] == 6)))
                     return true;
                 else
                     return false;
@@ -278,12 +279,17 @@ namespace Dispatching.Process
 
             int[] craneInfo = new int[6];
             object[] obj = ObjectUtil.GetObjects(WriteToService(serviceName, "CraneInfo"));
-            //for (int j = 0; j < obj.Length; j++)
-            //    craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
 
             obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
             string plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
 
+            string StationLoad = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService(serviceName, "OutStationLoad")).ToString();
+            //判断出库站台无货
+            if (StationLoad.Equals("True") || StationLoad.Equals("1"))
+            {
+                Logger.Info("出库站台有货不符合堆垛机出库");
+                return;
+            }
             string CraneNo = "0" + craneNo.ToString();
             //获取任务，排序优先等级、任务时间
             DataParameter[] parameter = new DataParameter[] { new DataParameter("{0}", string.Format("WCS_Task.TaskType in ('12','13','14') and WCS_Task.State='0' and WCS_Task.CraneNo='{0}'",CraneNo)) };
@@ -296,42 +302,23 @@ namespace Dispatching.Process
                 string carNo = dr["CarNo"].ToString();
                 string TaskNo = dr["TaskNo"].ToString();
                 string BillID = dr["BillID"].ToString();
+                int CraneErrCode = byte.Parse(dr["CraneErrCode"].ToString());
                 byte taskType = byte.Parse(dt.Rows[0]["TaskType"].ToString().Substring(1, 1));
 
+                
                 string fromStation = dt.Rows[0]["FromStation"].ToString();
                 string toStation = dt.Rows[0]["ToStation"].ToString();
-                //string fromStation = dt.Rows[0]["StationNo"].ToString();
-                //string toStation = dt.Rows[0]["CellCode"].ToString();
-
-                if (taskType != 3 || craneInfo[4] != 6)
-                {
-                    //判断小车,出库小车必须待机+空载
-                    if (!Check_Car_Out_Status_IsOk(carNo))
-                    {
-                        Logger.Info("小车状态不符合堆垛机出库");
-                        return;
-                    }
-                }
 
                 if (plcTaskNo != "" && TaskNo != plcTaskNo.Trim())
                     return;
 
-                //if (taskType == 2)
-                //{
-                //    fromStation = dt.Rows[0]["CellCode"].ToString();
-                //    toStation = dt.Rows[0]["StationNo"].ToString();
-                //}
-                //else if (taskType == 3)
-                //{
-                //    fromStation = dt.Rows[0]["CellCode"].ToString();
-                //    toStation = dt.Rows[0]["ToCellCode"].ToString();
-                //}
-                //else if (taskType == 4)
-                //{
-                //    fromStation = dt.Rows[0]["CellCode"].ToString();
-                //    toStation = dt.Rows[0]["StationNo"].ToString();
-                //}
                 
+
+                if (plcTaskNo.Length > 0)
+                {
+                    if (CraneErrCode == 6 || CraneErrCode == 16)
+                        taskType = 6;                    
+                }
 
                 byte[] cellAddr = new byte[8];
 
@@ -344,9 +331,6 @@ namespace Dispatching.Process
                 cellAddr[6] = byte.Parse(toStation.Substring(3, 3));
                 cellAddr[7] = byte.Parse(toStation.Substring(6, 3));
 
-                for (int i = 0; i < cellAddr.Length; i++)
-                    cellAddr[i] += 48;
-
                 sbyte[] palletBarcode = new sbyte[8];
                 Util.ConvertStringChar.stringToBytes(dr["PalletCode"].ToString(), 8).CopyTo(palletBarcode, 0);
 
@@ -357,8 +341,8 @@ namespace Dispatching.Process
                 WriteToService(serviceName, "TaskAddress", cellAddr);
                 WriteToService(serviceName, "PalletCode", palletBarcode);
                 WriteToService(serviceName, "TaskNo", taskNo);
-                WriteToService(serviceName, "ProductType", 49);
-                if (WriteToService(serviceName, "WriteFinished", 49))
+                WriteToService(serviceName, "ProductType", 1);
+                if (WriteToService(serviceName, "WriteFinished", 1))
                 {
                     //更新任务状态为执行中
                     bll.ExecNonQuery("WCS.UpdateTaskTimeByTaskNo", new DataParameter[] { new DataParameter("@State", 1), new DataParameter("@TaskNo", TaskNo) });
@@ -393,59 +377,40 @@ namespace Dispatching.Process
 
             int[] craneInfo = new int[6];
             object[] obj = ObjectUtil.GetObjects(WriteToService(serviceName, "CraneInfo"));
-            for (int j = 0; j < obj.Length; j++)
-                craneInfo[j] = Convert.ToInt16(obj[j]) - 48;
 
             obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
             string plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
 
             string CraneNo = "0" + craneNo.ToString();
             //获取任务，排序优先等级、任务时间
-            DataParameter[] parameter = new DataParameter[] { new DataParameter("{0}", string.Format("((WCS_Task.TaskType='11' and WCS_Task.State='2') or (WCS_Task.TaskType='14' and WCS_Task.State='5')) and WCS_Task.CraneNo='{0}'", CraneNo)) };
+            DataParameter[] parameter = new DataParameter[] { new DataParameter("{0}", string.Format("((WCS_Task.TaskType='11' and WCS_Task.State='0') or (WCS_Task.TaskType='14' and WCS_Task.State='5')) and WCS_Task.CraneNo='{0}'", CraneNo)) };
             DataTable dt = bll.FillDataTable("WCS.SelectTask", parameter);
 
             //出库
             if (dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
-                string carNo = dr["CarNo"].ToString();
-
-                
-                if (craneInfo[4] != 5)
-                {
-                    //判断小车,出库小车必须待机+空载
-                    if (!Check_Car_In_Status_IsOk(carNo))
-                        return;
-                }
 
                 string TaskNo = dr["TaskNo"].ToString();
-
-                //如果重入，需要重新下任务需判断堆垛机任务号跟当前要下的任务号是否一致，如不一致不能下达
-                if (plcTaskNo!="0000000000" && TaskNo != plcTaskNo.Trim())
-                    return;
-
                 string BillID = dr["BillID"].ToString();
+                int CraneErrCode = byte.Parse(dr["CraneErrCode"].ToString());
                 byte taskType = byte.Parse(dt.Rows[0]["TaskType"].ToString().Substring(1, 1));
                 string fromStation = dt.Rows[0]["FromStation"].ToString();
                 string toStation = dt.Rows[0]["ToStation"].ToString();
-                //string fromStation = dt.Rows[0]["StationNo"].ToString();
-                //string toStation = dt.Rows[0]["CellCode"].ToString();
-                //if (taskType == 2)
-                //{
-                //    fromStation = dt.Rows[0]["CellCode"].ToString();
-                //    toStation = dt.Rows[0]["StationNo"].ToString();
-                //}
-                //else if (taskType == 3)
-                //{
-                //    fromStation = dt.Rows[0]["CellCode"].ToString();
-                //    toStation = dt.Rows[0]["ToCellCode"].ToString();
-                //}
+
+                //如果重入，需要重新下任务需判断堆垛机任务号跟当前要下的任务号是否一致，如不一致不能下达
+                if (plcTaskNo != "" && TaskNo != plcTaskNo.Trim())
+                    return;
+
+                if (plcTaskNo.Length > 0)
+                {
+                    if (CraneErrCode == 5 || CraneErrCode == 15)
+                        taskType = 5;
+                }
 
                 byte[] cellAddr = new byte[8];
-                if (craneInfo[4] == 5)
-                    cellAddr[0] = 5;
-                else
-                    cellAddr[0] = taskType;
+
+                cellAddr[0] = taskType;
                 cellAddr[1] = 0;  //0-不允许伸叉，1-允许伸叉
                 cellAddr[2] = byte.Parse(fromStation.Substring(0, 3));
                 cellAddr[3] = byte.Parse(fromStation.Substring(3, 3));
@@ -453,10 +418,6 @@ namespace Dispatching.Process
                 cellAddr[5] = byte.Parse(toStation.Substring(0, 3));
                 cellAddr[6] = byte.Parse(toStation.Substring(3, 3));
                 cellAddr[7] = byte.Parse(toStation.Substring(6, 3));
-
-
-                for (int i = 0; i < cellAddr.Length; i++)
-                    cellAddr[i] += 48;
 
                 sbyte[] palletBarcode = new sbyte[8];
                 Util.ConvertStringChar.stringToBytes(dr["PalletCode"].ToString(), 8).CopyTo(palletBarcode, 0);

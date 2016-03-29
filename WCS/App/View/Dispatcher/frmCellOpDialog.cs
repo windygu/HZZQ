@@ -83,9 +83,7 @@ namespace App.View.Dispatcher
             TaskFields.Add("ProductTypeName", "产品类型");
             TaskFields.Add("CraneNo", "堆垛机");
             TaskFields.Add("StartDate", "起始时间");
-            TaskFields.Add("FinishDate", "结束时间");
-
-            
+            TaskFields.Add("FinishDate", "结束时间");            
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -116,7 +114,6 @@ namespace App.View.Dispatcher
                 else if (this.radioButton6.Checked)
                 {
                     bll.ExecNonQuery("WCS.UpdateCellByTaskNo", new DataParameter[] { new DataParameter("@TaskNo", this.txtTaskNo.Text) });
-
                 }
                 else if (this.radioButton5.Checked)
                 {
@@ -134,14 +131,33 @@ namespace App.View.Dispatcher
                         sql += string.Format(",BillNo='{0}'", this.txtBillNo.Text.Trim());
 
                     if (this.dtpInDate.Checked)
-                        sql += string.Format(",InDate='{0}'", this.dtpInDate.Value);                    
+                        sql += string.Format(",InDate='{0}'", this.dtpInDate.Value); 
+                    else
+                        sql += string.Format(",InDate=Null", this.dtpInDate.Value);
 
                     param = new DataParameter[] { new DataParameter("{0}", sql), new DataParameter("{1}", string.Format("CellCode='{0}'", this.txtCellCode.Text)) };
-                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
-                    
+                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);                    
                 }
-
-                
+                else if (this.radioButton7.Checked)
+                {
+                    param = new DataParameter[] { new DataParameter("{0}", "IsActive='0'"), new DataParameter("{1}", string.Format("CellColumn=(select CellColumn from CMD_Cell where CellCode='{0}') and ShelfCode=(select ShelfCode from CMD_Cell where CellCode='{0}')", this.txtCellCode.Text)) };
+                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
+                }
+                else if (this.radioButton8.Checked)
+                {
+                    param = new DataParameter[] { new DataParameter("{0}", "IsActive='1'"), new DataParameter("{1}", string.Format("CellColumn=(select CellColumn from CMD_Cell where CellCode='{0}') and ShelfCode=(select ShelfCode from CMD_Cell where CellCode='{0}')", this.txtCellCode.Text)) };
+                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
+                }
+                else if (this.radioButton9.Checked)
+                {
+                    param = new DataParameter[] { new DataParameter("{0}", "IsActive='0'"), new DataParameter("{1}", string.Format("CellRow=(select CellRow from CMD_Cell where CellCode='{0}') and ShelfCode=(select ShelfCode from CMD_Cell where CellCode='{0}')", this.txtCellCode.Text)) };
+                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
+                }
+                else if (this.radioButton10.Checked)
+                {
+                    param = new DataParameter[] { new DataParameter("{0}", "IsActive='1'"), new DataParameter("{1}", string.Format("CellRow=(select CellRow from CMD_Cell where CellCode='{0}') and ShelfCode=(select ShelfCode from CMD_Cell where CellCode='{0}')", this.txtCellCode.Text)) };
+                    bll.ExecNonQuery("WCS.UpdateCellByFilter", param);
+                }
             }
             DialogResult = DialogResult.OK;
         }

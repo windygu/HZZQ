@@ -21,6 +21,41 @@
       ORDER BY WCS_TASK.TaskLevel DESC, WCS_TASK.RequestDate,WCS_TASK.StartDate
     </CommandString>
   </Command>
+  <Command ID="SelectTaskDetail">
+    <CommandString>
+      SELECT WCS_TASK.TaskNo,  CMD_BillType.BillTypeName,Sys_TableState.StateDesc, WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec, 
+      WCS_TASK.CellCode, convert(varchar(20),WCS_TASK.StartDate,120) StartDate, convert(varchar(20),WCS_TASK.FinishDate,120) FinishDate,convert(varchar(20),WCS_TASK.TaskDate,120) TaskDate
+      FROM WCS_TASK
+      left join CMD_Cell C1 on WCS_TASK.CellCode=C1.CellCode
+      Left join CMD_Product ON WCS_TASK.ProductCode=CMD_Product.ProductCode
+      left join CMD_BillType On CMD_BillType.BillTypeCode=WCS_TASK.BillTypeCode
+      LEFT JOIN  Sys_TableState on Sys_TableState.TableName='WCS_TASK' and Sys_TableState.FieldName='State' and WCS_TASK.State=Sys_TableState.State
+      Where {0}
+      ORDER BY WCS_TASK.StartDate
+    </CommandString>
+  </Command>
+  <Command ID="SelectStockTotal">
+    <CommandString>
+      SELECT CMD_Cell.ProductCode,CMD_Product.ProductName,CMD_Product.Spec,sum(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity*4 end) Total
+      FROM CMD_Cell
+      Left join CMD_Product ON CMD_Cell.ProductCode=CMD_Product.ProductCode
+      Where {0}
+      group by CMD_Cell.ProductCode,CMD_Product.ProductName,CMD_Product.Spec
+      ORDER BY CMD_Cell.ProductCode
+    </CommandString>
+  </Command>
+  <Command ID="SelectStockDetail">
+    <CommandString>
+      SELECT CellCode ,S1.StateDesc IsActive,CMD_Cell.ProductCode,CMD_Product.ProductName,CMD_Product.Spec,BillNo,(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity*4 end) Quantity,S2.StateDesc IsLock,convert(varchar(20),CMD_Cell.InDate,120) InDate,
+      datediff(d,CMD_Cell.InDate,getdate()) StockDays
+      FROM CMD_Cell
+      Left join CMD_Product ON CMD_Cell.ProductCode=CMD_Product.ProductCode
+      LEFT JOIN  Sys_TableState S1 on S1.TableName='CMD_Cell' and S1.FieldName='IsActive' and CMD_Cell.IsActive=S1.State
+      LEFT JOIN  Sys_TableState S2 on S2.TableName='CMD_Cell' and S2.FieldName='IsLock' and CMD_Cell.IsLock=S2.State
+      Where {0}
+      ORDER BY CMD_Cell.ProductCode,CMD_Cell.InDate
+    </CommandString>
+  </Command>
   <Command ID="sp_GetCell">
     <CommandString>
       sp_GetCell
@@ -145,6 +180,11 @@
   <Command ID="UpdateTaskState">
     <CommandString>
       update WCS_TASK set State=@State where TaskNo in (select top 1 TaskNo from WCS_TASK where State='1' and TaskType='11' and CarNo=@CarNo order by StartDate)
+    </CommandString>
+  </Command>
+  <Command ID="UpdateTaskError">
+    <CommandString>
+      update WCS_TASK set CraneErrCode=@CraneErrCode,CraneErrDesc=@CraneErrDesc where TaskNo=@TaskNo
     </CommandString>
   </Command>
   <Command ID="UpdateTaskStateByTaskNo">

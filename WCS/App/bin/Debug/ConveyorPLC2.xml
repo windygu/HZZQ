@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' ?>
+<Config>
+  <OPCServer ConnectionString="OPC.SimaticNET">
+    <!--<OPCGroup GroupName="PLCGroup" GroupString="S7:[@LOCALSERVER]" UpdateRate="350">-->
+    <OPCGroup GroupName="PLCGroup" GroupString="S7:[PLC03]" UpdateRate="350">
+      <!--<OPCItem ItemName="abc" ClientHandler="1" OPCItemName="DB1,W0,1"  ItemType="READ" IsActive="false"/>-->
+      <!--电机信号-->
+      <OPCItem ItemName="MotorSignal1" ClientHandler="2" OPCItemName="DB4,B0,32"  ItemType="READ" IsActive="false"/>
+      <!--光电信号-->
+      <OPCItem ItemName="SensorSignal" ClientHandler="3" OPCItemName="DB3,B0,32" ItemType="READ" IsActive="false"/>
+      
+      <!--启动信号-->
+      <!--<OPCItem ItemName="StartSignal" ClientHandler="10" OPCItemName="DB2,X0.0,1"  ItemType="WRITE"/>-->
+      <!--托盘号--><!--
+      <OPCItem ItemName="PalletCode" ClientHandler="11" OPCItemName="DB103,CHAR8,8"  ItemType="WRITE"/>
+      --><!--任务号--><!--
+      <OPCItem ItemName="TaskNo" ClientHandler="12" OPCItemName="DB103,CHAR16,10"  ItemType="WRITE"/>
+      --><!--货物类型--><!--
+      <OPCItem ItemName="ProductType" ClientHandler="13" OPCItemName="DB103,B26,1" ItemType="WRITE"/>
+      --><!--任务标识--><!--
+      <OPCItem ItemName="WriteFinished" ClientHandler="14" OPCItemName="DB103,B27,1"  ItemType="WRITE"/>
+      --><!--回应请求--><!--
+      <OPCItem ItemName="ReplyFinished" ClientHandler="15" OPCItemName="DB103,B28,1"  ItemType="WRITE"/>-->
+
+    </OPCGroup>
+  </OPCServer>
+</Config>

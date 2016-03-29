@@ -22,9 +22,10 @@ namespace App.View
 
         private void frmChangeMode_Load(object sender, EventArgs e)
         {
+            ProductFields.Add("ProductNo", "产品代号");
             ProductFields.Add("ProductCode", "产品编号");
             ProductFields.Add("ProductName", "产品名称");
-            ProductFields.Add("ProductTypeName", "产品类型");
+            ProductFields.Add("Spec", "规格");
 
             DataTable dt = bll.FillDataTable("WCS.SelectWorkMode");
             if (dt.Rows.Count > 0)
@@ -40,11 +41,13 @@ namespace App.View
 
                 if (this.radioButton4.Checked)
                 {
+                    this.txtProductCode.Text = dt.Rows[0]["ProductCode"].ToString();
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();
                     this.txtQuantity.Text = dt.Rows[0]["OutQty"].ToString();
                 }
                 else
                 {
+                    this.txtProductCode.Text = "";
                     this.txtProductName.Text = "";
                     this.txtQuantity.Text = "";
                 }
@@ -77,13 +80,12 @@ namespace App.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            int WorkMode = 0;
             if (this.radioButton2.Checked)
-                WorkMode = 1;
+                Program.mainForm.WorkMode = 1;
             else if (this.radioButton3.Checked)
-                WorkMode = 2;
+                Program.mainForm.WorkMode = 2;
             else if (this.radioButton4.Checked)
-                WorkMode = 3;
+                Program.mainForm.WorkMode = 3;
 
             int OutQty = 0;
             //更新任务状态
@@ -96,54 +98,53 @@ namespace App.View
                     return;
                 }
 
-                int.TryParse(this.txtQuantity.Text.Trim(), out OutQty);
+                //int.TryParse(this.txtQuantity.Text.Trim(), out OutQty);
 
-                if (OutQty <= 0)
-                {
-                    MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.txtQuantity.Focus();
-                    return;
-                }
-                try
-                {
-                    for (int i = 0; i < OutQty; i++)
-                    {
-                        string CellCode = "";
+                //if (OutQty <= 0)
+                //{
+                //    MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    this.txtQuantity.Focus();
+                //    return;
+                //}
+                //try
+                //{
+                //    for (int i = 0; i < OutQty; i++)
+                //    {
+                //        string CellCode = "";
 
-                        DataParameter[] param = new DataParameter[] 
-                        { 
-                            new DataParameter("@CraneNo", "01"), 
-                            new DataParameter("@ProductCode", this.txtProductCode.Text),
-                            new DataParameter("@CellCode",CellCode)
-                        };
-                        bll.FillDataTable("WCS.Sp_CreateOutTask", param);
-                    }                    
-                }
-                catch (System.Data.SqlClient.SqlException ex)
-                {
-                    //如果是存储过程名称是PROC_NAME，而且State是数据库中设置的一个值 如：66
-                    //则该异常就是我们需要特殊处理的一个异常
-                    if (ex.Procedure.Equals("Sp_CreateOutTask") && ex.State == 1)
-                    {
-                        MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }                                
+                //        DataParameter[] param = new DataParameter[] 
+                //        { 
+                //            new DataParameter("@CraneNo", "01"), 
+                //            new DataParameter("@ProductCode", this.txtProductCode.Text),
+                //            new DataParameter("@CellCode",CellCode)
+                //        };
+                //        bll.FillDataTable("WCS.Sp_CreateOutTask", param);
+                //    }                    
+                //}
+                //catch (System.Data.SqlClient.SqlException ex)
+                //{
+                //    //如果是存储过程名称是PROC_NAME，而且State是数据库中设置的一个值 如：66
+                //    //则该异常就是我们需要特殊处理的一个异常
+                //    if (ex.Procedure.Equals("Sp_CreateOutTask") && ex.State == 1)
+                //    {
+                //        MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        return;
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    return;
+                //}
             }
             //保存状态
             bll.ExecNonQuery("WCS.UpdateWorkMode", new DataParameter[] {    
-                            new DataParameter("@WorkMode", WorkMode),
+                            new DataParameter("@WorkMode", Program.mainForm.WorkMode),
                             new DataParameter("@ProductCode", this.txtProductCode.Text),
                             new DataParameter("@ProductName", this.txtProductName.Text),
                             new DataParameter("@OutQty", OutQty)});
 
             //写入输送机PLC
-
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 

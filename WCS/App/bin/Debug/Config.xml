@@ -2,18 +2,21 @@
 <Configuration>
   <LogLevel>DEBUG</LogLevel>
   <Attributes>
-    <Attribute Name="ScanPortName" Value="COM2" />
-    <Attribute Name="ScanBaudRate" Value="19200" />
-    <Attribute Name="IsShowFlag" Value="1" />
     <Attribute Name="TimeDiff" Value="60" />
   </Attributes>
   <Services>
     <Service Name="CranePLC1" Type="MCP.Service.Siemens.dll, MCP.Service.Siemens.OPCService" ConfigFile="CranePLC1.xml" />
+    <Service Name="ConveyorPLC1" Type="MCP.Service.Siemens.dll, MCP.Service.Siemens.OPCService" ConfigFile="ConveyorPLC1.xml" />
+    <Service Name="ConveyorPLC2" Type="MCP.Service.Siemens.dll, MCP.Service.Siemens.OPCService" ConfigFile="ConveyorPLC2.xml" />
   </Services>
   <Processes>
     <!--堆垛机Process-->
-    <Process Name="CraneProcess" Type="Dispatching.dll, Dispatching.Process.CraneProcess">
+    <Process Name="CraneProcess" Type="App.exe, App.Dispatching.Process.CraneProcess">
       <Item ServiceName="CranePLC1" ItemName="CraneTaskFinished" />
+    </Process>
+    <!--入库Process-->
+    <Process Name="StockInToStationProcess" Type="App.exe, App.Dispatching.Process.StockInToStationProcess">
+      <Item ServiceName="ConveyorPLC1" ItemName="StockInToStation" />
     </Process>
   </Processes>
 </Configuration>

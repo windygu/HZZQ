@@ -43,6 +43,8 @@
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ckbIsProduce = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbProductNo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnOK
@@ -82,7 +84,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(25, 23);
+            this.label3.Location = new System.Drawing.Point(25, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 21);
             this.label3.TabIndex = 111;
@@ -141,10 +143,10 @@
             // txtProductCode
             // 
             this.txtProductCode.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtProductCode.Location = new System.Drawing.Point(115, 23);
+            this.txtProductCode.Location = new System.Drawing.Point(115, 22);
             this.txtProductCode.MaxLength = 20;
             this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(195, 29);
+            this.txtProductCode.Size = new System.Drawing.Size(155, 29);
             this.txtProductCode.TabIndex = 103;
             // 
             // txtSpec
@@ -190,18 +192,41 @@
             // 
             this.ckbIsProduce.AutoSize = true;
             this.ckbIsProduce.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbIsProduce.Location = new System.Drawing.Point(325, 25);
+            this.ckbIsProduce.Location = new System.Drawing.Point(423, 24);
             this.ckbIsProduce.Name = "ckbIsProduce";
             this.ckbIsProduce.Size = new System.Drawing.Size(61, 25);
             this.ckbIsProduce.TabIndex = 119;
             this.ckbIsProduce.Text = "生产";
             this.ckbIsProduce.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ForeColor = System.Drawing.Color.Blue;
+            this.label6.Location = new System.Drawing.Point(276, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 21);
+            this.label6.TabIndex = 120;
+            this.label6.Text = "产品编号";
+            // 
+            // cmbProductNo
+            // 
+            this.cmbProductNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProductNo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbProductNo.FormattingEnabled = true;
+            this.cmbProductNo.Location = new System.Drawing.Point(357, 22);
+            this.cmbProductNo.Name = "cmbProductNo";
+            this.cmbProductNo.Size = new System.Drawing.Size(51, 29);
+            this.cmbProductNo.TabIndex = 121;
+            // 
             // frmProductEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 397);
+            this.Controls.Add(this.cmbProductNo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.ckbIsProduce);
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.label4);
@@ -246,5 +271,7 @@
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox ckbIsProduce;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbProductNo;
     }
 }

@@ -55,6 +55,7 @@
             this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column8 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column4 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
@@ -167,6 +168,7 @@
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
+            this.Column1,
             this.Column7,
             this.Column8,
             this.Column4,
@@ -302,6 +304,13 @@
             this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ProductNo";
+            this.Column1.HeaderText = "产品代号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // Column7
             // 
             this.Column7.DataPropertyName = "ProductName";
@@ -412,6 +421,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton_Modify;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column8;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;

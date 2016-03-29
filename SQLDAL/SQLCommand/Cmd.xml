@@ -287,24 +287,27 @@
   </Command>
   <Command ID="InsertProduct">
     <CommandString>
-      INSERT INTO CMD_PRODUCT(ProductCode, ProductName, Spec, Weight,IsProduce,ValidPeriod, Memo, Creator, CreateDate, Updater, UpdateDate, WarehouseCode, AreaCode)
-      values(@ProductCode, @ProductName, @Spec, @Weight,@IsProduce, @ValidPeriod, @Memo, @Creator, getdate(), @Updater,getdate(), @WarehouseCode, @AreaCode)
+      INSERT INTO CMD_PRODUCT(ProductCode, ProductName, Spec, Weight,IsProduce,ValidPeriod, Memo, Creator, CreateDate, Updater, UpdateDate, WarehouseCode, AreaCode,ProductNo)
+      values(@ProductCode, @ProductName, @Spec, @Weight,@IsProduce, @ValidPeriod, @Memo, @Creator, getdate(), @Updater,getdate(), @WarehouseCode, @AreaCode,@ProductNo)
     </CommandString>
   </Command>
   <Command ID="UpdateProduct">
     <CommandString>
-      Update CMD_PRODUCT Set ProductName=@ProductName, Spec=@Spec, Weight=@Weight,IsProduce=@IsProduce,ValidPeriod=@ValidPeriod, Memo=@Memo,Updater=@Updater,UpdateDate=getdate()
+      Update CMD_PRODUCT Set ProductName=@ProductName, Spec=@Spec, Weight=@Weight,IsProduce=@IsProduce,ValidPeriod=@ValidPeriod,ProductNo=@ProductNo, Memo=@Memo,Updater=@Updater,UpdateDate=getdate()
       where ProductCode=@ProductCode
     </CommandString>
   </Command>
-
+  <Command ID="SelectRelationNo">
+    <CommandString>
+      select * from CMD_ProductNo
+      where {0}
+    </CommandString>
+  </Command>
   <Command ID="spBatchChangeProductNo">
     <CommandString>
       sp_BatchChangeProductNo
     </CommandString>
-  </Command>
-
-  
+  </Command>  
   
   <!--生产厂家-->
   <Command ID="SelectFactory">

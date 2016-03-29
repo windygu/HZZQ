@@ -90,4 +90,104 @@ namespace App
             }
         }
     }
+    public class Conveyor
+    {
+        public int ConveyorNo { get; set; }
+        public string TaskNo { get; set; }
+        public string PalletCode { get; set; }
+        public bool Fwd { get; set; }  //正转
+        public bool Rev { get; set; }  //反转
+        public bool Up { get; set; }  //上升
+        public bool Down { get; set; }  //下降
+        public bool Load { get; set; }  //有无货
+        public int Status { get; set; }
+        public int ErrCode { get; set; }
+    }
+
+    public delegate void ConveyorEventHandler(ConveyorEventArgs args);
+    public class ConveyorEventArgs
+    {
+        private Conveyor[] _conveyor;
+        public Conveyor[] conveyor
+        {
+            get
+            {
+                return _conveyor;
+            }
+        }
+        public ConveyorEventArgs(Conveyor[] conveyor)
+        {
+            this._conveyor = conveyor;
+        }
+    }
+    public class Conveyors
+    {
+        public static event ConveyorEventHandler OnConveyor = null;
+
+        public static void ConveyorInfo(Conveyor[] conveyor)
+        {
+            if (OnConveyor != null)
+            {
+                OnConveyor(new ConveyorEventArgs(conveyor));
+            }
+        }
+    }
+
+    public delegate void SignalEventHandler(SignalEventArgs args);
+    public class SignalEventArgs
+    {
+        private bool[,] _obj1;
+        private bool[,] _obj2;
+        private bool[,] _obj3;
+        private bool[,] _obj4;
+
+        public bool[,] obj1
+        {
+            get
+            {
+                return _obj1;
+            }
+        }
+        public bool[,] obj2
+        {
+            get
+            {
+                return _obj2;
+            }
+        }
+        public bool[,] obj3
+        {
+            get
+            {
+                return _obj3;
+            }
+        }
+        public bool[,] obj4
+        {
+            get
+            {
+                return _obj4;
+            }
+        }
+
+        public SignalEventArgs(bool[,] obj1, bool[,] obj2, bool[,] obj3, bool[,] obj4)
+        {
+            this._obj1 = obj1;
+            this._obj2 = obj2;
+            this._obj3 = obj3;
+            this._obj4 = obj4;
+        }
+    }
+    public class Signals
+    {
+        public static event SignalEventHandler OnSignal = null;
+
+        public static void SignalInfo(bool[,] obj1, bool[,] obj2, bool[,] obj3, bool[,] obj4)
+        {
+            if (OnSignal != null)
+            {
+                OnSignal(new SignalEventArgs(obj1, obj2, obj3, obj4));
+            }
+        }
+    }
 }

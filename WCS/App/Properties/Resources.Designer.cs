@@ -179,6 +179,27 @@ namespace App.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap page_down {
+            get {
+                object obj = ResourceManager.GetObject("page_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap page_up {
+            get {
+                object obj = ResourceManager.GetObject("page_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap printer {
+            get {
+                object obj = ResourceManager.GetObject("printer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap process {
             get {
                 object obj = ResourceManager.GetObject("process", resourceCulture);

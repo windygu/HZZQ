@@ -44,8 +44,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnlTab = new System.Windows.Forms.Panel();
-            this.tabForm = new System.Windows.Forms.TabControl();
             this.toolStripButton_Start = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Product = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Plan = new System.Windows.Forms.ToolStripButton();
@@ -56,7 +54,12 @@
             this.toolStripButton_CellMonitor = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_StartCrane = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_MoveStock = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_RptInStock = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_RptOutStock = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
+            this.pnlTab = new System.Windows.Forms.Panel();
+            this.tabForm = new System.Windows.Forms.TabControl();
+            this.toolStripButton_Stock = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -105,6 +108,7 @@
             this.InventortoolStripMenuItem.Name = "InventortoolStripMenuItem";
             this.InventortoolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.InventortoolStripMenuItem.Text = "盘点任务";
+            this.InventortoolStripMenuItem.Visible = false;
             this.InventortoolStripMenuItem.Click += new System.EventHandler(this.InventortoolStripMenuItem_Click);
             // 
             // MoveStockToolStripMenuItem
@@ -112,6 +116,7 @@
             this.MoveStockToolStripMenuItem.Name = "MoveStockToolStripMenuItem";
             this.MoveStockToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.MoveStockToolStripMenuItem.Text = "移库任务";
+            this.MoveStockToolStripMenuItem.Visible = false;
             this.MoveStockToolStripMenuItem.Click += new System.EventHandler(this.MoveStockToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Monitor
@@ -202,34 +207,15 @@
             this.toolStripButton_CellMonitor,
             this.toolStripButton_StartCrane,
             this.toolStripButton_MoveStock,
+            this.toolStripButton_RptInStock,
+            this.toolStripButton_RptOutStock,
+            this.toolStripButton_Stock,
             this.toolStripButton_Close});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1276, 52);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // pnlTab
-            // 
-            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
-            this.pnlTab.Controls.Add(this.tabForm);
-            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTab.Location = new System.Drawing.Point(0, 77);
-            this.pnlTab.Name = "pnlTab";
-            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
-            this.pnlTab.TabIndex = 14;
-            this.pnlTab.Visible = false;
-            // 
-            // tabForm
-            // 
-            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabForm.Location = new System.Drawing.Point(0, 0);
-            this.tabForm.Name = "tabForm";
-            this.tabForm.SelectedIndex = 0;
-            this.tabForm.Size = new System.Drawing.Size(1276, 23);
-            this.tabForm.TabIndex = 6;
-            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
             // 
             // toolStripButton_Start
             // 
@@ -345,6 +331,28 @@
             this.toolStripButton_MoveStock.Visible = false;
             this.toolStripButton_MoveStock.Click += new System.EventHandler(this.toolStripButton_MoveStock_Click);
             // 
+            // toolStripButton_RptInStock
+            // 
+            this.toolStripButton_RptInStock.AutoSize = false;
+            this.toolStripButton_RptInStock.Image = global::App.Properties.Resources.page_down;
+            this.toolStripButton_RptInStock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_RptInStock.Name = "toolStripButton_RptInStock";
+            this.toolStripButton_RptInStock.Size = new System.Drawing.Size(60, 50);
+            this.toolStripButton_RptInStock.Text = "入库明细";
+            this.toolStripButton_RptInStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_RptInStock.Click += new System.EventHandler(this.toolStripButton_RptInStock_Click);
+            // 
+            // toolStripButton_RptOutStock
+            // 
+            this.toolStripButton_RptOutStock.AutoSize = false;
+            this.toolStripButton_RptOutStock.Image = global::App.Properties.Resources.page_up;
+            this.toolStripButton_RptOutStock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_RptOutStock.Name = "toolStripButton_RptOutStock";
+            this.toolStripButton_RptOutStock.Size = new System.Drawing.Size(60, 50);
+            this.toolStripButton_RptOutStock.Text = "出库明细";
+            this.toolStripButton_RptOutStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_RptOutStock.Click += new System.EventHandler(this.toolStripButton_RptOutStock_Click);
+            // 
             // toolStripButton_Close
             // 
             this.toolStripButton_Close.AutoSize = false;
@@ -355,6 +363,39 @@
             this.toolStripButton_Close.Text = "退出系统";
             this.toolStripButton_Close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton_Close.Click += new System.EventHandler(this.toolStripButton_Close_Click);
+            // 
+            // pnlTab
+            // 
+            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
+            this.pnlTab.Controls.Add(this.tabForm);
+            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTab.Location = new System.Drawing.Point(0, 77);
+            this.pnlTab.Name = "pnlTab";
+            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
+            this.pnlTab.TabIndex = 14;
+            this.pnlTab.Visible = false;
+            // 
+            // tabForm
+            // 
+            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabForm.Location = new System.Drawing.Point(0, 0);
+            this.tabForm.Name = "tabForm";
+            this.tabForm.SelectedIndex = 0;
+            this.tabForm.Size = new System.Drawing.Size(1276, 23);
+            this.tabForm.TabIndex = 6;
+            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
+            // 
+            // toolStripButton_Stock
+            // 
+            this.toolStripButton_Stock.AutoSize = false;
+            this.toolStripButton_Stock.Image = global::App.Properties.Resources.report;
+            this.toolStripButton_Stock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Stock.Name = "toolStripButton_Stock";
+            this.toolStripButton_Stock.Size = new System.Drawing.Size(60, 50);
+            this.toolStripButton_Stock.Text = "库存明细";
+            this.toolStripButton_Stock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton_Stock.Click += new System.EventHandler(this.toolStripButton_Stock_Click);
             // 
             // Main
             // 
@@ -415,5 +456,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_Plan;
         private System.Windows.Forms.ToolStripButton toolStripButton_Product;
         private System.Windows.Forms.ToolStripButton toolStripButton_Start;
+        private System.Windows.Forms.ToolStripButton toolStripButton_RptInStock;
+        private System.Windows.Forms.ToolStripButton toolStripButton_RptOutStock;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Stock;
     }
 }

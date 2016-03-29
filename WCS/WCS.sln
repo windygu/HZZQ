@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{D6A97316-F526-4F3C-BF20-1B8EC67697A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatching", "Dispatching\Dispatching.csproj", "{7C262527-51F1-4586-B590-9F2AD56EDAAC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLDAL", "..\SQLDAL\SQLDAL.csproj", "{3D2E8955-A851-42EC-BE68-F1EB02B7834B}"
 EndProject
 Global
@@ -27,16 +25,6 @@ Global
 		{D6A97316-F526-4F3C-BF20-1B8EC67697A9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D6A97316-F526-4F3C-BF20-1B8EC67697A9}.Release|x86.ActiveCfg = Release|x86
 		{D6A97316-F526-4F3C-BF20-1B8EC67697A9}.Release|x86.Build.0 = Release|x86
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{7C262527-51F1-4586-B590-9F2AD56EDAAC}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D2E8955-A851-42EC-BE68-F1EB02B7834B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D2E8955-A851-42EC-BE68-F1EB02B7834B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D2E8955-A851-42EC-BE68-F1EB02B7834B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
