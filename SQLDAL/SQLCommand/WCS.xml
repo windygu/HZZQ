@@ -36,11 +36,11 @@
   </Command>
   <Command ID="SelectStockTotal">
     <CommandString>
-      SELECT CMD_Cell.ProductCode,CMD_Product.ProductName,CMD_Product.Spec,sum(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity*4 end) Total
+      SELECT CMD_Cell.ProductCode,CMD_Product.ProductNo,CMD_Product.ProductName,CMD_Product.Spec,sum(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity*4 end) Total
       FROM CMD_Cell
       Left join CMD_Product ON CMD_Cell.ProductCode=CMD_Product.ProductCode
       Where {0}
-      group by CMD_Cell.ProductCode,CMD_Product.ProductName,CMD_Product.Spec
+      group by CMD_Cell.ProductCode,CMD_Product.ProductNo,CMD_Product.ProductName,CMD_Product.Spec
       ORDER BY CMD_Cell.ProductCode
     </CommandString>
   </Command>

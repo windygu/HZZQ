@@ -19,28 +19,22 @@ namespace App.View.Report
         {
             InitializeComponent();
             Filter.EnableFilter(dgvMain);
-        }        
+        }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            InStockDialog f = new InStockDialog();
-            if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string filter = f.filter;
-                DataTable dt = bll.FillDataTable("WCS.SelectStockDetail", new DataParameter[] { new DataParameter("{0}", filter) });
-                bsMain.DataSource = dt;
-            }
+            this.BindData();
         }
 
-        private void StockTotal_Load(object sender, EventArgs e)
+        private void StockQuery_Load(object sender, EventArgs e)
         {
             this.BindData();
         }
         private void BindData()
         {
-            string filter = string.Format("CMD_Cell.InDate is not null");
+            string filter = "CMD_Cell.ProductCode!='' and CMD_Cell.InDate is not null";
 
-            DataTable dt = bll.FillDataTable("WCS.SelectStockDetail", new DataParameter[] { new DataParameter("{0}", filter) });
+            DataTable dt = bll.FillDataTable("WCS.SelectStockTotal", new DataParameter[] { new DataParameter("{0}", filter) });
             bsMain.DataSource = dt;
         }
 
@@ -54,6 +48,14 @@ namespace App.View.Report
             if (bsMain.DataSource == null)
                 return;            
             View.ExcelHelper.DoExport((DataTable)bsMain.DataSource);
+        }
+
+        private void dgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string ProductCode = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string filter = string.Format("CMD_Cell.ProductCode='{0}' and CMD_Cell.InDate is not null", ProductCode);
+            DataTable dt = bll.FillDataTable("WCS.SelectStockDetail", new DataParameter[] { new DataParameter("{0}", filter) });
+            this.bsDetail.DataSource = dt;
         }
     }
 }

@@ -399,5 +399,11 @@ namespace App
             App.View.Report.StockQuery f = new View.Report.StockQuery();
             ShowForm(f);     
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            App.View.Report.StockTotal f = new View.Report.StockTotal();
+            ShowForm(f);  
+        }
     }
 }
