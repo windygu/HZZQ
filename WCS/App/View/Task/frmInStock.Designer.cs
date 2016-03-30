@@ -57,6 +57,7 @@
             this.colState = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column9 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column8 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column4 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column3 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
@@ -165,6 +166,7 @@
             this.colState,
             this.Column6,
             this.Column7,
+            this.Column9,
             this.Column8,
             this.Column4,
             this.Column3,
@@ -327,7 +329,7 @@
             // 
             this.Column6.DataPropertyName = "ProductCode";
             this.Column6.FilteringEnabled = false;
-            this.Column6.HeaderText = "物料编号";
+            this.Column6.HeaderText = "产品编号";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -336,11 +338,20 @@
             // 
             this.Column7.DataPropertyName = "ProductName";
             this.Column7.FilteringEnabled = false;
-            this.Column7.HeaderText = "物料名称";
+            this.Column7.HeaderText = "产品名称";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column7.Width = 120;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Spec";
+            this.Column9.FilteringEnabled = false;
+            this.Column9.HeaderText = "产品规格";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column8
             // 
@@ -471,6 +482,7 @@
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colState;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column9;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column8;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column3;

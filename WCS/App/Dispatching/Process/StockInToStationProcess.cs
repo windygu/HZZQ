@@ -63,7 +63,8 @@ namespace App.Dispatching.Process
                                                 new DataParameter("@CraneNo", "01"), 
                                                 new DataParameter("@ProductCode", ProductCode),
                                                 new DataParameter("@TimeDiff", TimeDiff),
-                                                new DataParameter("@CellCode",CellCode)
+                                                new DataParameter("@CellCode",CellCode),
+                                                new DataParameter("@WorkMode",Program.mainForm.WorkMode)
                                             };
 
                     bll.FillDataTable("WCS.Sp_CreateInTask", param);

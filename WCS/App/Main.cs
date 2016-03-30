@@ -405,5 +405,21 @@ namespace App
             App.View.Report.StockTotal f = new View.Report.StockTotal();
             ShowForm(f);  
         }
+
+        private void ToolStripMenuItem_ClearTask_Click(object sender, EventArgs e)
+        {
+            View.Task.frmClearTask f = new View.Task.frmClearTask();
+            f.ShowDialog();
+        }
+
+        private void ToolStripMenuItem_ClearCell_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("此功能会把所有货位信息全部清空", "询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                BLL.BLLBase bll = new BLL.BLLBase();
+                bll.ExecNonQuery("WCS.ClearCellInfo");
+                MessageBox.Show("清理完成", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

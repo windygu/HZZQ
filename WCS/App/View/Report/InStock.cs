@@ -38,8 +38,8 @@ namespace App.View.Report
                 pnlProgress.Visible = true;
                 Application.DoEvents();
 
-                string filter = string.Format("WCS_TASK.TaskType='{0}' and {1}",TaskType,f.filter);
-                DataTable dt = bll.FillDataTable("WCS.SelectTaskDetail", new DataParameter[] { new DataParameter("{0}", filter) });
+                string filter = string.Format("WCS_TASK.TaskType='{0}' and WCS_TASK.State='2' and {1}", TaskType, f.filter);
+                DataTable dt = bll.FillDataTable("WCS.SelectTaskTotal", new DataParameter[] { new DataParameter("{0}", filter) });
                 bsMain.DataSource = dt;
 
                 pnlProgress.Visible = false;
@@ -53,8 +53,8 @@ namespace App.View.Report
         private void BindData()
         {
             string filter = string.Format("Convert(varchar(10),WCS_TASK.TaskDate,120)=convert(varchar(10),getdate(),120) and WCS_TASK.State='2' and WCS_TASK.TaskType='{0}'",TaskType);
-            
-            DataTable dt = bll.FillDataTable("WCS.SelectTaskDetail", new DataParameter[] { new DataParameter("{0}", filter) });
+
+            DataTable dt = bll.FillDataTable("WCS.SelectTaskTotal", new DataParameter[] { new DataParameter("{0}", filter) });
             bsMain.DataSource = dt;
         }
 
@@ -68,6 +68,15 @@ namespace App.View.Report
             if (bsMain.DataSource == null)
                 return;            
             View.ExcelHelper.DoExport((DataTable)bsMain.DataSource);
+        }
+
+        private void dgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string TaskDate = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string ProductCode = dgvMain.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string filter = string.Format("WCS_TASK.State='2' and WCS_TASK.ProductCode='{0}' and convert(varchar(10),WCS_TASK.TaskDate,120)='{1}'", ProductCode, TaskDate);
+            DataTable dt = bll.FillDataTable("WCS.SelectTaskDetail", new DataParameter[] { new DataParameter("{0}", filter) });
+            this.bsDetail.DataSource = dt;
         }
     }
 }

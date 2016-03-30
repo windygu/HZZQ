@@ -35,13 +35,13 @@ namespace App.View.Task
         private void cmbTaskType_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindShelf();
-            if (this.cmbTaskType.SelectedIndex == 1)
-                this.checkBox1.Visible = true;
-            else
-            {
-                this.checkBox1.Visible = false;
-                this.checkBox1.Checked = false;
-            }
+            //if (this.cmbTaskType.SelectedIndex == 1)
+            //    this.checkBox1.Visible = true;
+            //else
+            //{
+            this.checkBox1.Visible = false;
+            this.checkBox1.Checked = false;
+            //}
         }
         private void BindShelf()
         {
@@ -51,24 +51,24 @@ namespace App.View.Task
             };
             if (this.cmbTaskType.SelectedIndex == 0)
             {
-                //DataTable dt = new DataTable("dt");
-                //dt.Columns.Add("dtText");
-                //dt.Columns.Add("dtValue");
-                //DataRow dr = dt.NewRow();
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
 
-                //dr["dtText"] = "001002";
-                //dr["dtValue"] = "001002";
+                dr["dtText"] = "002";
+                dr["dtValue"] = "002";
 
-                //dt.Rows.Add(dr);
+                dt.Rows.Add(dr);
 
-                //this.cbFromRow.DataSource = dt;
-                //this.cbFromRow.DisplayMember = "dtText";
-                //this.cbFromRow.ValueMember = "dtValue";
+                this.cbFromRow.DataSource = dt;
+                this.cbFromRow.DisplayMember = "dtText";
+                this.cbFromRow.ValueMember = "dtValue";
 
-                DataTable dt = bll.FillDataTable("CMD.SelectShelf", param);
-                this.cbFromRow.DataSource = dt.DefaultView;
-                this.cbFromRow.ValueMember = "shelfcode";
-                this.cbFromRow.DisplayMember = "ShelfRow";
+                //DataTable dt = bll.FillDataTable("CMD.SelectShelf", param);
+                //this.cbFromRow.DataSource = dt.DefaultView;
+                //this.cbFromRow.ValueMember = "shelfcode";
+                //this.cbFromRow.DisplayMember = "ShelfRow";
             }
             else
             {
@@ -80,24 +80,24 @@ namespace App.View.Task
 
             if (this.cmbTaskType.SelectedIndex == 1)
             {
-                //DataTable dt = new DataTable("dt");
-                //dt.Columns.Add("dtText");
-                //dt.Columns.Add("dtValue");
-                //DataRow dr = dt.NewRow();
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
 
-                //dr["dtText"] = "001003";
-                //dr["dtValue"] = "001003";
+                dr["dtText"] = "003";
+                dr["dtValue"] = "003";
 
-                //dt.Rows.Add(dr);
-                
-                //this.cbToRow.DataSource = dt;
-                //this.cbToRow.DisplayMember = "dtText";
-                //this.cbToRow.ValueMember = "dtValue";
+                dt.Rows.Add(dr);
 
-                DataTable dt = bll.FillDataTable("CMD.SelectShelf", param);
-                this.cbToRow.DataSource = dt.DefaultView;
-                this.cbToRow.ValueMember = "shelfcode";
-                this.cbToRow.DisplayMember = "ShelfRow";
+                this.cbToRow.DataSource = dt;
+                this.cbToRow.DisplayMember = "dtText";
+                this.cbToRow.ValueMember = "dtValue";
+
+                //DataTable dt = bll.FillDataTable("CMD.SelectShelf", param);
+                //this.cbToRow.DataSource = dt.DefaultView;
+                //this.cbToRow.ValueMember = "shelfcode";
+                //this.cbToRow.DisplayMember = "ShelfRow";
             }
             else
             {
@@ -118,28 +118,28 @@ namespace App.View.Task
             };
 
 
-            //if (this.cmbTaskType.SelectedIndex == 0)
-            //{
-            //    DataTable dt = new DataTable("dt");
-            //    dt.Columns.Add("dtText");
-            //    dt.Columns.Add("dtValue");
-            //    DataRow dr = dt.NewRow();
+            if (this.cmbTaskType.SelectedIndex == 0)
+            {
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
 
-            //    dr["dtText"] = "2";
-            //    dr["dtValue"] = "2";
+                dr["dtText"] = "100";
+                dr["dtValue"] = "100";
 
-            //    dt.Rows.Add(dr);
-            //    this.cbFromColumn.DataSource = dt;
-            //    this.cbFromColumn.DisplayMember = "dtText";
-            //    this.cbFromColumn.ValueMember = "dtValue";
-            //}
-            //else
-            //{
+                dt.Rows.Add(dr);
+                this.cbFromColumn.DataSource = dt;
+                this.cbFromColumn.DisplayMember = "dtText";
+                this.cbFromColumn.ValueMember = "dtValue";
+            }
+            else
+            {
                 DataTable dt = bll.FillDataTable("CMD.SelectColumn", param);
                 this.cbFromColumn.DataSource = dt.DefaultView;
                 this.cbFromColumn.ValueMember = "CellColumn";
                 this.cbFromColumn.DisplayMember = "CellColumn";
-            //}
+            }
         }
         private void cbToRow_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -151,31 +151,31 @@ namespace App.View.Task
                 new DataParameter("{0}", string.Format("ShelfCode='{0}'",this.cbToRow.SelectedValue.ToString()))
             };
 
-            //if (this.cmbTaskType.SelectedIndex == 1)
-            //{
-            //    DataTable dt = new DataTable("dt");
-            //    dt.Columns.Add("dtText");
-            //    dt.Columns.Add("dtValue");
-            //    DataRow dr = dt.NewRow();
+            if (this.cmbTaskType.SelectedIndex == 1)
+            {
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
 
 
-            //    dr["dtText"] = "1";
-            //    dr["dtValue"] = "1";
+                dr["dtText"] = "100";
+                dr["dtValue"] = "100";
 
 
-            //    dt.Rows.Add(dr);
-            //    this.cbToColumn.DataSource = dt;
-            //    this.cbToColumn.DisplayMember = "dtText";
-            //    this.cbToColumn.ValueMember = "dtValue";
-            //}
-            //else
-            //{
+                dt.Rows.Add(dr);
+                this.cbToColumn.DataSource = dt;
+                this.cbToColumn.DisplayMember = "dtText";
+                this.cbToColumn.ValueMember = "dtValue";
+            }
+            else
+            {
                 DataTable dt = bll.FillDataTable("CMD.SelectColumn", param);
 
                 this.cbToColumn.DataSource = dt.DefaultView;
                 this.cbToColumn.ValueMember = "CellColumn";
                 this.cbToColumn.DisplayMember = "CellColumn";
-            //}
+            }
         }
 
         private void cbFromColumn_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,28 +190,28 @@ namespace App.View.Task
                 new DataParameter("{0}", string.Format("ShelfCode='{0}' and CellColumn={1}",this.cbFromRow.SelectedValue.ToString(),this.cbFromColumn.Text))
             };
 
-            //if (this.cmbTaskType.SelectedIndex == 0)
-            //{
-            //    DataTable dt = new DataTable("dt");
-            //    dt.Columns.Add("dtText");
-            //    dt.Columns.Add("dtValue");
-            //    DataRow dr = dt.NewRow();
-            //    dr["dtText"] = "1";
-            //    dr["dtValue"] = "1";
-            //    dt.Rows.Add(dr);
-            //    this.cbFromHeight.DataSource = dt;
-            //    this.cbFromHeight.DisplayMember = "dtText";
-            //    this.cbFromHeight.ValueMember = "dtValue";
-            //}
-            //else
-            //{
+            if (this.cmbTaskType.SelectedIndex == 0)
+            {
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
+                dr["dtText"] = "2";
+                dr["dtValue"] = "2";
+                dt.Rows.Add(dr);
+                this.cbFromHeight.DataSource = dt;
+                this.cbFromHeight.DisplayMember = "dtText";
+                this.cbFromHeight.ValueMember = "dtValue";
+            }
+            else
+            {
                 DataTable dt = bll.FillDataTable("CMD.SelectCell", param);
                 DataView dv = dt.DefaultView;
                 dv.Sort = "CellRow";
                 this.cbFromHeight.DataSource = dv;
                 this.cbFromHeight.ValueMember = "CellRow";
                 this.cbFromHeight.DisplayMember = "CellRow";
-            //}
+            }
         }
         private void cbToColumn_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -225,32 +225,32 @@ namespace App.View.Task
                 new DataParameter("{0}", string.Format("ShelfCode='{0}' and CellColumn={1}",this.cbToRow.SelectedValue.ToString(),this.cbToColumn.Text))
             };
 
-            //if (this.cmbTaskType.SelectedIndex == 1)
-            //{
-            //    DataTable dt = new DataTable("dt");
-            //    dt.Columns.Add("dtText");
-            //    dt.Columns.Add("dtValue");
-            //    DataRow dr = dt.NewRow();
+            if (this.cmbTaskType.SelectedIndex == 1)
+            {
+                DataTable dt = new DataTable("dt");
+                dt.Columns.Add("dtText");
+                dt.Columns.Add("dtValue");
+                DataRow dr = dt.NewRow();
 
 
-            //    dr["dtText"] = "1";
-            //    dr["dtValue"] = "1";
+                dr["dtText"] = "1";
+                dr["dtValue"] = "1";
 
 
-            //    dt.Rows.Add(dr);
-            //    this.cbToHeight.DataSource = dt;
-            //    this.cbToHeight.DisplayMember = "dtText";
-            //    this.cbToHeight.ValueMember = "dtValue";
-            //}
-            //else
-            //{
+                dt.Rows.Add(dr);
+                this.cbToHeight.DataSource = dt;
+                this.cbToHeight.DisplayMember = "dtText";
+                this.cbToHeight.ValueMember = "dtValue";
+            }
+            else
+            {
                 DataTable dt = bll.FillDataTable("CMD.SelectCell", param);
                 DataView dv = dt.DefaultView;
                 dv.Sort = "CellRow";
                 this.cbToHeight.DataSource = dv;
                 this.cbToHeight.ValueMember = "CellRow";
                 this.cbToHeight.DisplayMember = "CellRow";
-            //}
+            }
         }
 
         private void btnAction_Click(object sender, EventArgs e)

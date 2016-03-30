@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SHELFNAME = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.pnlTool = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
@@ -42,23 +46,36 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlProgress = new System.Windows.Forms.Panel();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.dgvMain = new System.Windows.Forms.DataGridView();
             this.bsMain = new System.Windows.Forms.BindingSource(this.components);
+            this.scMain = new System.Windows.Forms.SplitContainer();
+            this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.colTaskNo = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column1 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.dataGridViewAutoFilterTextBoxColumn1 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colState = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column4 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column14 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column15 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column12 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.bsDetail = new System.Windows.Forms.BindingSource(this.components);
             this.pnlTool.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlProgress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
+            this.scMain.Panel1.SuspendLayout();
+            this.scMain.Panel2.SuspendLayout();
+            this.scMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // SHELFNAME
@@ -139,8 +156,8 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.Controls.Add(this.scMain);
             this.pnlContent.Controls.Add(this.pnlProgress);
-            this.pnlContent.Controls.Add(this.dgvMain);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 50);
             this.pnlContent.Name = "pnlContent";
@@ -166,6 +183,24 @@
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "正在查询数据，请稍候...";
             // 
+            // scMain
+            // 
+            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMain.Location = new System.Drawing.Point(0, 0);
+            this.scMain.Name = "scMain";
+            this.scMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scMain.Panel1
+            // 
+            this.scMain.Panel1.Controls.Add(this.dgvMain);
+            // 
+            // scMain.Panel2
+            // 
+            this.scMain.Panel2.Controls.Add(this.dgvDetail);
+            this.scMain.Size = new System.Drawing.Size(881, 401);
+            this.scMain.SplitterDistance = 188;
+            this.scMain.TabIndex = 11;
+            // 
             // dgvMain
             // 
             this.dgvMain.AllowUserToAddRows = false;
@@ -185,15 +220,12 @@
             this.dgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colTaskNo,
-            this.Column1,
-            this.colState,
+            this.Column2,
             this.Column6,
+            this.Column1,
             this.Column7,
-            this.Column4,
-            this.Column14,
-            this.Column15,
-            this.Column12});
+            this.Column3,
+            this.Column5});
             this.dgvMain.DataSource = this.bsMain;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -219,8 +251,63 @@
             this.dgvMain.RowHeadersWidth = 40;
             this.dgvMain.RowTemplate.Height = 23;
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMain.Size = new System.Drawing.Size(881, 401);
-            this.dgvMain.TabIndex = 11;
+            this.dgvMain.Size = new System.Drawing.Size(881, 188);
+            this.dgvMain.TabIndex = 12;
+            this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_RowEnter);
+            // 
+            // dgvDetail
+            // 
+            this.dgvDetail.AllowUserToAddRows = false;
+            this.dgvDetail.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dgvDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDetail.AutoGenerateColumns = false;
+            this.dgvDetail.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTaskNo,
+            this.dataGridViewAutoFilterTextBoxColumn1,
+            this.colState,
+            this.Column4,
+            this.Column14,
+            this.Column15,
+            this.Column12});
+            this.dgvDetail.DataSource = this.bsDetail;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetail.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetail.Location = new System.Drawing.Point(0, 0);
+            this.dgvDetail.MultiSelect = false;
+            this.dgvDetail.Name = "dgvDetail";
+            this.dgvDetail.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvDetail.RowHeadersWidth = 40;
+            this.dgvDetail.RowTemplate.Height = 23;
+            this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetail.Size = new System.Drawing.Size(881, 209);
+            this.dgvDetail.TabIndex = 13;
             // 
             // colTaskNo
             // 
@@ -231,14 +318,14 @@
             this.colTaskNo.ReadOnly = true;
             this.colTaskNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // Column1
+            // dataGridViewAutoFilterTextBoxColumn1
             // 
-            this.Column1.DataPropertyName = "BillTypeName";
-            this.Column1.FilteringEnabled = false;
-            this.Column1.HeaderText = "任务类型";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAutoFilterTextBoxColumn1.DataPropertyName = "BillTypeName";
+            this.dataGridViewAutoFilterTextBoxColumn1.FilteringEnabled = false;
+            this.dataGridViewAutoFilterTextBoxColumn1.HeaderText = "任务类型";
+            this.dataGridViewAutoFilterTextBoxColumn1.Name = "dataGridViewAutoFilterTextBoxColumn1";
+            this.dataGridViewAutoFilterTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewAutoFilterTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colState
             // 
@@ -249,25 +336,6 @@
             this.colState.ReadOnly = true;
             this.colState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colState.Width = 80;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "ProductCode";
-            this.Column6.FilteringEnabled = false;
-            this.Column6.HeaderText = "物料编号";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "ProductName";
-            this.Column7.FilteringEnabled = false;
-            this.Column7.HeaderText = "物料名称";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column7.Width = 120;
             // 
             // Column4
             // 
@@ -305,6 +373,56 @@
             this.Column12.ReadOnly = true;
             this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TaskDate";
+            this.Column2.HeaderText = "任务日期";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ProductCode";
+            this.Column6.FilteringEnabled = false;
+            this.Column6.HeaderText = "产品编号";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ProductNo";
+            this.Column1.HeaderText = "产品代号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ProductName";
+            this.Column7.FilteringEnabled = false;
+            this.Column7.HeaderText = "产品名称";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Spec";
+            this.Column3.HeaderText = "产品规格";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 120;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Total";
+            this.Column5.FilteringEnabled = false;
+            this.Column5.HeaderText = "数量";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // InStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -319,8 +437,14 @@
             this.pnlContent.ResumeLayout(false);
             this.pnlProgress.ResumeLayout(false);
             this.pnlProgress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
+            this.scMain.Panel1.ResumeLayout(false);
+            this.scMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
+            this.scMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,17 +459,24 @@
         protected System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Panel pnlProgress;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.Button btnPrint;
         protected System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.SplitContainer scMain;
+        private System.Windows.Forms.DataGridView dgvMain;
+        private System.Windows.Forms.DataGridView dgvDetail;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colTaskNo;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column1;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn1;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colState;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column14;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column15;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column5;
+        private System.Windows.Forms.BindingSource bsDetail;
     }
 }

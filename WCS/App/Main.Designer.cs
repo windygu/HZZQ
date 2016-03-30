@@ -38,14 +38,13 @@
             this.ToolStripMenuItem_Cell = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Param = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ClearTask = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lbLog = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnlTab = new System.Windows.Forms.Panel();
-            this.tabForm = new System.Windows.Forms.TabControl();
             this.toolStripButton_Start = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Product = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Plan = new System.Windows.Forms.ToolStripButton();
@@ -61,6 +60,9 @@
             this.toolStripButton_Stock = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
+            this.pnlTab = new System.Windows.Forms.Panel();
+            this.tabForm = new System.Windows.Forms.TabControl();
+            this.ToolStripMenuItem_ClearCell = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -138,7 +140,9 @@
             // ToolStripMenuItemSetup
             // 
             this.ToolStripMenuItemSetup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_Param});
+            this.ToolStripMenuItem_Param,
+            this.ToolStripMenuItem_ClearTask,
+            this.ToolStripMenuItem_ClearCell});
             this.ToolStripMenuItemSetup.Name = "ToolStripMenuItemSetup";
             this.ToolStripMenuItemSetup.Size = new System.Drawing.Size(44, 21);
             this.ToolStripMenuItemSetup.Text = "设定";
@@ -146,9 +150,16 @@
             // ToolStripMenuItem_Param
             // 
             this.ToolStripMenuItem_Param.Name = "ToolStripMenuItem_Param";
-            this.ToolStripMenuItem_Param.Size = new System.Drawing.Size(124, 22);
+            this.ToolStripMenuItem_Param.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItem_Param.Text = "参数设定";
             this.ToolStripMenuItem_Param.Click += new System.EventHandler(this.ToolStripMenuItem_Param_Click);
+            // 
+            // ToolStripMenuItem_ClearTask
+            // 
+            this.ToolStripMenuItem_ClearTask.Name = "ToolStripMenuItem_ClearTask";
+            this.ToolStripMenuItem_ClearTask.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_ClearTask.Text = "任务清除";
+            this.ToolStripMenuItem_ClearTask.Click += new System.EventHandler(this.ToolStripMenuItem_ClearTask_Click);
             // 
             // pnlBottom
             // 
@@ -218,28 +229,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1276, 52);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // pnlTab
-            // 
-            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
-            this.pnlTab.Controls.Add(this.tabForm);
-            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTab.Location = new System.Drawing.Point(0, 77);
-            this.pnlTab.Name = "pnlTab";
-            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
-            this.pnlTab.TabIndex = 14;
-            this.pnlTab.Visible = false;
-            // 
-            // tabForm
-            // 
-            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabForm.Location = new System.Drawing.Point(0, 0);
-            this.tabForm.Name = "tabForm";
-            this.tabForm.SelectedIndex = 0;
-            this.tabForm.Size = new System.Drawing.Size(1276, 23);
-            this.tabForm.TabIndex = 6;
-            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
             // 
             // toolStripButton_Start
             // 
@@ -410,6 +399,35 @@
             this.toolStripButton_Close.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton_Close.Click += new System.EventHandler(this.toolStripButton_Close_Click);
             // 
+            // pnlTab
+            // 
+            this.pnlTab.BackColor = System.Drawing.SystemColors.Menu;
+            this.pnlTab.Controls.Add(this.tabForm);
+            this.pnlTab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTab.Location = new System.Drawing.Point(0, 77);
+            this.pnlTab.Name = "pnlTab";
+            this.pnlTab.Size = new System.Drawing.Size(1276, 23);
+            this.pnlTab.TabIndex = 14;
+            this.pnlTab.Visible = false;
+            // 
+            // tabForm
+            // 
+            this.tabForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabForm.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabForm.Location = new System.Drawing.Point(0, 0);
+            this.tabForm.Name = "tabForm";
+            this.tabForm.SelectedIndex = 0;
+            this.tabForm.Size = new System.Drawing.Size(1276, 23);
+            this.tabForm.TabIndex = 6;
+            this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
+            // 
+            // ToolStripMenuItem_ClearCell
+            // 
+            this.ToolStripMenuItem_ClearCell.Name = "ToolStripMenuItem_ClearCell";
+            this.ToolStripMenuItem_ClearCell.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_ClearCell.Text = "清空货位";
+            this.ToolStripMenuItem_ClearCell.Click += new System.EventHandler(this.ToolStripMenuItem_ClearCell_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -473,5 +491,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton_RptOutStock;
         private System.Windows.Forms.ToolStripButton toolStripButton_Stock;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ClearTask;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ClearCell;
     }
 }

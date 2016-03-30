@@ -15,13 +15,26 @@ namespace App.View
     {
         private Dictionary<string, string> ProductFields = new Dictionary<string, string>();
         BLL.BLLBase bll = new BLL.BLLBase();
+        Context context;
+        Dictionary<int, string> dicProductNo = new Dictionary<int, string>();
         public frmChangeMode()
         {
             InitializeComponent();
         }
-
+        public frmChangeMode(Context context)
+        {
+            InitializeComponent();
+            this.context = context;
+        }
         private void frmChangeMode_Load(object sender, EventArgs e)
         {
+            dicProductNo.Add(0, "A");
+            dicProductNo.Add(1, "B");
+            dicProductNo.Add(2, "C");
+            dicProductNo.Add(3, "D");
+            dicProductNo.Add(4, "E");
+            dicProductNo.Add(5, "F");
+
             ProductFields.Add("ProductNo", "产品代号");
             ProductFields.Add("ProductCode", "产品编号");
             ProductFields.Add("ProductName", "产品名称");
@@ -43,13 +56,13 @@ namespace App.View
                 {
                     this.txtProductCode.Text = dt.Rows[0]["ProductCode"].ToString();
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();
-                    this.txtQuantity.Text = dt.Rows[0]["OutQty"].ToString();
+                    this.txtQuantity3.Text = dt.Rows[0]["OutQty"].ToString();
                 }
                 else
                 {
                     this.txtProductCode.Text = "";
                     this.txtProductName.Text = "";
-                    this.txtQuantity.Text = "";
+                    this.txtQuantity3.Text = "";
                 }
             }
         }
@@ -69,13 +82,20 @@ namespace App.View
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             this.btnProductCode.Enabled = false;
-            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity2.ReadOnly = true;
+            this.txtQuantity3.ReadOnly = true;
         }
-
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            this.btnProductCode.Enabled = false;
+            this.txtQuantity2.ReadOnly = false;
+            this.txtQuantity3.ReadOnly = true;
+        }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             this.btnProductCode.Enabled = true;
-            this.txtQuantity.ReadOnly = false;
+            this.txtQuantity2.ReadOnly = true;
+            this.txtQuantity3.ReadOnly = false;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -88,7 +108,30 @@ namespace App.View
                 Program.mainForm.WorkMode = 3;
 
             int OutQty = 0;
+            string ProductCode = "";
+            string ProductName = "";
+            string ProductNo = "";
             //更新任务状态
+            if (this.radioButton3.Checked)
+            {
+                int.TryParse(this.txtQuantity2.Text.Trim(), out OutQty);
+
+                if (OutQty <= 0)
+                {
+                    MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.txtQuantity2.Focus();
+                    return;
+                }
+                int key = int.Parse(ObjectUtil.GetObject(context.ProcessDispatcher.WriteToService("ConveyorPLC1", "ProductNo")).ToString());
+                ProductNo = dicProductNo[key];
+
+                DataTable dt = bll.FillDataTable("WCS.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("ProductNo='{0}'", ProductNo)) });
+                if (dt.Rows.Count > 0)
+                {
+                    ProductCode = dt.Rows[0]["ProductCode"].ToString();
+                    ProductName = dt.Rows[0]["ProductName"].ToString();
+                }
+            }
             if (this.radioButton4.Checked)
             {
                 if (this.txtProductCode.Text.Length <= 0)
@@ -98,54 +141,58 @@ namespace App.View
                     return;
                 }
 
-                //int.TryParse(this.txtQuantity.Text.Trim(), out OutQty);
+                ProductCode = this.txtProductCode.Text;
+                ProductName = this.txtProductName.Text;
+                int.TryParse(this.txtQuantity3.Text.Trim(), out OutQty);
 
-                //if (OutQty <= 0)
-                //{
-                //    MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    this.txtQuantity.Focus();
-                //    return;
-                //}
-                //try
-                //{
-                //    for (int i = 0; i < OutQty; i++)
-                //    {
-                //        string CellCode = "";
-
-                //        DataParameter[] param = new DataParameter[] 
-                //        { 
-                //            new DataParameter("@CraneNo", "01"), 
-                //            new DataParameter("@ProductCode", this.txtProductCode.Text),
-                //            new DataParameter("@CellCode",CellCode)
-                //        };
-                //        bll.FillDataTable("WCS.Sp_CreateOutTask", param);
-                //    }                    
-                //}
-                //catch (System.Data.SqlClient.SqlException ex)
-                //{
-                //    //如果是存储过程名称是PROC_NAME，而且State是数据库中设置的一个值 如：66
-                //    //则该异常就是我们需要特殊处理的一个异常
-                //    if (ex.Procedure.Equals("Sp_CreateOutTask") && ex.State == 1)
-                //    {
-                //        MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //        return;
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    return;
-                //}
+                if (OutQty <= 0)
+                {
+                    MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.txtQuantity3.Focus();
+                    return;
+                }
             }
-            //保存状态
-            bll.ExecNonQuery("WCS.UpdateWorkMode", new DataParameter[] {    
+            try
+            {
+                for (int i = 0; i < OutQty; i++)
+                {
+                    string CellCode = "";
+
+                    DataParameter[] param = new DataParameter[] 
+                        { 
+                            new DataParameter("@CraneNo", "01"), 
+                            new DataParameter("@ProductCode", this.txtProductCode.Text),
+                            new DataParameter("@CellCode",CellCode),
+                            new DataParameter("@WorkMode",Program.mainForm.WorkMode)
+                        };
+                    bll.FillDataTable("WCS.Sp_CreateOutTask", param);
+                }
+
+                //保存状态
+                bll.ExecNonQuery("WCS.UpdateWorkMode", new DataParameter[] {    
                             new DataParameter("@WorkMode", Program.mainForm.WorkMode),
                             new DataParameter("@ProductCode", this.txtProductCode.Text),
                             new DataParameter("@ProductName", this.txtProductName.Text),
                             new DataParameter("@OutQty", OutQty)});
 
-            //写入输送机PLC
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                //写入输送机PLC
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                //如果是存储过程名称是PROC_NAME，而且State是数据库中设置的一个值 如：66
+                //则该异常就是我们需要特殊处理的一个异常
+                if (ex.Procedure.Equals("Sp_CreateOutTask") && ex.State == 1)
+                {
+                    MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -221,6 +221,12 @@
     <Compile Include="View\SelectDialog.designer.cs">
       <DependentUpon>SelectDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Task\frmClearTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Task\frmClearTask.Designer.cs">
+      <DependentUpon>frmClearTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Task\frmInventor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -352,6 +358,9 @@
     <EmbeddedResource Include="View\SelectDialog.resx">
       <DependentUpon>SelectDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Task\frmClearTask.resx">
+      <DependentUpon>frmClearTask.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Task\frmInventor.resx">
       <DependentUpon>frmInventor.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,7 +395,6 @@
       <DependentUpon>frmSelectCell.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Help.chm" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

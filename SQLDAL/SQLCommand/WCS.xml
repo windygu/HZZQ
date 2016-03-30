@@ -21,6 +21,16 @@
       ORDER BY WCS_TASK.TaskLevel DESC, WCS_TASK.RequestDate,WCS_TASK.StartDate
     </CommandString>
   </Command>
+  <Command ID="SelectTaskTotal">
+    <CommandString>
+      SELECT convert(varchar(10),WCS_TASK.TaskDate,120) TaskDate, WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec,sum(1) Total
+      FROM WCS_TASK
+      Left join CMD_Product ON WCS_TASK.ProductCode=CMD_Product.ProductCode
+      Where {0}
+      group by convert(varchar(10),WCS_TASK.TaskDate,120),WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec
+      ORDER BY convert(varchar(10),WCS_TASK.TaskDate,120),WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec
+    </CommandString>
+  </Command>
   <Command ID="SelectTaskDetail">
     <CommandString>
       SELECT WCS_TASK.TaskNo,  CMD_BillType.BillTypeName,Sys_TableState.StateDesc, WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec, 
@@ -54,6 +64,26 @@
       LEFT JOIN  Sys_TableState S2 on S2.TableName='CMD_Cell' and S2.FieldName='IsLock' and CMD_Cell.IsLock=S2.State
       Where {0}
       ORDER BY CMD_Cell.ProductCode,CMD_Cell.InDate
+    </CommandString>
+  </Command>
+  <Command ID="DeleteHistoryTask">
+    <CommandString>
+      USE [master]
+      ALTER DATABASE ZQ_StockDB SET RECOVERY SIMPLE WITH NO_WAIT
+      ALTER DATABASE ZQ_StockDB SET RECOVERY SIMPLE
+      USE ZQ_StockDB
+      DBCC SHRINKFILE (N'YNUFE_log' , 1)
+      USE[master]
+      ALTER DATABASE ZQ_StockDB SET RECOVERY FULL WITH NO_WAIT
+      ALTER DATABASE ZQ_StockDB SET RECOVERY FULL
+      USE ZQ_StockDB
+      Delete from WCS_TASK
+      Where {0}
+    </CommandString>
+  </Command>
+  <Command ID="ClearCellInfo">
+    <CommandString>
+      update CMD_Cell set IsActive='1',Barcode='',PalletBarcode='',ProductCode='',BillNo='',Quantity=0,IsLock='0',ErrorFlag='',InDate=null
     </CommandString>
   </Command>
   <Command ID="sp_GetCell">

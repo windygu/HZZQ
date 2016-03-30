@@ -396,7 +396,7 @@
             this.ClientSize = new System.Drawing.Size(881, 451);
             this.Controls.Add(this.pnlMain);
             this.Name = "StockTotal";
-            this.Text = "库存明细表";
+            this.Text = "库存统计表";
             this.Load += new System.EventHandler(this.StockQuery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).EndInit();

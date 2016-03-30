@@ -36,14 +36,9 @@
             this.SHELFNAME = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.pnlTool = new System.Windows.Forms.Panel();
-            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlProgress = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.dgvMain = new System.Windows.Forms.DataGridView();
             this.Column4 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colState = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,12 +49,17 @@
             this.Column5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column14 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
+            this.pnlTool = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.pnlContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
-            this.pnlTool.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
             this.pnlProgress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
+            this.pnlTool.SuspendLayout();
             this.SuspendLayout();
             // 
             // SHELFNAME
@@ -90,6 +90,25 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(881, 401);
             this.pnlContent.TabIndex = 4;
+            // 
+            // pnlProgress
+            // 
+            this.pnlProgress.Controls.Add(this.lblInfo);
+            this.pnlProgress.Location = new System.Drawing.Point(353, 112);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(238, 79);
+            this.pnlProgress.TabIndex = 10;
+            this.pnlProgress.Visible = false;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblInfo.Location = new System.Drawing.Point(32, 34);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(137, 17);
+            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Text = "正在查询数据，请稍候...";
             // 
             // dgvMain
             // 
@@ -147,82 +166,6 @@
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMain.Size = new System.Drawing.Size(881, 401);
             this.dgvMain.TabIndex = 11;
-            // 
-            // pnlTool
-            // 
-            this.pnlTool.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.pnlTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTool.Controls.Add(this.btnExit);
-            this.pnlTool.Controls.Add(this.btnPrint);
-            this.pnlTool.Controls.Add(this.btnRefresh);
-            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTool.Location = new System.Drawing.Point(0, 0);
-            this.pnlTool.Name = "pnlTool";
-            this.pnlTool.Size = new System.Drawing.Size(881, 50);
-            this.pnlTool.TabIndex = 2;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Image = global::App.Properties.Resources.close;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(96, 0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(48, 48);
-            this.btnExit.TabIndex = 52;
-            this.btnExit.Text = "退出";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPrint.Image = global::App.Properties.Resources.printer;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrint.Location = new System.Drawing.Point(48, 0);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(48, 48);
-            this.btnPrint.TabIndex = 51;
-            this.btnPrint.Text = "打印";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.Image = global::App.Properties.Resources.zoom;
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(48, 48);
-            this.btnRefresh.TabIndex = 48;
-            this.btnRefresh.Text = "查询";
-            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblInfo.Location = new System.Drawing.Point(32, 34);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(137, 17);
-            this.lblInfo.TabIndex = 1;
-            this.lblInfo.Text = "正在查询数据，请稍候...";
-            // 
-            // pnlProgress
-            // 
-            this.pnlProgress.Controls.Add(this.lblInfo);
-            this.pnlProgress.Location = new System.Drawing.Point(353, 112);
-            this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Size = new System.Drawing.Size(238, 79);
-            this.pnlProgress.TabIndex = 10;
-            this.pnlProgress.Visible = false;
             // 
             // Column4
             // 
@@ -311,6 +254,63 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // pnlTool
+            // 
+            this.pnlTool.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.pnlTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTool.Controls.Add(this.btnExit);
+            this.pnlTool.Controls.Add(this.btnPrint);
+            this.pnlTool.Controls.Add(this.btnRefresh);
+            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTool.Location = new System.Drawing.Point(0, 0);
+            this.pnlTool.Name = "pnlTool";
+            this.pnlTool.Size = new System.Drawing.Size(881, 50);
+            this.pnlTool.TabIndex = 2;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExit.Image = global::App.Properties.Resources.close;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExit.Location = new System.Drawing.Point(96, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(48, 48);
+            this.btnExit.TabIndex = 52;
+            this.btnExit.Text = "退出";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrint.Image = global::App.Properties.Resources.printer;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPrint.Location = new System.Drawing.Point(48, 0);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(48, 48);
+            this.btnPrint.TabIndex = 51;
+            this.btnPrint.Text = "打印";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.Image = global::App.Properties.Resources.zoom;
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(48, 48);
+            this.btnRefresh.TabIndex = 48;
+            this.btnRefresh.Text = "查询";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // StockQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -322,11 +322,11 @@
             this.Load += new System.EventHandler(this.StockQuery_Load);
             this.pnlMain.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
-            this.pnlTool.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
             this.pnlProgress.ResumeLayout(false);
             this.pnlProgress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
+            this.pnlTool.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -339,11 +339,11 @@
         protected System.Windows.Forms.Button btnRefresh;
         public System.Windows.Forms.Panel pnlMain;
         protected System.Windows.Forms.Panel pnlContent;
-        private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.Button btnPrint;
         protected System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlProgress;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.DataGridView dgvMain;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colState;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

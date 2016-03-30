@@ -147,7 +147,7 @@ namespace App.View
             if (dt.Rows.Count > 0)
             {
                 this.txtWorkMode.Text = dicWorkMode[int.Parse(dt.Rows[0]["WorkMode"].ToString())];
-                if (dt.Rows[0]["WorkMode"].ToString() == "3")
+                if (dt.Rows[0]["WorkMode"].ToString() == "2" || dt.Rows[0]["WorkMode"].ToString() == "3")
                 {
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();
                     this.txtOutQty.Text = dt.Rows[0]["OutQty"].ToString();
@@ -253,7 +253,7 @@ namespace App.View
 
                 //堆垛机位置
                 if (crane.CraneNo == 1)
-                {
+                {                    
                     //this.picCrane.Visible = true;
                     Point P1 = InitialP1;
                     P1.Y = P1.Y + (int)((crane.Column-1) * 30);
@@ -687,9 +687,11 @@ namespace App.View
                     this.btnMS1.Text = "▽";
                 else
                     this.btnMS1.Text = "";
-                if (signal1[7, 2])
+                if (signal1[7, 1])
                     this.btnMS1.Text = "●";
-                else if (signal1[6, 3])
+                else if (signal1[7, 2])
+                    this.btnMS1.Text = "○";
+                else if (signal1[6, 6])
                     this.btnMS1.Text = "◎";
                 //else
                 //    this.btnMS1.Text = "";
@@ -700,7 +702,7 @@ namespace App.View
                     this.btnML1.Text = "↓";
                 else
                     this.btnML1.Text = "";
-                if (signal1[6, 3])
+                if (signal1[6, 5])
                     this.btnML1.Text += "■";
                 else
                     this.btnML1.Text += "";
@@ -711,7 +713,7 @@ namespace App.View
                     this.btnMG1.Text = "←";
                 else
                     this.btnMG1.Text = "";
-                if (signal1[6, 1])
+                if (signal1[6, 2])
                     this.btnMG1.Text += "■";
                 else
                     this.btnMG1.Text += "";
@@ -765,7 +767,7 @@ namespace App.View
                     this.btnM9.Text = "→";
                 else
                     this.btnM9.Text = "";
-                if (signal1[6, 0])
+                if (signal1[7, 4])
                     this.btnM9.Text += "■";
                 else
                     this.btnM9.Text += "";
@@ -778,7 +780,7 @@ namespace App.View
                     this.btnMD1.Text = "";
                 if (signal1[7, 5])
                     this.btnMD1.Text = "●";
-                else if (signal1[6, 3])
+                else if (signal1[8, 4])
                     this.btnMD1.Text = "◎";
                 //else
                 //    this.btnMS1.Text = "";
@@ -802,15 +804,15 @@ namespace App.View
                 else
                     this.btnMYL1.Text += "";
                 //MYS1
-                if (motors1[3, 6])
+                if (motors1[4, 2])
                     this.btnMYS1.Text = "△";
-                else if (motors1[3, 7])
+                else if (motors1[5, 2])
                     this.btnMYS1.Text = "▽";
                 else
                     this.btnMYS1.Text = "";
-                if (signal1[7, 5])
+                if (signal1[8, 3])
                     this.btnMYS1.Text = "●";
-                else if (signal1[6, 3])
+                else if (signal1[25, 1])
                     this.btnMYS1.Text = "◎";
                 //else
                 //    this.btnMYS1.Text = "";
@@ -824,39 +826,39 @@ namespace App.View
                     this.btnMD2.Text = "";
                 if (signal1[8, 0])
                     this.btnMD2.Text = "●";
-                else if (signal1[8, 0])
+                else if (signal1[24, 0])
                     this.btnMD2.Text = "◎";
                 //else
                 //    this.btnMD2.Text = "";
                 //MY2
-                if (motors1[3, 5])
+                if (motors1[3, 4])
                     this.btnMY2.Text = "↓";
                 else
                     this.btnMY2.Text = "";
-                if (signal1[7, 7])
+                if (signal1[7, 6])
                     this.btnMY2.Text += "■";
                 else
                     this.btnMY2.Text += "";
 
                 //MYL2
-                if (motors1[3, 3])
+                if (motors1[3, 5])
                     this.btnMYL2.Text = "↓";
                 else
                     this.btnMYL2.Text = "";
-                if (signal1[8, 2])
+                if (signal1[8, 5])
                     this.btnMYL2.Text += "■";
                 else
                     this.btnMYL2.Text += "";
                 //MYS2
-                if (motors1[4, 2])
+                if (motors1[4, 3])
                     this.btnMYS2.Text = "△";
-                else if (motors1[4, 3])
+                else if (motors1[5, 3])
                     this.btnMYS2.Text = "▽";
                 else
                     this.btnMYS2.Text = "";
-                if (signal1[7, 5])
+                if (signal1[8, 7])
                     this.btnMYS2.Text = "●";
-                else if (signal1[6, 3])
+                else if (signal1[25, 0])
                     this.btnMYS2.Text = "◎";
                 //else
                 //    this.btnMYS2.Text = "";
@@ -912,28 +914,28 @@ namespace App.View
                 //如果是先进先出模式，出库任务完成后，再产生一笔出库任务
                 if (Program.mainForm.WorkMode > 1 && Program.mainForm.Run)
                 {
-                    string CellCode = "";
-                    string ProductCode = Program.mainForm.ProductCode;
-                    string ProductNo = "";
-                    if (Program.mainForm.WorkMode == 2)
-                    {
-                        int key = int.Parse(ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC1", "ProductNo")).ToString());
-                        ProductNo = dicProductNo[key];
+                    //string CellCode = "";
+                    //string ProductCode = Program.mainForm.ProductCode;
+                    //string ProductNo = "";
+                    //if (Program.mainForm.WorkMode == 2)
+                    //{
+                    //    int key = int.Parse(ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC1", "ProductNo")).ToString());
+                    //    ProductNo = dicProductNo[key];
 
-                        dt = bll.FillDataTable("WCS.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("ProductNo='{0}'", ProductNo)) });
-                        if (dt.Rows.Count > 0)
-                            ProductCode = dt.Rows[0]["ProductCode"].ToString();
-                    }
+                    //    dt = bll.FillDataTable("WCS.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("ProductNo='{0}'", ProductNo)) });
+                    //    if (dt.Rows.Count > 0)
+                    //        ProductCode = dt.Rows[0]["ProductCode"].ToString();
+                    //}
 
 
-                    DataParameter[] param = new DataParameter[] 
-                    {
-                        new DataParameter("@CraneNo", "01"), 
-                        new DataParameter("@ProductCode", ProductCode),
-                        new DataParameter("@CellCode",CellCode)
-                    };
+                    //DataParameter[] param = new DataParameter[] 
+                    //{
+                    //    new DataParameter("@CraneNo", "01"), 
+                    //    new DataParameter("@ProductCode", ProductCode),
+                    //    new DataParameter("@CellCode",CellCode)
+                    //};
 
-                    bll.FillDataTable("WCS.Sp_CreateOutTask", param);
+                    //bll.FillDataTable("WCS.Sp_CreateOutTask", param);
                 }
             }
             catch (Exception ex)
@@ -987,6 +989,8 @@ namespace App.View
                 crane.ErrCode = craneInfo[4];
                 crane.PalletCode = ProductName;
                 crane.TaskNo = plcTaskNo;
+                if (crane.Column == 100)
+                    crane.Column = 0;
                 //crane.WalkCode = int.Parse(obj[3].ToString());
                 //crane.UpDownCode = int.Parse(obj[4].ToString());
                 Cranes.CraneInfo(crane);
@@ -1295,7 +1299,7 @@ namespace App.View
             //f.ShowDialog();
             try
             {
-                frmChangeMode f = new frmChangeMode();
+                frmChangeMode f = new frmChangeMode(Context);
                 if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     GetWorkMode();
