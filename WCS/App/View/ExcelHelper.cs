@@ -126,6 +126,8 @@ namespace App.View
                 chnName = "状态";
             else if (columnName == "ProductCode")
                 chnName = "产品编号";
+            else if (columnName == "ProductNo")
+                chnName = "产品代号";
             else if (columnName == "BillTypeName")
                 chnName = "单据类型";
             else if (columnName == "ProductName")
@@ -143,7 +145,7 @@ namespace App.View
             else if (columnName == "InDate")
                 chnName = "入库时间";
             else if (columnName == "StockDays")
-                chnName = "存放天数";
+                chnName = "存放时数(小时)";
             else if (columnName == "BillNo")
                 chnName = "单据号码";
             else if (columnName == "IsActive")
@@ -152,6 +154,10 @@ namespace App.View
                 chnName = "锁定";
             else if (columnName == "Quantity")
                 chnName = "数量";
+            else if (columnName == "Total")
+                chnName = "数量";
+            else if (columnName == "ValidPeriod")
+                chnName = "有效期限";
             return chnName;
         }
     }

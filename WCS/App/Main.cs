@@ -44,7 +44,12 @@ namespace App
                 initialize.InitializeContext(context);
 
                 this.TimeDiff = int.Parse(context.Attributes["TimeDiff"].ToString());
-                View.frmMonitor f = new View.frmMonitor();
+                string MonitorMode = context.Attributes["MonitorMode"].ToString();
+                View.BaseForm f;
+                if(MonitorMode=="1")
+                    f = new View.frmMonitor();
+                else
+                    f = new View.frmMonitor1();
                 ShowForm(f);
 
                 //tmWorkTimer.Interval = 3000;
@@ -361,18 +366,20 @@ namespace App
                 if (this.toolStripButton_Start.Text == "开始运行")
                 {
                     Run = true;
-                    context.ProcessDispatcher.WriteToService("ConveyorPLC1", "StartSignal", 1);
+                    
                     context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 1);
                     this.toolStripButton_Start.Image = App.Properties.Resources.stop;
                     this.toolStripButton_Start.Text = "停止运行";
+                    context.ProcessDispatcher.WriteToService("ConveyorPLC2", "StartSignal", 1);
                 }
                 else
                 {
                     Run = false;
-                    context.ProcessDispatcher.WriteToService("ConveyorPLC1", "StartSignal", 0);
+                    
                     context.ProcessDispatcher.WriteToProcess("CraneProcess", "Run", 0);
                     this.toolStripButton_Start.Image = App.Properties.Resources.start;
                     this.toolStripButton_Start.Text = "开始运行";
+                    context.ProcessDispatcher.WriteToService("ConveyorPLC2", "StartSignal", 0);
                 }
             }
             catch (Exception ex)

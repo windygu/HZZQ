@@ -173,3 +173,4 @@ F:\XJWLMQ\HZZQ\WCS\App\bin\Debug\Interop.Microsoft.Office.Core.dll
 F:\XJWLMQ\HZZQ\WCS\App\obj\x86\Debug\App.View.Report.StockQuery.resources
 F:\XJWLMQ\HZZQ\WCS\App\obj\x86\Debug\App.View.Report.StockTotal.resources
 F:\XJWLMQ\HZZQ\WCS\App\obj\x86\Debug\App.View.Task.frmClearTask.resources
+F:\XJWLMQ\HZZQ\WCS\App\obj\x86\Debug\App.View.frmMonitor1.resources

@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtProductTypeName = new System.Windows.Forms.TextBox();
+            this.txtSpec = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCellCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,13 +49,13 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
             this.Column4 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column9 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column2 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
@@ -63,7 +63,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtProductTypeName);
+            this.groupBox1.Controls.Add(this.txtSpec);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtCellCode);
             this.groupBox1.Controls.Add(this.label3);
@@ -75,7 +75,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtTaskNo);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             this.groupBox1.Location = new System.Drawing.Point(12, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(749, 99);
@@ -83,29 +83,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "出库信息";
             // 
-            // txtProductTypeName
+            // txtSpec
             // 
-            this.txtProductTypeName.Location = new System.Drawing.Point(614, 56);
-            this.txtProductTypeName.Name = "txtProductTypeName";
-            this.txtProductTypeName.ReadOnly = true;
-            this.txtProductTypeName.Size = new System.Drawing.Size(123, 29);
-            this.txtProductTypeName.TabIndex = 27;
+            this.txtSpec.Location = new System.Drawing.Point(614, 56);
+            this.txtSpec.Name = "txtSpec";
+            this.txtSpec.ReadOnly = true;
+            this.txtSpec.Size = new System.Drawing.Size(123, 25);
+            this.txtSpec.TabIndex = 27;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(532, 59);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 21);
+            this.label5.Size = new System.Drawing.Size(79, 20);
             this.label5.TabIndex = 26;
-            this.label5.Text = "产品类型：";
+            this.label5.Text = "产品规格：";
             // 
             // txtCellCode
             // 
             this.txtCellCode.Location = new System.Drawing.Point(614, 24);
             this.txtCellCode.Name = "txtCellCode";
             this.txtCellCode.ReadOnly = true;
-            this.txtCellCode.Size = new System.Drawing.Size(123, 29);
+            this.txtCellCode.Size = new System.Drawing.Size(123, 25);
             this.txtCellCode.TabIndex = 23;
             // 
             // label3
@@ -113,7 +113,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(532, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 21);
+            this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 22;
             this.label3.Text = "货位编号：";
             // 
@@ -122,7 +122,7 @@
             this.txtCraneNo.Location = new System.Drawing.Point(301, 24);
             this.txtCraneNo.Name = "txtCraneNo";
             this.txtCraneNo.ReadOnly = true;
-            this.txtCraneNo.Size = new System.Drawing.Size(72, 29);
+            this.txtCraneNo.Size = new System.Drawing.Size(72, 25);
             this.txtCraneNo.TabIndex = 21;
             // 
             // label2
@@ -130,7 +130,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(220, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 21);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "堆垛机号：";
             // 
@@ -139,7 +139,7 @@
             this.txtProductName.Location = new System.Drawing.Point(300, 57);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(225, 29);
+            this.txtProductName.Size = new System.Drawing.Size(225, 25);
             this.txtProductName.TabIndex = 19;
             // 
             // label10
@@ -147,7 +147,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(221, 60);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 21);
+            this.label10.Size = new System.Drawing.Size(79, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "产品名称：";
             // 
@@ -156,7 +156,7 @@
             this.txtProductCode.Location = new System.Drawing.Point(100, 57);
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.ReadOnly = true;
-            this.txtProductCode.Size = new System.Drawing.Size(118, 29);
+            this.txtProductCode.Size = new System.Drawing.Size(118, 25);
             this.txtProductCode.TabIndex = 15;
             // 
             // label1
@@ -164,7 +164,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 21);
+            this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "产品编号：";
             // 
@@ -173,7 +173,7 @@
             this.txtTaskNo.Location = new System.Drawing.Point(99, 24);
             this.txtTaskNo.Name = "txtTaskNo";
             this.txtTaskNo.ReadOnly = true;
-            this.txtTaskNo.Size = new System.Drawing.Size(118, 29);
+            this.txtTaskNo.Size = new System.Drawing.Size(118, 25);
             this.txtTaskNo.TabIndex = 11;
             // 
             // label6
@@ -181,13 +181,13 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 21);
+            this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "任务编号：";
             // 
             // btnOK
             // 
-            this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             this.btnOK.Location = new System.Drawing.Point(606, 114);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(73, 32);
@@ -198,7 +198,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             this.btnCancel.Location = new System.Drawing.Point(685, 114);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(76, 32);
@@ -212,13 +212,13 @@
             this.dgvMain.AllowUserToAddRows = false;
             this.dgvMain.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             this.dgvMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMain.AutoGenerateColumns = false;
             this.dgvMain.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -235,7 +235,7 @@
             this.dgvMain.DataSource = this.bsMain;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -345,7 +345,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtProductTypeName;
+        private System.Windows.Forms.TextBox txtSpec;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCellCode;
         private System.Windows.Forms.Label label3;

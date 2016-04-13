@@ -31,6 +31,7 @@ namespace App.View
             this.txtCraneNo.Text = dr["CraneNo"].ToString();
             this.txtProductCode.Text = dr["ProductCode"].ToString();
             this.txtProductName.Text = dr["ProductName"].ToString();
+            this.txtSpec.Text = dr["Spec"].ToString();
             this.txtAreaCode.Text = dr["AreaCode"].ToString();
 
             CraneNo = dr["CraneNo"].ToString();

@@ -38,17 +38,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SHELFNAME = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.pnlTool = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
+            this.bsDetail = new System.Windows.Forms.BindingSource(this.components);
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.pnlProgress = new System.Windows.Forms.Panel();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.bsMain = new System.Windows.Forms.BindingSource(this.components);
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.colTaskNo = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dataGridViewAutoFilterTextBoxColumn1 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
@@ -57,25 +58,24 @@
             this.Column14 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column15 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column12 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.bsDetail = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlTool.SuspendLayout();
+            this.pnlProgress = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.pnlTool = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).BeginInit();
             this.pnlMain.SuspendLayout();
             this.pnlContent.SuspendLayout();
-            this.pnlProgress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).BeginInit();
+            this.pnlProgress.SuspendLayout();
+            this.pnlTool.SuspendLayout();
             this.SuspendLayout();
             // 
             // SHELFNAME
@@ -85,63 +85,6 @@
             this.SHELFNAME.HeaderText = "货架";
             this.SHELFNAME.Name = "SHELFNAME";
             this.SHELFNAME.Width = 70;
-            // 
-            // pnlTool
-            // 
-            this.pnlTool.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.pnlTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTool.Controls.Add(this.btnExit);
-            this.pnlTool.Controls.Add(this.btnPrint);
-            this.pnlTool.Controls.Add(this.btnRefresh);
-            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTool.Location = new System.Drawing.Point(0, 0);
-            this.pnlTool.Name = "pnlTool";
-            this.pnlTool.Size = new System.Drawing.Size(881, 50);
-            this.pnlTool.TabIndex = 2;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Image = global::App.Properties.Resources.close;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExit.Location = new System.Drawing.Point(96, 0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(48, 48);
-            this.btnExit.TabIndex = 52;
-            this.btnExit.Text = "退出";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnPrint.Image = global::App.Properties.Resources.printer;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrint.Location = new System.Drawing.Point(48, 0);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(48, 48);
-            this.btnPrint.TabIndex = 51;
-            this.btnPrint.Text = "打印";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.Image = global::App.Properties.Resources.zoom;
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(48, 48);
-            this.btnRefresh.TabIndex = 48;
-            this.btnRefresh.Text = "查询";
-            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pnlMain
             // 
@@ -163,25 +106,6 @@
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(881, 401);
             this.pnlContent.TabIndex = 4;
-            // 
-            // pnlProgress
-            // 
-            this.pnlProgress.Controls.Add(this.lblInfo);
-            this.pnlProgress.Location = new System.Drawing.Point(353, 112);
-            this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Size = new System.Drawing.Size(238, 79);
-            this.pnlProgress.TabIndex = 10;
-            this.pnlProgress.Visible = false;
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblInfo.Location = new System.Drawing.Point(32, 34);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(137, 17);
-            this.lblInfo.TabIndex = 1;
-            this.lblInfo.Text = "正在查询数据，请稍候...";
             // 
             // scMain
             // 
@@ -255,6 +179,56 @@
             this.dgvMain.TabIndex = 12;
             this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_RowEnter);
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TaskDate";
+            this.Column2.HeaderText = "任务日期";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ProductCode";
+            this.Column6.FilteringEnabled = false;
+            this.Column6.HeaderText = "产品编号";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ProductNo";
+            this.Column1.HeaderText = "产品代号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ProductName";
+            this.Column7.FilteringEnabled = false;
+            this.Column7.HeaderText = "产品名称";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Spec";
+            this.Column3.HeaderText = "产品规格";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 120;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Total";
+            this.Column5.FilteringEnabled = false;
+            this.Column5.HeaderText = "数量";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // dgvDetail
             // 
             this.dgvDetail.AllowUserToAddRows = false;
@@ -308,6 +282,7 @@
             this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetail.Size = new System.Drawing.Size(881, 209);
             this.dgvDetail.TabIndex = 13;
+            this.dgvDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDetail_RowPostPaint);
             // 
             // colTaskNo
             // 
@@ -354,6 +329,7 @@
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.Width = 150;
             // 
             // Column15
             // 
@@ -363,6 +339,7 @@
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column15.Width = 150;
             // 
             // Column12
             // 
@@ -372,56 +349,83 @@
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.Width = 150;
             // 
-            // Column2
+            // pnlProgress
             // 
-            this.Column2.DataPropertyName = "TaskDate";
-            this.Column2.HeaderText = "任务日期";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.pnlProgress.Controls.Add(this.lblInfo);
+            this.pnlProgress.Location = new System.Drawing.Point(353, 112);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(238, 79);
+            this.pnlProgress.TabIndex = 10;
+            this.pnlProgress.Visible = false;
             // 
-            // Column6
+            // lblInfo
             // 
-            this.Column6.DataPropertyName = "ProductCode";
-            this.Column6.FilteringEnabled = false;
-            this.Column6.HeaderText = "产品编号";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblInfo.Location = new System.Drawing.Point(32, 34);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(137, 17);
+            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Text = "正在查询数据，请稍候...";
             // 
-            // Column1
+            // pnlTool
             // 
-            this.Column1.DataPropertyName = "ProductNo";
-            this.Column1.HeaderText = "产品代号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.pnlTool.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.pnlTool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTool.Controls.Add(this.btnExit);
+            this.pnlTool.Controls.Add(this.btnPrint);
+            this.pnlTool.Controls.Add(this.btnRefresh);
+            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTool.Location = new System.Drawing.Point(0, 0);
+            this.pnlTool.Name = "pnlTool";
+            this.pnlTool.Size = new System.Drawing.Size(881, 50);
+            this.pnlTool.TabIndex = 2;
             // 
-            // Column7
+            // btnExit
             // 
-            this.Column7.DataPropertyName = "ProductName";
-            this.Column7.FilteringEnabled = false;
-            this.Column7.HeaderText = "产品名称";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column7.Width = 150;
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExit.Image = global::App.Properties.Resources.close;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExit.Location = new System.Drawing.Point(96, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(48, 48);
+            this.btnExit.TabIndex = 52;
+            this.btnExit.Text = "退出";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // Column3
+            // btnPrint
             // 
-            this.Column3.DataPropertyName = "Spec";
-            this.Column3.HeaderText = "产品规格";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 120;
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrint.Image = global::App.Properties.Resources.printer;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPrint.Location = new System.Drawing.Point(48, 0);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(48, 48);
+            this.btnPrint.TabIndex = 51;
+            this.btnPrint.Text = "打印";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // Column5
+            // btnRefresh
             // 
-            this.Column5.DataPropertyName = "Total";
-            this.Column5.FilteringEnabled = false;
-            this.Column5.HeaderText = "数量";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.Image = global::App.Properties.Resources.zoom;
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRefresh.Location = new System.Drawing.Point(0, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(48, 48);
+            this.btnRefresh.TabIndex = 48;
+            this.btnRefresh.Text = "查询";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // InStock
             // 
@@ -432,19 +436,19 @@
             this.Name = "InStock";
             this.Text = "入库明细表";
             this.Load += new System.EventHandler(this.InStock_Load);
-            this.pnlTool.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).EndInit();
             this.pnlMain.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
-            this.pnlProgress.ResumeLayout(false);
-            this.pnlProgress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             this.scMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).EndInit();
+            this.pnlProgress.ResumeLayout(false);
+            this.pnlProgress.PerformLayout();
+            this.pnlTool.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -464,13 +468,6 @@
         private System.Windows.Forms.SplitContainer scMain;
         private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.DataGridView dgvDetail;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colTaskNo;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn1;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colState;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column14;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column15;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -478,5 +475,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column5;
         private System.Windows.Forms.BindingSource bsDetail;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colTaskNo;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn1;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colState;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column4;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column14;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column15;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column12;
     }
 }

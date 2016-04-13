@@ -69,7 +69,7 @@ namespace App.View
             this.txtCraneNo.Text = dr["CraneNo"].ToString();
             this.txtProductCode.Text = dr["ProductCode"].ToString();
             this.txtProductName.Text = dr["ProductName"].ToString();
-            
+            this.txtSpec.Text = dr["Spec"].ToString();
             CraneNo = dr["CraneNo"].ToString();
 
             string filter = string.Format("CMD_Cell.ProductCode='{0}' and CMD_Cell.IsLock='0' and CMD_Cell.IsActive='1' and CMD_Cell.ErrorFlag!='1' and CMD_Shelf.CraneNo='{1}'", this.txtProductCode.Text,CraneNo);

@@ -32,10 +32,16 @@ namespace App.View.Report
             this.dataGridView1.AutoGenerateColumns = false;
             DataTable dt = bll.FillDataTable("CMD.SelectProduct");
             this.dataGridView1.DataSource = dt.DefaultView;
-            if (TaskType == "11" || TaskType=="")
+            if (TaskType == "11" || TaskType == "")
+            {
                 this.label2.Text = "入库日期";
+                this.Text = "入库明细查询";
+            }
             else
+            {
                 this.label2.Text = "出库日期";
+                this.Text = "出库明细查询";
+            }
         }
 
         private void btnRequest_Click(object sender, EventArgs e)

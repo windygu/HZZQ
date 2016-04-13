@@ -35,15 +35,18 @@
             this.txtProductCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtQuantity3 = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnProductCode = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtQuantity2 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -127,25 +130,24 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "数量：";
             // 
-            // txtQuantity3
+            // txtQuantity
             // 
-            this.txtQuantity3.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtQuantity3.Location = new System.Drawing.Point(98, 219);
-            this.txtQuantity3.Name = "txtQuantity3";
-            this.txtQuantity3.ReadOnly = true;
-            this.txtQuantity3.Size = new System.Drawing.Size(120, 29);
-            this.txtQuantity3.TabIndex = 6;
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtQuantity.Location = new System.Drawing.Point(98, 219);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
+            this.txtQuantity.Size = new System.Drawing.Size(120, 29);
+            this.txtQuantity.TabIndex = 6;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtQuantity2);
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.btnProductCode);
             this.groupBox1.Controls.Add(this.txtProductName);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.txtQuantity3);
+            this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButton4);
@@ -153,7 +155,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(12, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 270);
+            this.groupBox1.Size = new System.Drawing.Size(417, 327);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -181,7 +183,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btnOK.Location = new System.Drawing.Point(119, 294);
+            this.btnOK.Location = new System.Drawing.Point(110, 345);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(79, 37);
             this.btnOK.TabIndex = 9;
@@ -192,7 +194,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btnCancel.Location = new System.Drawing.Point(252, 294);
+            this.btnCancel.Location = new System.Drawing.Point(243, 345);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(79, 37);
             this.btnCancel.TabIndex = 10;
@@ -200,30 +202,57 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label3
+            // groupBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.label3.Location = new System.Drawing.Point(166, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 21);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "数量：";
+            this.groupBox2.Controls.Add(this.radioButton7);
+            this.groupBox2.Controls.Add(this.radioButton6);
+            this.groupBox2.Controls.Add(this.radioButton5);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.groupBox2.Location = new System.Drawing.Point(98, 249);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(302, 58);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
             // 
-            // txtQuantity2
+            // radioButton5
             // 
-            this.txtQuantity2.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtQuantity2.Location = new System.Drawing.Point(240, 97);
-            this.txtQuantity2.Name = "txtQuantity2";
-            this.txtQuantity2.ReadOnly = true;
-            this.txtQuantity2.Size = new System.Drawing.Size(120, 29);
-            this.txtQuantity2.TabIndex = 10;
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Checked = true;
+            this.radioButton5.Location = new System.Drawing.Point(10, 23);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(92, 25);
+            this.radioButton5.TabIndex = 0;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "有效期内";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(109, 23);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(108, 25);
+            this.radioButton6.TabIndex = 1;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "已过存储期";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(227, 23);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(60, 25);
+            this.radioButton7.TabIndex = 2;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "全部";
+            this.radioButton7.UseVisualStyleBackColor = true;
             // 
             // frmChangeMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 354);
+            this.ClientSize = new System.Drawing.Size(441, 398);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupBox1);
@@ -236,6 +265,8 @@
             this.Load += new System.EventHandler(this.frmChangeMode_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -249,13 +280,15 @@
         private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtQuantity3;
+        private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnProductCode;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtQuantity2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

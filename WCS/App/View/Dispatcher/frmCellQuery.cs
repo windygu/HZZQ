@@ -255,17 +255,17 @@ namespace App.View.Dispatcher
             if (quantity == 1)  //空货位锁定
                 g.FillRectangle(Brushes.Yellow, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 2) //有货未锁定
-                g.FillRectangle(Brushes.Blue, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.BurlyWood, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 3) //有货且锁定
-                g.FillRectangle(Brushes.Green, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.SaddleBrown, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 4) //禁用
                 g.FillRectangle(Brushes.Gray, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 5) //有问题
                 g.FillRectangle(Brushes.Red, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 6) //托盘
-                g.FillRectangle(Brushes.Orange, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.Silver, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 7) //托盘锁定
-                g.FillRectangle(Brushes.Gold, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.SteelBlue, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
         }
         private void pnlChart_Resize(object sender, EventArgs e)
         {
@@ -298,7 +298,7 @@ namespace App.View.Dispatcher
                         Dictionary<string, object> property = new Dictionary<string, object>();
                         property.Add("产品编号", cellRows[0]["ProductCode"]);
                         property.Add("产品名称", cellRows[0]["ProductName"]);
-                        property.Add("入库类型", cellRows[0]["BillTypeName"]);
+                        property.Add("产品代号", cellRows[0]["ProductNo"]);
                         //property.Add("产品状态", cellRows[0]["StateName"]);
                         //property.Add("条码", cellRows[0]["PalletBarcode"]);
                         //property.Add("产品类型", cellRows[0]["ProductTypeName"]);

@@ -48,6 +48,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.dataGridViewAutoFilterTextBoxColumn1 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
@@ -56,7 +57,7 @@
             this.dataGridViewAutoFilterTextBoxColumn5 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dataGridViewAutoFilterTextBoxColumn6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.dataGridViewAutoFilterTextBoxColumn7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStockHours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTool = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -143,6 +144,7 @@
             this.Column1,
             this.Column7,
             this.Column3,
+            this.Column2,
             this.Column5});
             this.dgvMain.DataSource = this.bsMain;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -207,6 +209,13 @@
             this.Column3.ReadOnly = true;
             this.Column3.Width = 120;
             // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ValidPeriod";
+            this.Column2.HeaderText = "有效期限";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // Column5
             // 
             this.Column5.DataPropertyName = "Total";
@@ -241,7 +250,7 @@
             this.dataGridViewAutoFilterTextBoxColumn5,
             this.dataGridViewAutoFilterTextBoxColumn6,
             this.dataGridViewAutoFilterTextBoxColumn7,
-            this.dataGridViewTextBoxColumn3});
+            this.colStockHours});
             this.dgvDetail.DataSource = this.bsDetail;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
@@ -269,6 +278,8 @@
             this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetail.Size = new System.Drawing.Size(881, 209);
             this.dgvDetail.TabIndex = 12;
+            this.dgvDetail.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDetail_DataBindingComplete);
+            this.dgvDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvDetail_RowPostPaint);
             // 
             // dataGridViewAutoFilterTextBoxColumn1
             // 
@@ -298,7 +309,7 @@
             // 
             // dataGridViewAutoFilterTextBoxColumn5
             // 
-            this.dataGridViewAutoFilterTextBoxColumn5.DataPropertyName = "TaskNo";
+            this.dataGridViewAutoFilterTextBoxColumn5.DataPropertyName = "BillNo";
             this.dataGridViewAutoFilterTextBoxColumn5.FilteringEnabled = false;
             this.dataGridViewAutoFilterTextBoxColumn5.HeaderText = "任务号";
             this.dataGridViewAutoFilterTextBoxColumn5.Name = "dataGridViewAutoFilterTextBoxColumn5";
@@ -324,12 +335,13 @@
             this.dataGridViewAutoFilterTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewAutoFilterTextBoxColumn7.Width = 140;
             // 
-            // dataGridViewTextBoxColumn3
+            // colStockHours
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "StockDays";
-            this.dataGridViewTextBoxColumn3.HeaderText = "存放天数";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.colStockHours.DataPropertyName = "StockDays";
+            this.colStockHours.HeaderText = "存放时数(小时)";
+            this.colStockHours.Name = "colStockHours";
+            this.colStockHours.ReadOnly = true;
+            this.colStockHours.Width = 120;
             // 
             // pnlTool
             // 
@@ -397,7 +409,7 @@
             this.Controls.Add(this.pnlMain);
             this.Name = "StockTotal";
             this.Text = "库存统计表";
-            this.Load += new System.EventHandler(this.StockQuery_Load);
+            this.Load += new System.EventHandler(this.StockTotal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDetail)).EndInit();
             this.pnlMain.ResumeLayout(false);
@@ -431,6 +443,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column5;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn1;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn2;
@@ -438,6 +451,6 @@
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn5;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn6;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStockHours;
     }
 }

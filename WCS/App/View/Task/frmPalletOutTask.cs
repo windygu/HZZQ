@@ -33,7 +33,9 @@ namespace App.View.Task
                 { 
                     new DataParameter("@CraneNo", this.cmbCraneNo.Text), 
                     new DataParameter("@ProductCode", this.txtProductCode.Text),
-                    new DataParameter("@CellCode",CellCode)
+                    new DataParameter("@CellCode",CellCode),
+                    new DataParameter("@Valid",2),
+                    new DataParameter("@WorkMode",Program.mainForm.WorkMode)
                 };
                 bll.FillDataTable("WCS.Sp_CreateOutTask", param);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

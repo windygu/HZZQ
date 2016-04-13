@@ -12,7 +12,7 @@ using MCP;
 
 namespace App.View
 {
-    public partial class frmMonitor : BaseForm
+    public partial class frmMonitor1 : BaseForm
     {
         private Point InitialP1;
         private Point InitialP2;
@@ -34,7 +34,7 @@ namespace App.View
         Dictionary<int, string> dicWorkMode = new Dictionary<int, string>();
         Dictionary<int, string> dicProductNo = new Dictionary<int, string>();
 
-        public frmMonitor()
+        public frmMonitor1()
         {
             InitializeComponent();
         }
@@ -257,7 +257,7 @@ namespace App.View
                 {                    
                     //this.picCrane.Visible = true;
                     Point P1 = InitialP1;
-                    P1.Y = P1.Y + (int)((crane.Column-1) * 30);
+                    P1.X = P1.X - (int)((crane.Column-1) * 30);
                     this.btnCrane.Location = P1;
                 }                
 
@@ -335,9 +335,9 @@ namespace App.View
 
                 //M1
                 if (motors2[0, 0])
-                    this.btnConveyor01.Text = "↓";
+                    this.btnConveyor01.Text = "→";
                 else if (motors2[0, 1])
-                    this.btnConveyor01.Text = "↑";
+                    this.btnConveyor01.Text = "←";
                 else
                     this.btnConveyor01.Text = "";
                 if (signal2[0, 0])
@@ -360,7 +360,7 @@ namespace App.View
                 //    this.btnConveyor02.Text = "";
                 //M3
                 if (motors2[3, 0])
-                    this.btnConveyor03.Text = "↑";                
+                    this.btnConveyor03.Text = "→";                
                 else
                     this.btnConveyor03.Text = "";
                 if (signal2[0, 6])
@@ -370,7 +370,7 @@ namespace App.View
 
                 //M28 JK62没看到信号点
                 if (motors2[4, 0])
-                    this.btnConveyor28.Text = "↓";
+                    this.btnConveyor28.Text = "←";
                 else
                     this.btnConveyor28.Text = "";
                 if (signal2[2, 7])
@@ -379,9 +379,9 @@ namespace App.View
                     this.btnConveyor28.Text += "";
                 //M4
                 if (motors2[1, 0])
-                    this.btnConveyor04.Text = "↑";
+                    this.btnConveyor04.Text = "→";
                 else if (motors2[1, 1])
-                    this.btnConveyor04.Text = "↓";
+                    this.btnConveyor04.Text = "←";
                 else
                     this.btnConveyor04.Text = "";
                 if (signal2[0, 7])
@@ -390,9 +390,9 @@ namespace App.View
                     this.btnConveyor04.Text += "";
                 //M27 JK60 JK61没有信号点
                 if (motors2[2, 3])
-                    this.btnConveyor27.Text = "↓";
+                    this.btnConveyor27.Text = "←";
                 else if (motors2[2, 4])
-                    this.btnConveyor27.Text = "↑";
+                    this.btnConveyor27.Text = "→";
                 else
                     this.btnConveyor27.Text = "";
                 if (signal2[2, 6])
@@ -416,7 +416,7 @@ namespace App.View
                 //    this.btnConveyor05.Text = "";
                 //M6
                 if (motors2[3, 3])
-                    this.btnConveyor06.Text = "↑";
+                    this.btnConveyor06.Text = "→";
                 else
                     this.btnConveyor06.Text = "";
                 if (signal2[1, 6])
@@ -426,7 +426,7 @@ namespace App.View
 
                 //M26
                 if (motors2[3, 7])
-                    this.btnConveyor26.Text = "↓";
+                    this.btnConveyor26.Text = "←";
                 else
                     this.btnConveyor26.Text = "";
                 if (signal2[2, 4])
@@ -435,7 +435,7 @@ namespace App.View
                     this.btnConveyor26.Text += "";
                 //M7
                 if (motors2[3, 4])
-                    this.btnConveyor07.Text = "↑";
+                    this.btnConveyor07.Text = "→";
                 else
                     this.btnConveyor07.Text = "";
                 if (signal2[2, 0])
@@ -445,7 +445,7 @@ namespace App.View
 
                 //M25
                 if (motors2[3, 6])
-                    this.btnConveyor25.Text = "↓";
+                    this.btnConveyor25.Text = "←";
                 else
                     this.btnConveyor25.Text = "";
                 if (signal2[2, 1])
@@ -461,9 +461,9 @@ namespace App.View
                 else
                     this.btnConveyor08.Text = "";
                 if (signal2[21, 1])
-                    this.btnConveyor08.Text = "⊃";
-                else if (signal2[20, 6])
                     this.btnConveyor08.Text = "∪";
+                else if (signal2[20, 6])
+                    this.btnConveyor08.Text = "⊃";
                 //else
                 //    this.btnConveyor08.Text = "";
 
@@ -471,7 +471,7 @@ namespace App.View
                 if (motors2[20, 0])
                     this.btnConveyor09.Text = "↑";
                 else if (motors2[20, 1])
-                    this.btnConveyor09.Text = "←";
+                    this.btnConveyor09.Text = "→";
                 else
                     this.btnConveyor09.Text = "";
                 if (signal2[20, 0])
@@ -480,9 +480,9 @@ namespace App.View
                     this.btnConveyor09.Text += "";
                 //M24
                 if (motors2[22, 3])
-                    this.btnConveyor24.Text = "→";
-                else if (motors2[22, 4])
                     this.btnConveyor24.Text = "↓";
+                else if (motors2[22, 4])
+                    this.btnConveyor24.Text = "←";
                 else
                     this.btnConveyor24.Text = "";
                 if (signal2[24, 5])
@@ -506,7 +506,7 @@ namespace App.View
 
                 //M11
                 if (motors2[23, 0])
-                    this.btnConveyor11.Text = "←";
+                    this.btnConveyor11.Text = "↑";
                 else
                     this.btnConveyor11.Text = "";
                 if (signal2[30, 0])
@@ -515,7 +515,7 @@ namespace App.View
                     this.btnConveyor11.Text += "";
                 //M23
                 if (motors2[24, 2])
-                    this.btnConveyor23.Text = "→";
+                    this.btnConveyor23.Text = "↓";
                 else
                     this.btnConveyor23.Text = "";
                 if (signal2[24, 2] || signal2[24, 3])
@@ -524,7 +524,7 @@ namespace App.View
                     this.btnConveyor23.Text += "";
                 //M100
                 if (motors2[26, 0])
-                    this.btnConveyor100.Text = "←";
+                    this.btnConveyor100.Text = "↑";
                 else
                     this.btnConveyor100.Text = "";
                 if (signal2[21, 2])
@@ -533,7 +533,7 @@ namespace App.View
                     this.btnConveyor100.Text += "";
                 //M101
                 if (motors2[26, 1])
-                    this.btnConveyor101.Text = "←";
+                    this.btnConveyor101.Text = "↑";
                 else
                     this.btnConveyor101.Text = "";
                 if (signal2[30, 2])
@@ -542,7 +542,7 @@ namespace App.View
                     this.btnConveyor101.Text += "";
                 //M102
                 if (motors2[26, 2])
-                    this.btnConveyor102.Text = "←";
+                    this.btnConveyor102.Text = "↑";
                 else
                     this.btnConveyor102.Text = "";
                 if (signal2[30, 4])
@@ -551,7 +551,7 @@ namespace App.View
                     this.btnConveyor102.Text += "";
                 //M22
                 if (motors2[24, 1])
-                    this.btnConveyor22.Text = "→";
+                    this.btnConveyor22.Text = "↓";
                 else
                     this.btnConveyor22.Text = "";
                 if (signal2[24, 0] || signal2[24, 1])
@@ -560,7 +560,7 @@ namespace App.View
                     this.btnConveyor22.Text += "";
                 //M12
                 if (motors2[23, 1])
-                    this.btnConveyor12.Text = "←";
+                    this.btnConveyor12.Text = "↑";
                 else
                     this.btnConveyor12.Text = "";
                 if (signal2[21, 4])
@@ -569,7 +569,7 @@ namespace App.View
                     this.btnConveyor12.Text += "";
                 //M103
                 if (motors2[26, 3])
-                    this.btnConveyor103.Text = "←";
+                    this.btnConveyor103.Text = "↑";
                 else
                     this.btnConveyor103.Text = "";
                 if (signal2[30, 6])
@@ -578,7 +578,7 @@ namespace App.View
                     this.btnConveyor103.Text += "";
                 //M104
                 if (motors2[26, 4])
-                    this.btnConveyor104.Text = "←";
+                    this.btnConveyor104.Text = "↑";
                 else
                     this.btnConveyor104.Text = "";
                 if (signal2[31, 0])
@@ -587,7 +587,7 @@ namespace App.View
                     this.btnConveyor104.Text += "";
                 //M21
                 if (motors2[24, 0])
-                    this.btnConveyor21.Text = "→";
+                    this.btnConveyor21.Text = "↓";
                 else
                     this.btnConveyor21.Text = "";
                 if (signal2[23, 6] || signal2[23, 7])
@@ -596,7 +596,7 @@ namespace App.View
                     this.btnConveyor21.Text += "";
                 //M105
                 if (motors2[26, 5])
-                    this.btnConveyor105.Text = "←";
+                    this.btnConveyor105.Text = "↑";
                 else
                     this.btnConveyor105.Text = "";
                 if (signal2[21, 7])
@@ -605,7 +605,7 @@ namespace App.View
                     this.btnConveyor105.Text += "";
                 //M13
                 if (motors2[23, 2])
-                    this.btnConveyor13.Text = "←";
+                    this.btnConveyor13.Text = "↑";
                 else
                     this.btnConveyor13.Text = "";
                 if (signal2[31, 2])
@@ -614,9 +614,9 @@ namespace App.View
                     this.btnConveyor13.Text += "";
                 //M14
                 if (motors2[21, 0])
-                    this.btnConveyor14.Text = "←";
+                    this.btnConveyor14.Text = "↑";
                 else if (motors2[21, 1])
-                    this.btnConveyor14.Text = "→";
+                    this.btnConveyor14.Text = "↓";
                 else
                     this.btnConveyor14.Text = "";
                 if (signal2[22, 0])
@@ -625,7 +625,7 @@ namespace App.View
                     this.btnConveyor14.Text += "";
                 //M20
                 if (motors2[23, 7])
-                    this.btnConveyor20.Text = "→";
+                    this.btnConveyor20.Text = "↓";
                 else
                     this.btnConveyor20.Text = "";
                 if (signal2[23, 4] || signal2[23, 5])
@@ -634,7 +634,7 @@ namespace App.View
                     this.btnConveyor20.Text += "";
                 //M15
                 if (motors2[23, 3])
-                    this.btnConveyor15.Text = "←";
+                    this.btnConveyor15.Text = "↑";
                 else
                     this.btnConveyor15.Text = "";
                 if (signal2[22, 2])
@@ -643,7 +643,7 @@ namespace App.View
                     this.btnConveyor15.Text += "";
                 //M19
                 if (motors2[23, 6])
-                    this.btnConveyor19.Text = "→";
+                    this.btnConveyor19.Text = "↓";
                 else
                     this.btnConveyor19.Text = "";
                 if (signal2[23, 2] || signal2[23, 3])
@@ -652,7 +652,7 @@ namespace App.View
                     this.btnConveyor19.Text += "";
                 //M16
                 if (motors2[23, 4])
-                    this.btnConveyor16.Text = "←";
+                    this.btnConveyor16.Text = "↑";
                 else
                     this.btnConveyor16.Text = "";
                 if (signal2[22, 4])
@@ -662,9 +662,9 @@ namespace App.View
 
                 //M17
                 if (motors2[21, 3])
-                    this.btnConveyor17.Text = "←";
+                    this.btnConveyor17.Text = "↑";
                 else if (motors2[21, 4])
-                    this.btnConveyor17.Text = "→";
+                    this.btnConveyor17.Text = "↓";
                 else
                     this.btnConveyor17.Text = "";
                 if (signal2[22, 5])
@@ -700,9 +700,9 @@ namespace App.View
                 //    this.btnMS1.Text = "";
                 //ML1
                 if (motors1[2, 3])
-                    this.btnML1.Text = "↑";
+                    this.btnML1.Text = "→";
                 else if (motors1[2, 4])
-                    this.btnML1.Text = "↓";
+                    this.btnML1.Text = "←";
                 else
                     this.btnML1.Text = "";
                 if (signal1[6, 5])
@@ -711,9 +711,9 @@ namespace App.View
                     this.btnML1.Text += "";
                 //MG1
                 if (motors1[2, 0])
-                    this.btnMG1.Text = "→";
+                    this.btnMG1.Text = "↓";
                 else if (motors1[2, 1])
-                    this.btnMG1.Text = "←";
+                    this.btnMG1.Text = "↑";
                 else
                     this.btnMG1.Text = "";
                 if (signal1[6, 2])
@@ -722,7 +722,7 @@ namespace App.View
                     this.btnMG1.Text += "";
                 //M1
                 if (motors1[0, 0])
-                    this.btnM1.Text = "→";
+                    this.btnM1.Text = "↓";
                 else
                     this.btnM1.Text = "";
                 if (signal1[5, 0])
@@ -731,7 +731,7 @@ namespace App.View
                     this.btnM1.Text += "";
                 //M2
                 if (motors1[0, 1])
-                    this.btnM2.Text = "→";
+                    this.btnM2.Text = "↓";
                 else
                     this.btnM2.Text = "";
                 if (signal1[5, 1])
@@ -740,7 +740,7 @@ namespace App.View
                     this.btnM2.Text += "";
                 //M3
                 if (motors1[0, 2])
-                    this.btnM3.Text = "→";
+                    this.btnM3.Text = "↓";
                 else
                     this.btnM3.Text = "";
                 if (signal1[5, 2])
@@ -749,7 +749,7 @@ namespace App.View
                     this.btnM3.Text += "";
                 //M4
                 if (motors1[0, 3])
-                    this.btnM4.Text = "→";
+                    this.btnM4.Text = "↓";
                 else
                     this.btnM4.Text = "";
                 if (signal1[5, 3])
@@ -758,7 +758,7 @@ namespace App.View
                     this.btnM4.Text += "";
                 //M5
                 if (motors1[0, 4])
-                    this.btnM5.Text = "→";
+                    this.btnM5.Text = "↓";
                 else
                     this.btnM5.Text = "";
                 if (signal1[5,4])
@@ -767,7 +767,7 @@ namespace App.View
                     this.btnM5.Text += "";
                 //M9
                 if (motors1[1, 0])
-                    this.btnM9.Text = "→";
+                    this.btnM9.Text = "↓";
                 else
                     this.btnM9.Text = "";
                 if (signal1[7, 4])
@@ -789,7 +789,7 @@ namespace App.View
                 //    this.btnMS1.Text = "";
                 //MY1
                 if (motors1[3, 2])
-                    this.btnMY1.Text = "↓";
+                    this.btnMY1.Text = "←";
                 else
                     this.btnMY1.Text = "";
                 if (signal1[7, 4])
@@ -799,7 +799,7 @@ namespace App.View
 
                 //MYL1
                 if (motors1[3, 3])
-                    this.btnMYL1.Text = "↓";
+                    this.btnMYL1.Text = "←";
                 else
                     this.btnMYL1.Text = "";
                 if (signal1[8, 2])
@@ -835,7 +835,7 @@ namespace App.View
                 //    this.btnMD2.Text = "";
                 //MY2
                 if (motors1[3, 4])
-                    this.btnMY2.Text = "↑";
+                    this.btnMY2.Text = "→";
                 else
                     this.btnMY2.Text = "";
                 if (signal1[7, 6])
@@ -845,7 +845,7 @@ namespace App.View
 
                 //MYL2
                 if (motors1[3, 5])
-                    this.btnMYL2.Text = "↑";
+                    this.btnMYL2.Text = "→";
                 else
                     this.btnMYL2.Text = "";
                 if (signal1[8, 5])
@@ -867,7 +867,7 @@ namespace App.View
                 //    this.btnMYS2.Text = "";
                 //M6
                 if (motors1[0, 5])
-                    this.btnM6.Text = "←";
+                    this.btnM6.Text = "↑";
                 else
                     this.btnM6.Text = "";
                 if (signal1[5, 5])
@@ -876,7 +876,7 @@ namespace App.View
                     this.btnM6.Text += "";
                 //M7
                 if (motors1[0, 6])
-                    this.btnM7.Text = "←";
+                    this.btnM7.Text = "↑";
                 else
                     this.btnM7.Text = "";
                 if (signal1[5, 6])
@@ -885,7 +885,7 @@ namespace App.View
                     this.btnM7.Text += "";
                 //M8
                 if (motors1[0, 7])
-                    this.btnM8.Text = "←";
+                    this.btnM8.Text = "↑";
                 else
                     this.btnM8.Text = "";
                 if (signal1[5, 7])
@@ -1357,7 +1357,7 @@ namespace App.View
         private void btnReset_Click(object sender, EventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("您确定要复位堆垛机吗？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-            {                
+            {
                 Context.ProcessDispatcher.WriteToService("CranePLC1", "Reset", 1);
             }
         }

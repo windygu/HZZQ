@@ -31,7 +31,8 @@
       <OPCItem ItemName="WriteFinished" ClientHandler="14" OPCItemName="DB103,B27,1"  ItemType="WRITE"/>
       <!--回应请求-->
       <OPCItem ItemName="ReplyFinished" ClientHandler="15" OPCItemName="DB103,B28,1"  ItemType="WRITE"/>
-
+      <!--堆垛机复位-->
+      <OPCItem ItemName="Reset" ClientHandler="16" OPCItemName="DB103,B29,1"  ItemType="WRITE"/>
     </OPCGroup>
   </OPCServer>
 </Config>

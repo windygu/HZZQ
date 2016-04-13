@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Crane.cs" />
     <Compile Include="Dispatching\Process\CarProcess.cs" />
+    <Compile Include="Dispatching\Process\StockOutPalletProcess.cs" />
     <Compile Include="Dispatching\Process\CraneProcess.cs" />
     <Compile Include="Dispatching\Process\StockInToStationProcess.cs" />
     <Compile Include="Main.cs">
@@ -121,6 +122,12 @@
     </Compile>
     <Compile Include="View\Base\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmMonitor1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMonitor1.Designer.cs">
+      <DependentUpon>frmMonitor1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ExcelHelper.cs" />
     <Compile Include="View\frmChangeMode.cs">
@@ -309,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Base\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMonitor1.resx">
+      <DependentUpon>frmMonitor1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmChangeMode.resx">
       <DependentUpon>frmChangeMode.cs</DependentUpon>

@@ -43,6 +43,7 @@ namespace App.View.Param
             
             attributes = configUtil.GetAttribute();
             parameter.TimeDiff = attributes["TimeDiff"];
+            parameter.MonitorMode = attributes["MonitorMode"];
             //PLC1
             parameter.PLC1ServerName = PLC1.ProgID;
             parameter.PLC1ServerIP = PLC1.ServerName;
@@ -76,7 +77,7 @@ namespace App.View.Param
                 //由于扫码枪使用USB接口，而屏蔽。
                 ////保存Context参数
                 attributes["TimeDiff"] = parameter.TimeDiff;
-                //attributes["ScanBaudRate"] = parameter.ScanBaudRate;
+                attributes["MonitorMode"] = parameter.MonitorMode.ToString();
 
                 //attributes["IsOutOrder"] = parameter.IsOutOrder;
                 //attributes["MesWebServiceUrl"] = parameter.MesWebServiceUrl;

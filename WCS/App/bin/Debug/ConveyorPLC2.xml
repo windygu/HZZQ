@@ -8,20 +8,14 @@
       <OPCItem ItemName="MotorSignal1" ClientHandler="2" OPCItemName="DB4,B0,32"  ItemType="READ" IsActive="false"/>
       <!--光电信号-->
       <OPCItem ItemName="SensorSignal" ClientHandler="3" OPCItemName="DB3,B0,32" ItemType="READ" IsActive="false"/>
-      
+      <!--工作模式-->
+      <OPCItem ItemName="GetWorkMode" ClientHandler="4" OPCItemName="DB7,INT2,1" ItemType="READ" IsActive="false"/>
+      <!--出空托盘信号-->
+      <OPCItem ItemName="OutPallet" ClientHandler="5" OPCItemName="DB7,X4.1"  ItemType="READ" />
+      <!--工作模式-->
+      <OPCItem ItemName="WorkMode" ClientHandler="6" OPCItemName="DB7,INT0,1"  ItemType="WRITE"/>
       <!--启动信号-->
-      <!--<OPCItem ItemName="StartSignal" ClientHandler="10" OPCItemName="DB2,X0.0,1"  ItemType="WRITE"/>-->
-      <!--托盘号--><!--
-      <OPCItem ItemName="PalletCode" ClientHandler="11" OPCItemName="DB103,CHAR8,8"  ItemType="WRITE"/>
-      --><!--任务号--><!--
-      <OPCItem ItemName="TaskNo" ClientHandler="12" OPCItemName="DB103,CHAR16,10"  ItemType="WRITE"/>
-      --><!--货物类型--><!--
-      <OPCItem ItemName="ProductType" ClientHandler="13" OPCItemName="DB103,B26,1" ItemType="WRITE"/>
-      --><!--任务标识--><!--
-      <OPCItem ItemName="WriteFinished" ClientHandler="14" OPCItemName="DB103,B27,1"  ItemType="WRITE"/>
-      --><!--回应请求--><!--
-      <OPCItem ItemName="ReplyFinished" ClientHandler="15" OPCItemName="DB103,B28,1"  ItemType="WRITE"/>-->
-
+      <OPCItem ItemName="StartSignal" ClientHandler="7" OPCItemName="DB7,INT2,1"  ItemType="WRITE"/>
     </OPCGroup>
   </OPCServer>
 </Config>

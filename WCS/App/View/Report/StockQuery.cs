@@ -49,6 +49,8 @@ namespace App.View.Report
 
             DataTable dt = bll.FillDataTable("WCS.SelectStockDetail", new DataParameter[] { new DataParameter("{0}", filter) });
             bsMain.DataSource = dt;
+
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -61,6 +63,35 @@ namespace App.View.Report
             if (bsMain.DataSource == null)
                 return;            
             View.ExcelHelper.DoExport((DataTable)bsMain.DataSource);
+        }
+
+        private void dgvMain_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < this.dgvMain.Rows.Count; i++)
+            {
+                int ValidPeriod = 0;
+                int.TryParse(dgvMain.Rows[i].Cells["Column8"].Value.ToString(), out ValidPeriod);
+                int StockHours = int.Parse(dgvMain.Rows[i].Cells["Column2"].Value.ToString());
+                if (StockHours > ValidPeriod)
+                    this.dgvMain.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                else
+                {
+                    if (i % 2 == 0)
+                        this.dgvMain.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                    else
+                        this.dgvMain.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
+
+                }
+            }
+        }
+
+        private void dgvMain_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            //foreach (DataGridViewRow dr in dgvMain.Rows)
+            //    dr.Cells[0].Value = dr.Index + 1;
+            SolidBrush solidBrush = new SolidBrush(dgvMain.RowHeadersDefaultCellStyle.ForeColor);
+            int index = e.RowIndex + 1;
+            e.Graphics.DrawString(index.ToString(), e.InheritedRowStyle.Font, solidBrush, e.RowBounds.Location.X + 12, e.RowBounds.Location.Y + 4);
         }
     }
 }

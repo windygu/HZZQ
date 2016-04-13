@@ -32,7 +32,7 @@
             this.bsMain = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.txtTaskNo = new System.Windows.Forms.TextBox();
-            this.txtProductTypeName = new System.Windows.Forms.TextBox();
+            this.txtSpec = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCellCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 32);
+            this.label6.Location = new System.Drawing.Point(13, 31);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 21);
             this.label6.TabIndex = 4;
@@ -72,28 +72,28 @@
             // 
             // txtTaskNo
             // 
-            this.txtTaskNo.Location = new System.Drawing.Point(101, 29);
+            this.txtTaskNo.Location = new System.Drawing.Point(101, 27);
             this.txtTaskNo.Name = "txtTaskNo";
             this.txtTaskNo.ReadOnly = true;
             this.txtTaskNo.Size = new System.Drawing.Size(131, 29);
             this.txtTaskNo.TabIndex = 11;
             // 
-            // txtProductTypeName
+            // txtSpec
             // 
-            this.txtProductTypeName.Location = new System.Drawing.Point(341, 97);
-            this.txtProductTypeName.Name = "txtProductTypeName";
-            this.txtProductTypeName.ReadOnly = true;
-            this.txtProductTypeName.Size = new System.Drawing.Size(269, 29);
-            this.txtProductTypeName.TabIndex = 27;
+            this.txtSpec.Location = new System.Drawing.Point(341, 97);
+            this.txtSpec.Name = "txtSpec";
+            this.txtSpec.ReadOnly = true;
+            this.txtSpec.Size = new System.Drawing.Size(269, 29);
+            this.txtSpec.TabIndex = 27;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(249, 100);
+            this.label5.Location = new System.Drawing.Point(249, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 21);
             this.label5.TabIndex = 26;
-            this.label5.Text = "产品类型：";
+            this.label5.Text = "产品规格：";
             // 
             // txtCellCode
             // 
@@ -106,7 +106,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 100);
+            this.label3.Location = new System.Drawing.Point(13, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 21);
             this.label3.TabIndex = 22;
@@ -114,7 +114,7 @@
             // 
             // txtCraneNo
             // 
-            this.txtCraneNo.Location = new System.Drawing.Point(341, 29);
+            this.txtCraneNo.Location = new System.Drawing.Point(341, 27);
             this.txtCraneNo.Name = "txtCraneNo";
             this.txtCraneNo.ReadOnly = true;
             this.txtCraneNo.Size = new System.Drawing.Size(72, 29);
@@ -123,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 32);
+            this.label2.Location = new System.Drawing.Point(248, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 21);
             this.label2.TabIndex = 20;
@@ -131,7 +131,7 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(340, 64);
+            this.txtProductName.Location = new System.Drawing.Point(340, 63);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(271, 29);
@@ -148,7 +148,7 @@
             // 
             // txtProductCode
             // 
-            this.txtProductCode.Location = new System.Drawing.Point(102, 64);
+            this.txtProductCode.Location = new System.Drawing.Point(102, 63);
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.ReadOnly = true;
             this.txtProductCode.Size = new System.Drawing.Size(131, 29);
@@ -158,7 +158,7 @@
             // 
             this.groupBox1.Controls.Add(this.txtAreaCode);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtProductTypeName);
+            this.groupBox1.Controls.Add(this.txtSpec);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtCellCode);
             this.groupBox1.Controls.Add(this.label3);
@@ -391,7 +391,7 @@
         private System.Windows.Forms.BindingSource bsMain;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTaskNo;
-        private System.Windows.Forms.TextBox txtProductTypeName;
+        private System.Windows.Forms.TextBox txtSpec;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCellCode;
         private System.Windows.Forms.Label label3;

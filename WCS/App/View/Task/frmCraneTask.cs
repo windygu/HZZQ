@@ -329,5 +329,13 @@ namespace App.View.Task
             else
                 this.button1.Visible = false;
         }
+
+        private void btnDelTask_Click(object sender, EventArgs e)
+        {
+            sbyte[] taskNo = new sbyte[10];
+            Util.ConvertStringChar.stringToBytes("", 10).CopyTo(taskNo, 0);
+
+            Context.ProcessDispatcher.WriteToService("CranePLC1", "TaskNo", taskNo);
+        }
     }
 }

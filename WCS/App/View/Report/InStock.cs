@@ -74,9 +74,16 @@ namespace App.View.Report
         {
             string TaskDate = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
             string ProductCode = dgvMain.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string filter = string.Format("WCS_TASK.State='2' and WCS_TASK.ProductCode='{0}' and convert(varchar(10),WCS_TASK.TaskDate,120)='{1}'", ProductCode, TaskDate);
+            string filter = string.Format("WCS_TASK.TaskType='{0}' and WCS_TASK.State='2' and WCS_TASK.ProductCode='{1}' and convert(varchar(10),WCS_TASK.TaskDate,120)='{2}'", TaskType,ProductCode, TaskDate);
             DataTable dt = bll.FillDataTable("WCS.SelectTaskDetail", new DataParameter[] { new DataParameter("{0}", filter) });
             this.bsDetail.DataSource = dt;
+        }
+
+        private void dgvDetail_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            SolidBrush solidBrush = new SolidBrush(dgvDetail.RowHeadersDefaultCellStyle.ForeColor);
+            int index = e.RowIndex + 1;
+            e.Graphics.DrawString(index.ToString(), e.InheritedRowStyle.Font, solidBrush, e.RowBounds.Location.X + 12, e.RowBounds.Location.Y + 4);
         }
     }
 }

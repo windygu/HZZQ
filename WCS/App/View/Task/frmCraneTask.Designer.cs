@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnDelTask = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -55,6 +56,17 @@
             this.btnAction = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnDelTask
+            // 
+            this.btnDelTask.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnDelTask.Location = new System.Drawing.Point(125, 296);
+            this.btnDelTask.Name = "btnDelTask";
+            this.btnDelTask.Size = new System.Drawing.Size(75, 32);
+            this.btnDelTask.TabIndex = 98;
+            this.btnDelTask.Text = "删除任务";
+            this.btnDelTask.UseVisualStyleBackColor = true;
+            this.btnDelTask.Click += new System.EventHandler(this.btnDelTask_Click);
             // 
             // button1
             // 
@@ -371,6 +383,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 342);
+            this.Controls.Add(this.btnDelTask);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
@@ -411,5 +424,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button btnDelTask;
     }
 }

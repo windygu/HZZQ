@@ -69,6 +69,13 @@ namespace App.View.Param
             set { timeDiff = value; }
         }
 
+        private string monitorMode;
+        [CategoryAttribute("监控画面模式"), DescriptionAttribute("监控画面模式"), Chinese("监控画面模式")]
+        public string MonitorMode
+        {
+            get { return monitorMode; }
+            set { monitorMode = value; }
+        }
         private string plc1ServerName;
         [CategoryAttribute("1号堆垛机PLC通信参数"), DescriptionAttribute("服务名称"), Chinese("服务名称")]
         public string PLC1ServerName

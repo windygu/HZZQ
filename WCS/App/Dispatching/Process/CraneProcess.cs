@@ -75,8 +75,8 @@ namespace App.Dispatching.Process
             try
             {
                 object obj = ObjectUtil.GetObject(stateItem.State);
-                if (obj == null)
-                    return;
+                //if (obj == null)
+                //    return;
 
                 switch (stateItem.ItemName)
                 {
@@ -186,12 +186,13 @@ namespace App.Dispatching.Process
                 //craneInfo 0 
                 int[] craneInfo = new int[7];
                 object[] obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneInfo"));
-
+                for (int j = 0; j < obj.Length; j++)
+                    craneInfo[j] = Convert.ToInt16(obj[j]);
                 //0 0-无故障货叉在原位无货
                 //2 3-联机自动
                 //3 0-待机 1-入库 2-出库
                 //4 0-无故障 5-满货位入库，6-空货位出库
-                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3] == 1 && craneInfo[4] == 5) || (craneInfo[3] == 2 && craneInfo[4] == 6)))
+                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3] == 1 && (craneInfo[4] == 5 || craneInfo[4]==15) || (craneInfo[3] == 2 && (craneInfo[4] == 6 || craneInfo[4] == 16)))))
                     return true;
                 else
                     return false;
@@ -276,14 +277,14 @@ namespace App.Dispatching.Process
             //Logger.Debug("判断堆垛机" + piCrnNo.ToString() + "能否出库");
             try
             {
+                //切换入库优先
+                dCrnStatus[craneNo].io_flag = 1;
                 //判断堆垛机
                 if (!Check_Crane_Status_IsOk(craneNo))
                 {
                     //Logger.Info("堆垛机状态不符合出库");
                     return;
-                }
-                //切换入库优先
-                dCrnStatus[craneNo].io_flag = 1;
+                }                
             }
             catch (Exception e)
             {
@@ -299,9 +300,9 @@ namespace App.Dispatching.Process
             obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
             string plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
 
-            string StationLoad = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService(serviceName, "OutStationLoad")).ToString();
+            string StationLoad = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC1", "OutStationLoad")).ToString();
             //判断出库站台无货
-            if (StationLoad.Equals("True") || StationLoad.Equals("1"))
+            if (StationLoad.Equals("False") || StationLoad.Equals("0"))
             {
                 Logger.Info("出库站台有货不符合堆垛机出库");
                 return;
@@ -315,7 +316,7 @@ namespace App.Dispatching.Process
             if (dt.Rows.Count>0)
             {
                 DataRow dr = dt.Rows[0];
-                string carNo = dr["CarNo"].ToString();
+                //string carNo = dr["CarNo"].ToString();
                 string TaskNo = dr["TaskNo"].ToString();
                 string BillID = dr["BillID"].ToString();
                 int CraneErrCode = byte.Parse(dr["CraneErrCode"].ToString());
@@ -375,12 +376,13 @@ namespace App.Dispatching.Process
             // 判断堆垛机的状态 自动  空闲
             try
             {
+                //切换入库优先
+                dCrnStatus[craneNo].io_flag = 0;
                 //判断堆垛机
                 if (!Check_Crane_Status_IsOk(craneNo))
                     return;
 
-                //切换入库优先
-                dCrnStatus[craneNo].io_flag = 0;
+                
             }
             catch (Exception e)
             {
@@ -443,8 +445,8 @@ namespace App.Dispatching.Process
                 WriteToService(serviceName, "TaskAddress", cellAddr);
                 WriteToService(serviceName, "PalletCode", palletBarcode);
                 WriteToService(serviceName, "TaskNo", taskNo);
-                WriteToService(serviceName, "ProductType", 49);
-                if (WriteToService(serviceName, "WriteFinished", 49))
+                WriteToService(serviceName, "ProductType", 1);
+                if (WriteToService(serviceName, "WriteFinished", 1))
                 {
                     string State = "1";
                     if (taskType == 4)
