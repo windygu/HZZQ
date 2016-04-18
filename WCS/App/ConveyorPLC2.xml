@@ -12,10 +12,14 @@
       <OPCItem ItemName="GetWorkMode" ClientHandler="4" OPCItemName="DB7,INT2,1" ItemType="READ" IsActive="false"/>
       <!--出空托盘信号-->
       <OPCItem ItemName="OutPallet" ClientHandler="5" OPCItemName="DB7,X4.1"  ItemType="READ" />
+      <!--回盘计数-->
+      <OPCItem ItemName="NoBackPalletCount" ClientHandler="6" OPCItemName="DB7,INT6,1" ItemType="READ" IsActive="false"/>
       <!--工作模式-->
-      <OPCItem ItemName="WorkMode" ClientHandler="6" OPCItemName="DB7,INT0,1"  ItemType="WRITE"/>
+      <OPCItem ItemName="WorkMode" ClientHandler="7" OPCItemName="DB7,INT0,1"  ItemType="WRITE"/>
       <!--启动信号-->
-      <OPCItem ItemName="StartSignal" ClientHandler="7" OPCItemName="DB7,INT2,1"  ItemType="WRITE"/>
+      <OPCItem ItemName="StartSignal" ClientHandler="8" OPCItemName="DB7,INT2,1"  ItemType="WRITE"/>
+      <!--回盘计数-->
+      <OPCItem ItemName="ResetBackPalletCount" ClientHandler="9" OPCItemName="DB7,X4.2" ItemType="WRITE" />
     </OPCGroup>
   </OPCServer>
 </Config>

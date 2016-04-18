@@ -76,6 +76,13 @@ namespace App.View.Param
             get { return monitorMode; }
             set { monitorMode = value; }
         }
+        //private string balanceCounter;
+        //[CategoryAttribute("出入库平衡计数器"), DescriptionAttribute("出入库平衡计数器"), Chinese("出入库平衡计数器")]
+        //public string BalanceCounter
+        //{
+        //    get { return balanceCounter; }
+        //    set { balanceCounter = value; }
+        //}
         private string plc1ServerName;
         [CategoryAttribute("1号堆垛机PLC通信参数"), DescriptionAttribute("服务名称"), Chinese("服务名称")]
         public string PLC1ServerName

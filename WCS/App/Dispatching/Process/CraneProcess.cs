@@ -35,7 +35,7 @@ namespace App.Dispatching.Process
         private Dictionary<int, rCrnStatus> dCrnStatus = new Dictionary<int, rCrnStatus>();
         private Timer tmWorkTimer = new Timer();
         private bool blRun = false;
-
+        int BalanceCounter;
 
         public override void Initialize(Context context)
         {
@@ -57,7 +57,7 @@ namespace App.Dispatching.Process
                         dCrnStatus[i].Action = 0;
                     }
                 }
-                
+                BalanceCounter = int.Parse(context.Attributes["BalanceCounter"].ToString());
 
                 tmWorkTimer.Interval = 1000;
                 tmWorkTimer.Elapsed += new ElapsedEventHandler(tmWorker);
@@ -192,7 +192,7 @@ namespace App.Dispatching.Process
                 //2 3-联机自动
                 //3 0-待机 1-入库 2-出库
                 //4 0-无故障 5-满货位入库，6-空货位出库
-                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || (craneInfo[3] == 1 && (craneInfo[4] == 5 || craneInfo[4]==15) || (craneInfo[3] == 2 && (craneInfo[4] == 6 || craneInfo[4] == 16)))))
+                if (craneInfo[0] == 0 && craneInfo[2] == 3 && (craneInfo[3] == 0 || ((craneInfo[3] == 1 || craneInfo[3] == 5) && (craneInfo[4] == 5 || craneInfo[4] == 15) || ((craneInfo[3] == 2 || craneInfo[3] == 6) && (craneInfo[4] == 6 || craneInfo[4] == 16)))))
                     return true;
                 else
                     return false;
@@ -307,6 +307,12 @@ namespace App.Dispatching.Process
                 Logger.Info("出库站台有货不符合堆垛机出库");
                 return;
             }
+            //判断出库计数器
+            //object objCount = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
+            //int count = int.Parse(objCount.ToString());
+            //if (count > BalanceCounter)
+            //    return;
+
             string CraneNo = "0" + craneNo.ToString();
             //获取任务，排序优先等级、任务时间
             DataParameter[] parameter = new DataParameter[] { new DataParameter("{0}", string.Format("WCS_Task.TaskType in ('12','13','14') and WCS_Task.State='0' and WCS_Task.CraneNo='{0}'",CraneNo)) };

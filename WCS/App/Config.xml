@@ -4,6 +4,7 @@
   <Attributes>
     <Attribute Name="TimeDiff" Value="60" />
     <Attribute Name="MonitorMode" Value="2" />
+    <Attribute Name="BalanceCounter" Value="1" />
   </Attributes>
   <Services>
     <Service Name="CranePLC1" Type="MCP.Service.Siemens.dll, MCP.Service.Siemens.OPCService" ConfigFile="CranePLC1.xml" />

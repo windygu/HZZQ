@@ -72,7 +72,7 @@ namespace App.View.Report
                 int ValidPeriod = 0;
                 int.TryParse(dgvMain.Rows[i].Cells["Column8"].Value.ToString(), out ValidPeriod);
                 int StockHours = int.Parse(dgvMain.Rows[i].Cells["Column2"].Value.ToString());
-                if (StockHours > ValidPeriod)
+                if (StockHours > ValidPeriod && ValidPeriod>0)
                     this.dgvMain.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                 else
                 {

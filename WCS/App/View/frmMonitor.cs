@@ -127,6 +127,8 @@ namespace App.View
             dicCraneError.Add(21, "送绳");
             dicCraneError.Add(22, "货叉数据错误");
             dicCraneError.Add(23, "货叉变频器报警");
+            dicCraneError.Add(99, "取货时取货站台无货");
+            dicCraneError.Add(100, "放货是放货站台有货");
 
             dicWorkMode.Add(0, "直供");
             dicWorkMode.Add(1, "储存");
@@ -272,9 +274,13 @@ namespace App.View
                 if (txt != null)
                     txt.Text = crane.ErrCode.ToString();
 
+                string CraneErrDesc = "";
                 txt = GetTextBox("txtErrorDesc", crane.CraneNo);
                 if (txt != null && dicCraneError.ContainsKey(crane.ErrCode))
+                {
                     txt.Text = dicCraneError[crane.ErrCode];
+                    CraneErrDesc=dicCraneError[crane.ErrCode];
+                }
 
                 this.txtInProductName.Text = crane.PalletCode;
 
@@ -283,7 +289,7 @@ namespace App.View
                 //更新错误代码、错误描述
                 //更新任务状态为执行中
                 if(crane.TaskNo.Length>0)
-                    bll.ExecNonQuery("WCS.UpdateTaskError", new DataParameter[] { new DataParameter("@CraneErrCode", crane.ErrCode.ToString()), new DataParameter("@CraneErrDesc", dicCraneError[crane.ErrCode]), new DataParameter("@TaskNo", crane.TaskNo) });
+                    bll.ExecNonQuery("WCS.UpdateTaskError", new DataParameter[] { new DataParameter("@CraneErrCode", crane.ErrCode.ToString()), new DataParameter("@CraneErrDesc", CraneErrDesc), new DataParameter("@TaskNo", crane.TaskNo) });
                 if(crane.ErrCode>0)
                     Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:"+ crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
             }
@@ -1305,6 +1311,15 @@ namespace App.View
             //f.ShowDialog();
             try
             {
+                object obj = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
+                int count = int.Parse(obj.ToString());
+                if (count > 0)
+                {
+                    if (DialogResult.Yes == MessageBox.Show("还有未收回的空托盘，是否要强制置回空盘计数为0，否则不可切换工作模式！", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 1);
+                    else
+                        return;
+                }
                 frmChangeMode f = new frmChangeMode(Context);
                 if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
