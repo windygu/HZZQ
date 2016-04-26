@@ -243,7 +243,7 @@ namespace App.View.Dispatcher
             else if (quantity == 5) //有问题
                 g.FillRectangle(Brushes.Red, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 6) //托盘
-                g.FillRectangle(Brushes.Orange, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.Chartreuse, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 7) //托盘锁定
                 g.FillRectangle(Brushes.Gold, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
         }
@@ -263,7 +263,7 @@ namespace App.View.Dispatcher
             else if (quantity == 5) //有问题
                 g.FillRectangle(Brushes.Red, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 6) //托盘
-                g.FillRectangle(Brushes.Silver, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
+                g.FillRectangle(Brushes.Chartreuse, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
             else if (quantity == 7) //托盘锁定
                 g.FillRectangle(Brushes.SteelBlue, new Rectangle(x + 2, y + 2, cellWidth - 3, cellHeight - 3));
         }

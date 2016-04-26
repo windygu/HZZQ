@@ -33,6 +33,7 @@ namespace App.View
         Dictionary<int, string> dicCraneOver = new Dictionary<int, string>();
         Dictionary<int, string> dicWorkMode = new Dictionary<int, string>();
         Dictionary<int, string> dicProductNo = new Dictionary<int, string>();
+        private int ErrCode = 0;
 
         public frmMonitor1()
         {
@@ -145,11 +146,12 @@ namespace App.View
         }
         private void GetWorkMode()
         {
-            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode");
+            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode", new DataParameter[] { new DataParameter("{0}", "1=1") });
             if (dt.Rows.Count > 0)
             {
                 this.txtWorkMode.Text = dicWorkMode[int.Parse(dt.Rows[0]["WorkMode"].ToString())];
                 Program.mainForm.WorkMode = int.Parse(dt.Rows[0]["WorkMode"].ToString());
+                Program.mainForm.WorkModeId = dt.Rows[0]["WorkModeId"].ToString();
                 if (dt.Rows[0]["WorkMode"].ToString() == "2" || dt.Rows[0]["WorkMode"].ToString() == "3")
                 {
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();
@@ -199,6 +201,7 @@ namespace App.View
             }
             else
             {
+                GetWorkMode();
                 Crane crane = args.crane;
                 TextBox txt = GetTextBox("txtTaskNo", crane.CraneNo);
                 if (txt != null)
@@ -286,12 +289,16 @@ namespace App.View
 
                 txtPLCWorkMode.Text = dicWorkMode[crane.WalkCode];
 
+
                 //更新错误代码、错误描述
                 //更新任务状态为执行中
                 if(crane.TaskNo.Length>0)
                     bll.ExecNonQuery("WCS.UpdateTaskError", new DataParameter[] { new DataParameter("@CraneErrCode", crane.ErrCode.ToString()), new DataParameter("@CraneErrDesc", CraneErrDesc), new DataParameter("@TaskNo", crane.TaskNo) });
-                if(crane.ErrCode>0)
-                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:"+ crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
+                if (crane.ErrCode > 0 && crane.ErrCode != ErrCode)
+                {
+                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:" + crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
+                    ErrCode = crane.ErrCode;
+                }
             }
         }
         TextBox GetTextBox(string name, int CraneNo)
@@ -334,6 +341,7 @@ namespace App.View
             }
             else
             {
+                int objCount = 0;
                 bool[,] motors1 = args.obj1;
                 bool[,] signal1 = args.obj2;
                 bool[,] motors2 = args.obj3;
@@ -391,7 +399,10 @@ namespace App.View
                 else
                     this.btnConveyor04.Text = "";
                 if (signal2[0, 7])
+                {
                     this.btnConveyor04.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor04.Text += "";
                 //M27 JK60 JK61没有信号点
@@ -426,7 +437,10 @@ namespace App.View
                 else
                     this.btnConveyor06.Text = "";
                 if (signal2[1, 6])
+                {
                     this.btnConveyor06.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor06.Text += "";
 
@@ -445,7 +459,10 @@ namespace App.View
                 else
                     this.btnConveyor07.Text = "";
                 if (signal2[2, 0])
+                {
                     this.btnConveyor07.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor07.Text += "";
 
@@ -481,7 +498,10 @@ namespace App.View
                 else
                     this.btnConveyor09.Text = "";
                 if (signal2[20, 0])
+                {
                     this.btnConveyor09.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor09.Text += "";
                 //M24
@@ -516,7 +536,10 @@ namespace App.View
                 else
                     this.btnConveyor11.Text = "";
                 if (signal2[30, 0])
+                {
                     this.btnConveyor11.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor11.Text += "";
                 //M23
@@ -534,7 +557,10 @@ namespace App.View
                 else
                     this.btnConveyor100.Text = "";
                 if (signal2[21, 2])
+                {
                     this.btnConveyor100.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnConveyor100.Text += "";
                 //M101
@@ -723,7 +749,10 @@ namespace App.View
                 else
                     this.btnMG1.Text = "";
                 if (signal1[6, 2])
+                {
                     this.btnMG1.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnMG1.Text += "";
                 //M1
@@ -855,7 +884,10 @@ namespace App.View
                 else
                     this.btnMYL2.Text = "";
                 if (signal1[8, 5])
+                {
                     this.btnMYL2.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnMYL2.Text += "";
                 //MYS2
@@ -877,7 +909,10 @@ namespace App.View
                 else
                     this.btnM6.Text = "";
                 if (signal1[5, 5])
+                {
                     this.btnM6.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnM6.Text += "";
                 //M7
@@ -886,7 +921,11 @@ namespace App.View
                 else
                     this.btnM7.Text = "";
                 if (signal1[5, 6])
+                {
                     this.btnM7.Text += "■";
+                    objCount++;
+                }
+
                 else
                     this.btnM7.Text += "";
                 //M8
@@ -895,11 +934,34 @@ namespace App.View
                 else
                     this.btnM8.Text = "";
                 if (signal1[5, 7])
+                {
                     this.btnM8.Text += "■";
+                    objCount++;
+                }
                 else
                     this.btnM8.Text += "";
-                
+
+                this.txtObjectCount.Text = objCount.ToString();
             }
+            
+        }
+        private void CreateOutStockTask(int objCount)
+        {
+            //计划数量
+            string ProductCode = "";
+            int planCount = 0;
+            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode", new DataParameter[] { new DataParameter("{0}", "(WorkMode in(2,3)") });
+            if (dt.Rows.Count > 0)
+            {
+                ProductCode = dt.Rows[0]["ProductCode"].ToString();
+                planCount = int.Parse(dt.Rows[0]["OutQty"].ToString());
+            }
+
+
+            //已经产生的任务
+            DataTable dtTask = bll.FillDataTable("WCS.SelectTask", new DataParameter[] { new DataParameter("{0}", string.Format("WCS_TASK.TaskType='12' and WCS_TASK.State in('0','1','2') and WCS_TASK.ProductCode='{0} and convert(varchar(10),WCS_TASK.TaskDate,120)=convert(varchar(10),getdate(),120)", ProductCode)) });
+            int count = planCount - dtTask.Rows.Count;
+
         }
         private Button GetButton(string name, string Motor)
         {
@@ -1161,24 +1223,8 @@ namespace App.View
         {
             DataTable dt = bll.FillDataTable("WCS.SelectTask", new DataParameter[] { new DataParameter("{0}", "(WCS_TASK.TaskType='11' and WCS_TASK.State in('0','1')) OR (WCS_TASK.TaskType in('12','13') and WCS_TASK.State in('0','1')) OR (WCS_TASK.TaskType in('14') and WCS_TASK.State in('0','1'))") });
             return dt;
-        }
+        }        
         
-        private void PutCommand(string craneNo, byte TaskType)
-        {
-            byte[] cellAddr = new byte[8];
-            cellAddr[0] = TaskType;
-            cellAddr[1] = 0;
-
-            for (int i = 0; i < cellAddr.Length; i++)
-                cellAddr[i] += 48;
-
-            string serviceName = "CranePLC" + craneNo;
-            Context.ProcessDispatcher.WriteToService(serviceName, "TaskAddress", cellAddr);
-
-            Context.ProcessDispatcher.WriteToService(serviceName, "WriteFinished", 49);
-        }       
-
-
         private void dgvMain_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -1318,15 +1364,18 @@ namespace App.View
             //}
             try
             {
-                object obj = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
-                int count = int.Parse(obj.ToString());
-                if (count > 0)
-                {
-                    if (DialogResult.Yes == MessageBox.Show("还有未收回的空托盘，是否要强制置回空盘计数为0，否则不可切换工作模式！", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 1);
-                    else
-                        return;
-                }
+                //object obj = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
+                //int count = int.Parse(obj.ToString());
+                //if (count > 0)
+                //{
+                //    if (DialogResult.Yes == MessageBox.Show("还有未收回的空托盘，是否要强制置回空盘计数为0，否则不可切换工作模式！", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                //    {
+                //        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 1);
+                //        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 0);
+                //    }
+                //    else
+                //        return;
+                //}
                 frmChangeMode f = new frmChangeMode(Context);
                 if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

@@ -40,7 +40,7 @@ namespace App.View
             ProductFields.Add("ProductName", "产品名称");
             ProductFields.Add("Spec", "规格");
 
-            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode");
+            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode", new DataParameter[] { new DataParameter("{0}", "1=1") });
             if (dt.Rows.Count > 0)
             {
                 if (dt.Rows[0]["WorkMode"].ToString() == "0")
@@ -98,22 +98,29 @@ namespace App.View
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            int WorkMode = 0;
             if (this.radioButton1.Checked)
-                Program.mainForm.WorkMode =0;
+                WorkMode =0;
             else if (this.radioButton2.Checked)
-                Program.mainForm.WorkMode = 1;
+                WorkMode = 1;
             else if (this.radioButton3.Checked)
-                Program.mainForm.WorkMode = 2;
+                WorkMode = 2;
             else if (this.radioButton4.Checked)
-                Program.mainForm.WorkMode = 3;
+                WorkMode = 3;
+
+            string WorkModeId = "";
+            DataTable dt = bll.FillDataTable("WCS.GetWorkModeId");
+            if (dt.Rows.Count > 0)
+                WorkModeId = dt.Rows[0][0].ToString();
+            
 
             int OutQty = 0;
             string ProductCode = "";
             string ProductName = "";
-            string ProductNo = "";
+            //string ProductNo = "";
             //更新任务状态
-            if (this.radioButton3.Checked)
-            {
+            //if (this.radioButton3.Checked)
+            //{
                 //int.TryParse(this.txtQuantity.Text.Trim(), out OutQty);
 
                 //if (OutQty <= 0)
@@ -131,7 +138,7 @@ namespace App.View
                 //    ProductCode = dt.Rows[0]["ProductCode"].ToString();
                 //    ProductName = dt.Rows[0]["ProductName"].ToString();
                 //}
-            }
+            //}
             if (this.radioButton3.Checked || this.radioButton4.Checked)
             {
                 if (this.txtProductCode.Text.Length <= 0)
@@ -145,7 +152,7 @@ namespace App.View
                 ProductName = this.txtProductName.Text;
                 int.TryParse(this.txtQuantity.Text.Trim(), out OutQty);
 
-                if (OutQty <= 0)
+                if (OutQty < 0)
                 {
                     MessageBox.Show("请输入出库数量", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.txtQuantity.Focus();
@@ -172,15 +179,17 @@ namespace App.View
                         new DataParameter("@ProductCode",ProductCode),
                         new DataParameter("@CellCode",CellCode),
                         new DataParameter("@Valid",Valid),
-                        new DataParameter("@WorkMode",Program.mainForm.WorkMode)
+                        new DataParameter("@WorkMode",WorkMode),
+                        new DataParameter("@WorkModeId",WorkModeId)
                     };
                     bll.FillDataTable("WCS.Sp_CreateOutTask", param);
                     OutQuantity++;
                 }
 
                 //保存状态
-                bll.ExecNonQuery("WCS.UpdateWorkMode", new DataParameter[] {    
-                            new DataParameter("@WorkMode", Program.mainForm.WorkMode),
+                bll.ExecNonQuery("WCS.InsertWorkMode", new DataParameter[] {  
+                            new DataParameter("@WorkModeId", WorkModeId),
+                            new DataParameter("@WorkMode", WorkMode),
                             new DataParameter("@ProductCode", ProductCode),
                             new DataParameter("@ProductName", ProductName),
                             new DataParameter("@OutQty", OutQuantity)});
@@ -200,8 +209,9 @@ namespace App.View
                     {
                         MessageBox.Show(ex.Message + ",已产生" + OutQuantity.ToString() + "笔出库任务", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //保存状态
-                        bll.ExecNonQuery("WCS.UpdateWorkMode", new DataParameter[] {    
-                                                                new DataParameter("@WorkMode", Program.mainForm.WorkMode),
+                        bll.ExecNonQuery("WCS.InsertWorkMode", new DataParameter[] {    
+                                                                new DataParameter("@WorkModeId", WorkModeId),
+                                                                new DataParameter("@WorkMode", WorkMode),
                                                                 new DataParameter("@ProductCode", ProductCode),
                                                                 new DataParameter("@ProductName", ProductName),
                                                                 new DataParameter("@OutQty", OutQuantity)});

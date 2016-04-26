@@ -28,7 +28,7 @@ namespace App.View.Task
             this.cmbCraneNo.DisplayMember = "CraneNo";
 
             this.cmbTaskType.SelectedIndex = 0;
-            this.txtTaskNo1.Text = DateTime.Now.ToString("yyMMdd") + "0001";
+            this.txtTaskNo1.Text = DateTime.Now.ToString("yyMMdd") + "0000";
             
         }        
 

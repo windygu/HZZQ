@@ -72,13 +72,14 @@ namespace App.Dispatching.Process
                                                 new DataParameter("@ProductCode", ProductCode),
                                                 new DataParameter("@TimeDiff", TimeDiff),
                                                 new DataParameter("@CellCode",CellCode),
-                                                new DataParameter("@WorkMode",Program.mainForm.WorkMode)
+                                                new DataParameter("@WorkMode",Program.mainForm.WorkMode),
+                                                new DataParameter("@WorkModeId",Program.mainForm.WorkModeId)
                                             };
 
                     bll.FillDataTable("WCS.Sp_CreateInTask", param);
 
 
-                    //如果工作模式是储存且不是托盘组入库，需产生一个托盘组出库任务
+                    ////如果工作模式是储存且不是托盘组入库，需产生一个托盘组出库任务
                     //if (Program.mainForm.WorkMode == 1 && ProductCode != "0001")
                     //{
                     //    CellCode = "";
@@ -89,7 +90,8 @@ namespace App.Dispatching.Process
                     //                            new DataParameter("@ProductCode", "0001"),
                     //                            new DataParameter("@CellCode",CellCode),
                     //                            new DataParameter("@Valid",2),
-                    //                            new DataParameter("@WorkMode",Program.mainForm.WorkMode)
+                    //                            new DataParameter("@WorkMode",Program.mainForm.WorkMode),
+                    //                            new DataParameter("@WorkModeId",Program.mainForm.WorkModeId)
                     //                        };
 
                     //    bll.FillDataTable("WCS.Sp_CreateOutTask", param);

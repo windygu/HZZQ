@@ -72,6 +72,7 @@ namespace App.View.Dispatcher
             BillFields.Add("TaskDate", "作业日期");
 
             ProductFields.Add("ProductCode", "产品编号");
+            ProductFields.Add("ProductNo", "产品代号");
             ProductFields.Add("ProductName", "产品名称");
             ProductFields.Add("ProductTypeName", "产品类型");
 
@@ -209,12 +210,12 @@ namespace App.View.Dispatcher
 
         private void btnProductCode_Click(object sender, EventArgs e)
         {
-            if (this.txtBillNo.Text.Trim().Length <= 0)
-            {
-                MessageBox.Show("请先选择入库单据号", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.txtBillNo.Focus();
-                return;
-            }
+            //if (this.txtBillNo.Text.Trim().Length <= 0)
+            //{
+            //    MessageBox.Show("请先选择入库单据号", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    this.txtBillNo.Focus();
+            //    return;
+            //}
 
             DataTable dt = bll.FillDataTable("CMD.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("AreaCode='{0}'",AreaCode))});
 

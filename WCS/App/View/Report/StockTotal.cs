@@ -14,6 +14,7 @@ namespace App.View.Report
     public partial class StockTotal : BaseForm
     {
         BLL.BLLBase bll = new BLL.BLLBase();
+        int ValidPeriod = 0;
 
         public StockTotal()
         {
@@ -48,6 +49,7 @@ namespace App.View.Report
         private void dgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             string ProductCode = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
+            int.TryParse(dgvMain.Rows[e.RowIndex].Cells["Column2"].Value.ToString(), out ValidPeriod);
             string filter = string.Format("CMD_Cell.ProductCode='{0}' and CMD_Cell.InDate is not null", ProductCode);
             DataTable dt = bll.FillDataTable("WCS.SelectStockDetail", new DataParameter[] { new DataParameter("{0}", filter) });
             this.bsDetail.DataSource = dt;
@@ -56,9 +58,8 @@ namespace App.View.Report
         private void dgvDetail_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             if (this.dgvMain.CurrentCell == null)
-                return;
-            int ValidPeriod = 0;
-            int.TryParse(dgvMain.Rows[this.dgvMain.CurrentCell.RowIndex].Cells["Column2"].Value.ToString(), out ValidPeriod);
+                return;            
+            
             for (int i = 0; i < this.dgvDetail.Rows.Count; i++)
             {
                 int StockHours = int.Parse(this.dgvDetail.Rows[i].Cells["colStockHours"].Value.ToString());
@@ -85,6 +86,6 @@ namespace App.View.Report
             SolidBrush solidBrush = new SolidBrush(dgvDetail.RowHeadersDefaultCellStyle.ForeColor);
             int index = e.RowIndex + 1;
             e.Graphics.DrawString(index.ToString(), e.InheritedRowStyle.Font, solidBrush, e.RowBounds.Location.X + 12, e.RowBounds.Location.Y + 4);
-        }
+        }        
     }
 }

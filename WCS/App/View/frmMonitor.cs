@@ -33,6 +33,7 @@ namespace App.View
         Dictionary<int, string> dicCraneOver = new Dictionary<int, string>();
         Dictionary<int, string> dicWorkMode = new Dictionary<int, string>();
         Dictionary<int, string> dicProductNo = new Dictionary<int, string>();
+        private int ErrCode = 0;
 
         public frmMonitor()
         {
@@ -145,11 +146,12 @@ namespace App.View
         }
         private void GetWorkMode()
         {
-            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode");
+            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode", new DataParameter[] { new DataParameter("{0}", "1=1") });
             if (dt.Rows.Count > 0)
             {
                 this.txtWorkMode.Text = dicWorkMode[int.Parse(dt.Rows[0]["WorkMode"].ToString())];
                 Program.mainForm.WorkMode = int.Parse(dt.Rows[0]["WorkMode"].ToString());
+                Program.mainForm.WorkModeId = dt.Rows[0]["WorkModeId"].ToString();
                 if (dt.Rows[0]["WorkMode"].ToString() == "2" || dt.Rows[0]["WorkMode"].ToString() == "3")
                 {
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();
@@ -290,8 +292,11 @@ namespace App.View
                 //更新任务状态为执行中
                 if(crane.TaskNo.Length>0)
                     bll.ExecNonQuery("WCS.UpdateTaskError", new DataParameter[] { new DataParameter("@CraneErrCode", crane.ErrCode.ToString()), new DataParameter("@CraneErrDesc", CraneErrDesc), new DataParameter("@TaskNo", crane.TaskNo) });
-                if(crane.ErrCode>0)
-                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:"+ crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
+                if (crane.ErrCode > 0 && crane.ErrCode != ErrCode)
+                {
+                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:" + crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
+                    ErrCode = crane.ErrCode;
+                }
             }
         }
         TextBox GetTextBox(string name, int CraneNo)
@@ -901,6 +906,24 @@ namespace App.View
                 
             }
         }
+        private void CreateOutStockTask(int objCount)
+        {
+            //计划数量
+            string ProductCode = "";
+            int planCount = 0;
+            DataTable dt = bll.FillDataTable("WCS.SelectWorkMode", new DataParameter[] { new DataParameter("{0}", "(WorkMode in(2,3)") });
+            if (dt.Rows.Count > 0)
+            {
+                ProductCode = dt.Rows[0]["ProductCode"].ToString();
+                planCount = int.Parse(dt.Rows[0]["OutQty"].ToString());
+            }
+
+
+            //已经产生的任务
+            DataTable dtTask = bll.FillDataTable("WCS.SelectTask", new DataParameter[] { new DataParameter("{0}", string.Format("WCS_TASK.TaskType='12' and WCS_TASK.State in('0','1','2') and WCS_TASK.ProductCode='{0} and convert(varchar(10),WCS_TASK.TaskDate,120)=convert(varchar(10),getdate(),120)", ProductCode)) });
+            int count = planCount - dtTask.Rows.Count;
+
+        }
         private Button GetButton(string name, string Motor)
         {
             Control[] ctl = this.Controls.Find("button1", true);
@@ -1162,22 +1185,6 @@ namespace App.View
             DataTable dt = bll.FillDataTable("WCS.SelectTask", new DataParameter[] { new DataParameter("{0}", "(WCS_TASK.TaskType='11' and WCS_TASK.State in('0','1')) OR (WCS_TASK.TaskType in('12','13') and WCS_TASK.State in('0','1')) OR (WCS_TASK.TaskType in('14') and WCS_TASK.State in('0','1'))") });
             return dt;
         }
-        
-        private void PutCommand(string craneNo, byte TaskType)
-        {
-            byte[] cellAddr = new byte[8];
-            cellAddr[0] = TaskType;
-            cellAddr[1] = 0;
-
-            for (int i = 0; i < cellAddr.Length; i++)
-                cellAddr[i] += 48;
-
-            string serviceName = "CranePLC" + craneNo;
-            Context.ProcessDispatcher.WriteToService(serviceName, "TaskAddress", cellAddr);
-
-            Context.ProcessDispatcher.WriteToService(serviceName, "WriteFinished", 49);
-        }       
-
 
         private void dgvMain_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1311,15 +1318,18 @@ namespace App.View
             //f.ShowDialog();
             try
             {
-                object obj = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
-                int count = int.Parse(obj.ToString());
-                if (count > 0)
-                {
-                    if (DialogResult.Yes == MessageBox.Show("还有未收回的空托盘，是否要强制置回空盘计数为0，否则不可切换工作模式！", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 1);
-                    else
-                        return;
-                }
+                //object obj = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "NoBackPalletCount"));
+                //int count = int.Parse(obj.ToString());
+                //if (count > 0)
+                //{
+                //    if (DialogResult.Yes == MessageBox.Show("还有未收回的空托盘，是否要强制置回空盘计数为0，否则不可切换工作模式！", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                //    {
+                //        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 1);
+                //        Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "ResetBackPalletCount", 0);
+                //    }
+                //    else
+                //        return;
+                //}
                 frmChangeMode f = new frmChangeMode(Context);
                 if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

@@ -18,6 +18,7 @@ namespace App
         private System.Timers.Timer tmWorkTimer = new System.Timers.Timer();
         public int TimeDiff;
         public int WorkMode = 0;
+        public string WorkModeId = "";
         public bool Run = false;
         public string ProductCode = "";
 

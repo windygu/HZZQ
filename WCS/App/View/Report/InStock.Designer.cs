@@ -44,7 +44,7 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column6 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
@@ -177,14 +177,17 @@
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMain.Size = new System.Drawing.Size(881, 188);
             this.dgvMain.TabIndex = 12;
+            this.dgvMain.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvMain_DataError);
             this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_RowEnter);
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "TaskDate";
+            this.Column2.FilteringEnabled = false;
             this.Column2.HeaderText = "任务日期";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column6
             // 
@@ -468,12 +471,6 @@
         private System.Windows.Forms.SplitContainer scMain;
         private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.DataGridView dgvDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column5;
         private System.Windows.Forms.BindingSource bsDetail;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn colTaskNo;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn dataGridViewAutoFilterTextBoxColumn1;
@@ -482,5 +479,11 @@
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column14;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column15;
         private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column12;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column2;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn Column5;
     }
 }

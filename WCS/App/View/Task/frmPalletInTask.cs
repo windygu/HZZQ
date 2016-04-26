@@ -34,7 +34,9 @@ namespace App.View.Task
                     new DataParameter("@CraneNo", this.cmbCraneNo.Text), 
                     new DataParameter("@ProductCode", this.txtProductCode.Text),
                     new DataParameter("@TimeDiff", Program.mainForm.TimeDiff),
-                    new DataParameter("@CellCode",CellCode)
+                    new DataParameter("@CellCode",CellCode),
+                    new DataParameter("@WorkMode",Program.mainForm.WorkMode),
+                    new DataParameter("@WorkModeId",Program.mainForm.WorkModeId)
                 };
                 bll.FillDataTable("WCS.Sp_CreateInTask", param);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

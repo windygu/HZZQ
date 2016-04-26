@@ -44,9 +44,15 @@
       ORDER BY WCS_TASK.StartDate
     </CommandString>
   </Command>
+  <Command ID="SelectOutTaskTotal">
+    <CommandString>
+      SELECT count(*) FROM WCS_TASK
+      Where convert(varchar(10),TaskDate,120)=convert(varchar(10),getdate(),120) and TaskType='12' and State in('0','1','2') and ProductCode='{0}'      
+    </CommandString>
+  </Command>
   <Command ID="SelectStockTotal">
     <CommandString>
-      SELECT CMD_Cell.ProductCode,CMD_Product.ProductNo,CMD_Product.ProductName,CMD_Product.Spec,CMD_Product.ValidPeriod,sum(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity*4 end) Total
+      SELECT CMD_Cell.ProductCode,CMD_Product.ProductNo,CMD_Product.ProductName,CMD_Product.Spec,CMD_Product.ValidPeriod,sum(case CMD_Cell.ProductCode when '0001' then Quantity else Quantity end) Total
       FROM CMD_Cell
       Left join CMD_Product ON CMD_Cell.ProductCode=CMD_Product.ProductCode
       Where {0}
@@ -164,12 +170,23 @@
   </Command>
   <Command ID="SelectWorkMode">
     <CommandString>
-      Select * From WCS_WorkMode
+      Select top 1 * From WCS_WorkMode where {0} order by WorkModeId desc
     </CommandString>
   </Command>
   <Command ID="UpdateWorkMode">
     <CommandString>
       Update WCS_WorkMode set WorkMode=@WorkMode,ProductCode=@ProductCode, ProductName=@ProductName, OutQty=@OutQty,ChangeTime=getdate()
+    </CommandString>
+  </Command>
+  <Command ID="InsertWorkMode">
+    <CommandString>
+      INSERT INTO WCS_WorkMode(WorkModeId, WorkMode, ProductCode, ProductName, OutQty, ChangeTime)
+      values(@WorkModeId, @WorkMode, @ProductCode, @ProductName, @OutQty, getdate())
+    </CommandString>
+  </Command>
+  <Command ID="GetWorkModeId">
+    <CommandString>
+      select Isnull(cast(cast(max(WorkModeId) as bigint) +1 as varchar),convert(varchar(6),getdate(),12) + '0001') from WCS_WorkMode where WorkModeId like ''+convert(varchar(6),getdate(),12)+'%'
     </CommandString>
   </Command>
   <Command ID="UpdatePlanStateByBillID">

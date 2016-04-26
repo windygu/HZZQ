@@ -39,6 +39,7 @@
             this.ToolStripMenuItemSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Param = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_ClearTask = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ClearCell = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.lbLog = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -62,7 +63,6 @@
             this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
             this.pnlTab = new System.Windows.Forms.Panel();
             this.tabForm = new System.Windows.Forms.TabControl();
-            this.ToolStripMenuItem_ClearCell = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -150,16 +150,23 @@
             // ToolStripMenuItem_Param
             // 
             this.ToolStripMenuItem_Param.Name = "ToolStripMenuItem_Param";
-            this.ToolStripMenuItem_Param.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Param.Size = new System.Drawing.Size(124, 22);
             this.ToolStripMenuItem_Param.Text = "参数设定";
             this.ToolStripMenuItem_Param.Click += new System.EventHandler(this.ToolStripMenuItem_Param_Click);
             // 
             // ToolStripMenuItem_ClearTask
             // 
             this.ToolStripMenuItem_ClearTask.Name = "ToolStripMenuItem_ClearTask";
-            this.ToolStripMenuItem_ClearTask.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_ClearTask.Size = new System.Drawing.Size(124, 22);
             this.ToolStripMenuItem_ClearTask.Text = "任务清除";
             this.ToolStripMenuItem_ClearTask.Click += new System.EventHandler(this.ToolStripMenuItem_ClearTask_Click);
+            // 
+            // ToolStripMenuItem_ClearCell
+            // 
+            this.ToolStripMenuItem_ClearCell.Name = "ToolStripMenuItem_ClearCell";
+            this.ToolStripMenuItem_ClearCell.Size = new System.Drawing.Size(124, 22);
+            this.ToolStripMenuItem_ClearCell.Text = "清空货位";
+            this.ToolStripMenuItem_ClearCell.Click += new System.EventHandler(this.ToolStripMenuItem_ClearCell_Click);
             // 
             // pnlBottom
             // 
@@ -420,13 +427,6 @@
             this.tabForm.Size = new System.Drawing.Size(1276, 23);
             this.tabForm.TabIndex = 6;
             this.tabForm.SelectedIndexChanged += new System.EventHandler(this.tabForm_SelectedIndexChanged);
-            // 
-            // ToolStripMenuItem_ClearCell
-            // 
-            this.ToolStripMenuItem_ClearCell.Name = "ToolStripMenuItem_ClearCell";
-            this.ToolStripMenuItem_ClearCell.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItem_ClearCell.Text = "清空货位";
-            this.ToolStripMenuItem_ClearCell.Click += new System.EventHandler(this.ToolStripMenuItem_ClearCell_Click);
             // 
             // Main
             // 

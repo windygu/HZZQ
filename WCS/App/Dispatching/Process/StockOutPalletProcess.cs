@@ -40,7 +40,7 @@ namespace App.Dispatching.Process
 
                     Logger.Info("触发出托盘");
                     //if (Program.mainForm.WorkMode == 1)
-                    if(workmode.ToString()=="1")
+                    if (workmode.ToString() == "1")
                     {
                         string CellCode = "";
                         Logger.Info("开始产生空托盘出库");
@@ -50,12 +50,13 @@ namespace App.Dispatching.Process
                                                 new DataParameter("@ProductCode", "0001"),
                                                 new DataParameter("@CellCode",CellCode),
                                                 new DataParameter("@Valid",2),
-                                                new DataParameter("@WorkMode",Program.mainForm.WorkMode)
+                                                new DataParameter("@WorkMode",Program.mainForm.WorkMode),
+                                                new DataParameter("@WorkModeId",Program.mainForm.WorkModeId)
                                             };
 
                         bll.FillDataTable("WCS.Sp_CreateOutTask", param);
                         Logger.Info("空托盘出库已产生");
-                    }                    
+                    }
                 }
                 
             }

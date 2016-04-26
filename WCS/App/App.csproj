@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Crane.cs" />
     <Compile Include="Dispatching\Process\CarProcess.cs" />
+    <Compile Include="Dispatching\Process\ChangeModeProcess.cs" />
     <Compile Include="Dispatching\Process\StockOutPalletProcess.cs" />
     <Compile Include="Dispatching\Process\CraneProcess.cs" />
     <Compile Include="Dispatching\Process\StockInToStationProcess.cs" />

@@ -209,6 +209,8 @@
             this.colErrCode = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colErrDesc = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colTaskType = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtObjectCount = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
             this.pnlMain.SuspendLayout();
@@ -336,6 +338,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label37);
+            this.splitContainer1.Panel1.Controls.Add(this.txtObjectCount);
             this.splitContainer1.Panel1.Controls.Add(this.btnM9);
             this.splitContainer1.Panel1.Controls.Add(this.label25);
             this.splitContainer1.Panel1.Controls.Add(this.label26);
@@ -2339,6 +2343,28 @@
             this.colTaskType.Name = "colTaskType";
             this.colTaskType.ReadOnly = true;
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label37.Location = new System.Drawing.Point(12, 409);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(65, 20);
+            this.label37.TabIndex = 169;
+            this.label37.Text = "线上数量";
+            // 
+            // txtObjectCount
+            // 
+            this.txtObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectCount.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtObjectCount.Location = new System.Drawing.Point(84, 406);
+            this.txtObjectCount.Name = "txtObjectCount";
+            this.txtObjectCount.ReadOnly = true;
+            this.txtObjectCount.Size = new System.Drawing.Size(90, 26);
+            this.txtObjectCount.TabIndex = 168;
+            // 
             // frmMonitor1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2553,5 +2579,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox txtObjectCount;
     }
 }

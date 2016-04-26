@@ -25,5 +25,9 @@
     <Process Name="StockOutPalletProcess" Type="App.exe, App.Dispatching.Process.StockOutPalletProcess">
       <Item ServiceName="ConveyorPLC2" ItemName="OutPallet" />
     </Process>
+    <!--直供切储存Process-->
+    <Process Name="ChangeModeProcess" Type="App.exe, App.Dispatching.Process.ChangeModeProcess">
+      <Item ServiceName="ConveyorPLC2" ItemName="ChangeInStockMode" />
+    </Process>
   </Processes>
 </Configuration>

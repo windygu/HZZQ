@@ -1,0 +1,72 @@
+2016/4/26 10:49:57 [INFO]2016/4/26 10:49:57退出系统 
+2016/4/26 11:20:06 [INFO]2016/4/26 11:20:06退出系统 
+2016/4/26 11:58:43 [INFO]2016/4/26 11:58:43退出系统 
+2016/4/26 12:03:19 [INFO]2016/4/26 12:03:19退出系统 
+2016/4/26 12:04:10 [INFO]2016/4/26 12:04:10退出系统 
+2016/4/26 12:05:06 [INFO]2016/4/26 12:05:06退出系统 
+2016/4/26 12:06:35 [INFO]2016/4/26 12:06:35退出系统 
+2016/4/26 12:07:15 [INFO]2016/4/26 12:07:15退出系统 
+2016/4/26 13:11:43 [INFO]2016/4/26 13:11:43退出系统 
+2016/4/26 15:40:10 [ERROR]2016/4/26 15:40:10读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 15:40:25 [ERROR]2016/4/26 15:40:25读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 15:40:40 [ERROR]2016/4/26 15:40:40读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 15:40:55 [ERROR]2016/4/26 15:40:55读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 15:40:59 [ERROR]2016/4/26 15:40:591堆垛机执行时出现错误,代码:23,描述:货叉变频器报警 
+2016/4/26 15:41:45 [INFO]2016/4/26 15:41:45退出系统 
+2016/4/26 16:34:47 [INFO]2016/4/26 16:34:47触发出托盘 
+2016/4/26 16:35:09 [INFO]2016/4/26 16:35:09退出系统 
+2016/4/26 17:52:42 [ERROR]2016/4/26 17:52:42Dispatching.Process.Process_Crane.CraneProcess堆垛机初始化出错，原因：用户 'sa' 登录失败。 
+2016/4/26 17:52:53 [ERROR]2016/4/26 17:52:53初始化处理失败请检查配置，原因：用户 'sa' 登录失败。 
+2016/4/26 17:52:57 [INFO]2016/4/26 17:52:57退出系统 
+2016/4/26 17:53:36 [ERROR]2016/4/26 17:53:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:53:36 [ERROR]2016/4/26 17:53:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:53:51 [ERROR]2016/4/26 17:53:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:53:51 [ERROR]2016/4/26 17:53:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:06 [ERROR]2016/4/26 17:54:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:06 [ERROR]2016/4/26 17:54:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:21 [ERROR]2016/4/26 17:54:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:21 [ERROR]2016/4/26 17:54:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:36 [ERROR]2016/4/26 17:54:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:36 [ERROR]2016/4/26 17:54:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:51 [ERROR]2016/4/26 17:54:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:54:51 [ERROR]2016/4/26 17:54:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:06 [ERROR]2016/4/26 17:55:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:06 [ERROR]2016/4/26 17:55:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:21 [ERROR]2016/4/26 17:55:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:21 [ERROR]2016/4/26 17:55:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:36 [ERROR]2016/4/26 17:55:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:36 [ERROR]2016/4/26 17:55:36读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:51 [ERROR]2016/4/26 17:55:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:55:51 [ERROR]2016/4/26 17:55:51读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:56:06 [ERROR]2016/4/26 17:56:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:56:06 [ERROR]2016/4/26 17:56:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 17:56:17 [INFO]2016/4/26 17:56:17退出系统 
+2016/4/26 18:00:06 [ERROR]2016/4/26 18:00:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:00:06 [ERROR]2016/4/26 18:00:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:02:55 [ERROR]2016/4/26 18:02:55读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:02:55 [ERROR]2016/4/26 18:02:55读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:03:05 [ERROR]2016/4/26 18:03:05读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:03:06 [ERROR]2016/4/26 18:03:06读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:03:20 [ERROR]2016/4/26 18:03:20读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:03:21 [ERROR]2016/4/26 18:03:21读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:05:00 [INFO]2016/4/26 18:05:00退出系统 
+2016/4/26 18:12:43 [ERROR]2016/4/26 18:12:43读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:12:43 [ERROR]2016/4/26 18:12:43读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:12:46 [ERROR]2016/4/26 18:12:46读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:12:47 [ERROR]2016/4/26 18:12:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:14:02 [ERROR]2016/4/26 18:14:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:14:02 [ERROR]2016/4/26 18:14:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:14:31 [ERROR]2016/4/26 18:14:31读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:14:32 [ERROR]2016/4/26 18:14:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:17:16 [ERROR]2016/4/26 18:17:16读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:17:17 [ERROR]2016/4/26 18:17:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:17:33 [ERROR]2016/4/26 18:17:33读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:17:33 [ERROR]2016/4/26 18:17:33读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:17:39 [INFO]2016/4/26 18:17:39退出系统 
+2016/4/26 18:22:32 [ERROR]2016/4/26 18:22:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:22:32 [ERROR]2016/4/26 18:22:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:22:36 [INFO]2016/4/26 18:22:36退出系统 
+2016/4/26 18:23:02 [ERROR]2016/4/26 18:23:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:23:03 [ERROR]2016/4/26 18:23:03读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:23:17 [ERROR]2016/4/26 18:23:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/26 18:23:17 [INFO]2016/4/26 18:23:17退出系统 

@@ -1,0 +1,22 @@
+2016/4/20 12:37:31 [INFO]2016/4/20 12:37:31退出系统 
+2016/4/20 22:09:17 [ERROR]2016/4/20 22:09:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:17 [ERROR]2016/4/20 22:09:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:17 [ERROR]2016/4/20 22:09:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:32 [ERROR]2016/4/20 22:09:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:32 [ERROR]2016/4/20 22:09:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:32 [ERROR]2016/4/20 22:09:32读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:47 [ERROR]2016/4/20 22:09:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:47 [ERROR]2016/4/20 22:09:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:09:47 [ERROR]2016/4/20 22:09:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:02 [ERROR]2016/4/20 22:10:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:02 [ERROR]2016/4/20 22:10:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:02 [ERROR]2016/4/20 22:10:02读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:17 [ERROR]2016/4/20 22:10:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:17 [ERROR]2016/4/20 22:10:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:17 [ERROR]2016/4/20 22:10:17读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:31 [ERROR]2016/4/20 22:10:31读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:31 [ERROR]2016/4/20 22:10:31读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:47 [ERROR]2016/4/20 22:10:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:47 [ERROR]2016/4/20 22:10:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:47 [ERROR]2016/4/20 22:10:47读OPC数据失败，原因：Timeout, e.g. due to a broken connection. 
+2016/4/20 22:10:49 [INFO]2016/4/20 22:10:49退出系统 
