@@ -253,6 +253,11 @@ namespace App
 
         private void toolStripButton_Close_Click(object sender, EventArgs e)
         {
+            if (this.toolStripButton_Start.Text == "停止运行")
+            {
+                MessageBox.Show("请先停止运行后再退出系统!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             if (DialogResult.Yes == MessageBox.Show("您确定要退出调度系统吗？", "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 Logger.Info("退出系统");

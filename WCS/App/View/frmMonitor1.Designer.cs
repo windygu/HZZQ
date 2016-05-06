@@ -45,6 +45,8 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.splitContainer_Main = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtObjectCount = new System.Windows.Forms.TextBox();
             this.btnM9 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -209,8 +211,6 @@
             this.colErrCode = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colErrDesc = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
             this.colTaskType = new DataGridViewAutoFilter.DataGridViewAutoFilterTextBoxColumn();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txtObjectCount = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsMain)).BeginInit();
             this.pnlMain.SuspendLayout();
@@ -463,6 +463,30 @@
             this.splitContainer1.Size = new System.Drawing.Size(1109, 545);
             this.splitContainer1.SplitterDistance = 896;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label37.Location = new System.Drawing.Point(12, 409);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(65, 20);
+            this.label37.TabIndex = 169;
+            this.label37.Text = "线上数量";
+            this.label37.Visible = false;
+            // 
+            // txtObjectCount
+            // 
+            this.txtObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectCount.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtObjectCount.Location = new System.Drawing.Point(84, 406);
+            this.txtObjectCount.Name = "txtObjectCount";
+            this.txtObjectCount.ReadOnly = true;
+            this.txtObjectCount.Size = new System.Drawing.Size(90, 26);
+            this.txtObjectCount.TabIndex = 168;
+            this.txtObjectCount.Visible = false;
             // 
             // btnM9
             // 
@@ -1184,9 +1208,9 @@
             this.btnConveyor10.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnConveyor10.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
             this.btnConveyor10.ForeColor = System.Drawing.Color.Blue;
-            this.btnConveyor10.Location = new System.Drawing.Point(423, 71);
+            this.btnConveyor10.Location = new System.Drawing.Point(426, 72);
             this.btnConveyor10.Name = "btnConveyor10";
-            this.btnConveyor10.Size = new System.Drawing.Size(30, 27);
+            this.btnConveyor10.Size = new System.Drawing.Size(30, 26);
             this.btnConveyor10.TabIndex = 96;
             this.btnConveyor10.Text = "●";
             this.btnConveyor10.UseVisualStyleBackColor = false;
@@ -1196,7 +1220,7 @@
             this.btnConveyor08.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnConveyor08.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
             this.btnConveyor08.ForeColor = System.Drawing.Color.Blue;
-            this.btnConveyor08.Location = new System.Drawing.Point(422, 41);
+            this.btnConveyor08.Location = new System.Drawing.Point(425, 41);
             this.btnConveyor08.Name = "btnConveyor08";
             this.btnConveyor08.Size = new System.Drawing.Size(30, 27);
             this.btnConveyor08.TabIndex = 95;
@@ -1242,11 +1266,11 @@
             // btnConveyor09
             // 
             this.btnConveyor09.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnConveyor09.Font = new System.Drawing.Font("SimSun", 7F, System.Drawing.FontStyle.Bold);
+            this.btnConveyor09.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold);
             this.btnConveyor09.ForeColor = System.Drawing.Color.Blue;
-            this.btnConveyor09.Location = new System.Drawing.Point(385, 71);
+            this.btnConveyor09.Location = new System.Drawing.Point(383, 72);
             this.btnConveyor09.Name = "btnConveyor09";
-            this.btnConveyor09.Size = new System.Drawing.Size(35, 27);
+            this.btnConveyor09.Size = new System.Drawing.Size(40, 26);
             this.btnConveyor09.TabIndex = 92;
             this.btnConveyor09.Text = "→■";
             this.btnConveyor09.UseVisualStyleBackColor = false;
@@ -1363,9 +1387,9 @@
             this.btnConveyor24.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnConveyor24.Font = new System.Drawing.Font("SimSun", 7F, System.Drawing.FontStyle.Bold);
             this.btnConveyor24.ForeColor = System.Drawing.Color.Blue;
-            this.btnConveyor24.Location = new System.Drawing.Point(385, 40);
+            this.btnConveyor24.Location = new System.Drawing.Point(383, 42);
             this.btnConveyor24.Name = "btnConveyor24";
-            this.btnConveyor24.Size = new System.Drawing.Size(35, 27);
+            this.btnConveyor24.Size = new System.Drawing.Size(40, 26);
             this.btnConveyor24.TabIndex = 81;
             this.btnConveyor24.Text = "←";
             this.btnConveyor24.UseVisualStyleBackColor = false;
@@ -2342,28 +2366,6 @@
             this.colTaskType.HeaderText = "类型编号";
             this.colTaskType.Name = "colTaskType";
             this.colTaskType.ReadOnly = true;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label37.Location = new System.Drawing.Point(12, 409);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(65, 20);
-            this.label37.TabIndex = 169;
-            this.label37.Text = "线上数量";
-            // 
-            // txtObjectCount
-            // 
-            this.txtObjectCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtObjectCount.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtObjectCount.Location = new System.Drawing.Point(84, 406);
-            this.txtObjectCount.Name = "txtObjectCount";
-            this.txtObjectCount.ReadOnly = true;
-            this.txtObjectCount.Size = new System.Drawing.Size(90, 26);
-            this.txtObjectCount.TabIndex = 168;
             // 
             // frmMonitor1
             // 

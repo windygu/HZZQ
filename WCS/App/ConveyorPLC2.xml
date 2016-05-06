@@ -19,7 +19,7 @@
       <!--工作模式-->
       <OPCItem ItemName="WorkMode" ClientHandler="8" OPCItemName="DB7,INT0,1"  ItemType="WRITE"/>
       <!--启动信号-->
-      <OPCItem ItemName="StartSignal" ClientHandler="9" OPCItemName="DB7,INT2,1"  ItemType="WRITE"/>
+      <OPCItem ItemName="StartSignal" ClientHandler="9" OPCItemName="DB7,X4.4"  ItemType="WRITE"/>
       <!--回盘计数-->
       <OPCItem ItemName="ResetBackPalletCount" ClientHandler="10" OPCItemName="DB7,X4.2" ItemType="WRITE" />
     </OPCGroup>

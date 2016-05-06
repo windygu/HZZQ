@@ -20,7 +20,7 @@
       <OPCItem ItemName="AlarmSignal" ClientHandler="8" OPCItemName="DB15,INT8,1" ItemType="READ" IsActive="false"/>
       
       <!--启动信号-->
-      <!--<OPCItem ItemName="StartSignal" ClientHandler="10" OPCItemName="DB1,X0.0,1"  ItemType="WRITE"/>-->
+      <!--<OPCItem ItemName="StartSignal" ClientHandler="10" OPCItemName="DB1,X0.0"  ItemType="WRITE"/>-->
       <!--工作模式-->
       <!--<OPCItem ItemName="WorkMode" ClientHandler="11" OPCItemName="DB3,W0,1"  ItemType="WRITE"/>-->
       <!--任务号--><!--

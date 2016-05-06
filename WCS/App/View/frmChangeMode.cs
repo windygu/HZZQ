@@ -52,7 +52,7 @@ namespace App.View
                 else if (dt.Rows[0]["WorkMode"].ToString() == "3")
                     this.radioButton4.Checked = true;
 
-                if (this.radioButton4.Checked)
+                if (this.radioButton3.Checked || this.radioButton4.Checked)
                 {
                     this.txtProductCode.Text = dt.Rows[0]["ProductCode"].ToString();
                     this.txtProductName.Text = dt.Rows[0]["ProductName"].ToString();

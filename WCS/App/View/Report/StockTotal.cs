@@ -86,6 +86,11 @@ namespace App.View.Report
             SolidBrush solidBrush = new SolidBrush(dgvDetail.RowHeadersDefaultCellStyle.ForeColor);
             int index = e.RowIndex + 1;
             e.Graphics.DrawString(index.ToString(), e.InheritedRowStyle.Font, solidBrush, e.RowBounds.Location.X + 12, e.RowBounds.Location.Y + 4);
+        }
+
+        private void dgvMain_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }        
     }
 }

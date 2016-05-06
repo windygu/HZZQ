@@ -349,9 +349,9 @@ namespace App.View
 
                 //M1
                 if (motors2[0, 0])
-                    this.btnConveyor01.Text = "→";
-                else if (motors2[0, 1])
                     this.btnConveyor01.Text = "←";
+                else if (motors2[0, 1])
+                    this.btnConveyor01.Text = "→";
                 else
                     this.btnConveyor01.Text = "";
                 if (signal2[0, 0])
