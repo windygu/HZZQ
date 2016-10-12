@@ -308,7 +308,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1109, 755);
+            this.pnlMain.Size = new System.Drawing.Size(1109, 750);
             this.pnlMain.TabIndex = 3;
             // 
             // splitContainer_Main
@@ -325,8 +325,8 @@
             // splitContainer_Main.Panel2
             // 
             this.splitContainer_Main.Panel2.Controls.Add(this.dgvMain);
-            this.splitContainer_Main.Size = new System.Drawing.Size(1109, 755);
-            this.splitContainer_Main.SplitterDistance = 545;
+            this.splitContainer_Main.Size = new System.Drawing.Size(1109, 750);
+            this.splitContainer_Main.SplitterDistance = 541;
             this.splitContainer_Main.TabIndex = 0;
             // 
             // splitContainer1
@@ -460,7 +460,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1109, 545);
+            this.splitContainer1.Size = new System.Drawing.Size(1109, 541);
             this.splitContainer1.SplitterDistance = 896;
             this.splitContainer1.TabIndex = 4;
             // 
@@ -1793,8 +1793,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer2.Size = new System.Drawing.Size(209, 545);
-            this.splitContainer2.SplitterDistance = 217;
+            this.splitContainer2.Size = new System.Drawing.Size(209, 541);
+            this.splitContainer2.SplitterDistance = 215;
             this.splitContainer2.TabIndex = 1;
             // 
             // groupBox1
@@ -1814,7 +1814,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 217);
+            this.groupBox1.Size = new System.Drawing.Size(209, 215);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
@@ -1967,7 +1967,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.Red;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(209, 324);
+            this.groupBox4.Size = new System.Drawing.Size(209, 322);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "堆垛机";
@@ -2224,7 +2224,7 @@
             this.dgvMain.RowHeadersWidth = 40;
             this.dgvMain.RowTemplate.Height = 23;
             this.dgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMain.Size = new System.Drawing.Size(1109, 206);
+            this.dgvMain.Size = new System.Drawing.Size(1109, 205);
             this.dgvMain.TabIndex = 6;
             this.dgvMain.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMain_CellMouseClick);
             // 
@@ -2371,7 +2371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 755);
+            this.ClientSize = new System.Drawing.Size(1109, 750);
             this.ControlBox = false;
             this.Controls.Add(this.pnlMain);
             this.Name = "frmMonitor1";

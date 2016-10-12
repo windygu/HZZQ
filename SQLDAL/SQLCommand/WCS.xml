@@ -33,7 +33,7 @@
   </Command>
   <Command ID="SelectTaskDetail">
     <CommandString>
-      SELECT WCS_TASK.TaskNo,  CMD_BillType.BillTypeName,Sys_TableState.StateDesc, WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec, 
+      SELECT WCS_TASK.TaskNo,  CMD_BillType.BillTypeName,Sys_TableState.StateDesc, WCS_TASK.ProductCode,CMD_Product.ProductName,CMD_Product.Spec,
       WCS_TASK.CellCode, convert(varchar(20),WCS_TASK.StartDate,120) StartDate, convert(varchar(20),WCS_TASK.FinishDate,120) FinishDate,convert(varchar(20),WCS_TASK.TaskDate,120) TaskDate
       FROM WCS_TASK
       left join CMD_Cell C1 on WCS_TASK.CellCode=C1.CellCode

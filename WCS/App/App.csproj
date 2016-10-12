@@ -420,6 +420,7 @@
     <Content Include="App.ico" />
     <Content Include="Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="CarPLC.xml">
       <SubType>Designer</SubType>

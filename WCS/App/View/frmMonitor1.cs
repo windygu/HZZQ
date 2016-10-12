@@ -125,7 +125,7 @@ namespace App.View
             dicCraneError.Add(18, "起升激光数据错误");
             dicCraneError.Add(19, "超速");
             dicCraneError.Add(20, "超载");
-            dicCraneError.Add(21, "送绳");
+            dicCraneError.Add(21, "松绳");
             dicCraneError.Add(22, "货叉数据错误");
             dicCraneError.Add(23, "货叉变频器报警");
             dicCraneError.Add(99, "取货时取货站台无货");
@@ -296,9 +296,9 @@ namespace App.View
                     bll.ExecNonQuery("WCS.UpdateTaskError", new DataParameter[] { new DataParameter("@CraneErrCode", crane.ErrCode.ToString()), new DataParameter("@CraneErrDesc", CraneErrDesc), new DataParameter("@TaskNo", crane.TaskNo) });
                 if (crane.ErrCode > 0 && crane.ErrCode != ErrCode)
                 {
-                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:" + crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);
-                    ErrCode = crane.ErrCode;
+                    Logger.Error(crane.CraneNo.ToString() + "堆垛机执行时出现错误,代码:" + crane.ErrCode.ToString() + ",描述:" + dicCraneError[crane.ErrCode]);                    
                 }
+                ErrCode = crane.ErrCode;
             }
         }
         TextBox GetTextBox(string name, int CraneNo)
@@ -1026,32 +1026,57 @@ namespace App.View
 
                 int[] location = new int[2];
                 string serviceName = "CranePLC1";
-                object[] obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneLocation"));
-                for (int j = 0; j < obj.Length; j++)
-                    location[j] = Convert.ToInt16(obj[j]);
-
                 int[] craneInfo = new int[6];
-                obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneInfo"));
-                for (int j = 0; j < obj.Length; j++)
-                    craneInfo[j] = Convert.ToInt16(obj[j]);
+                string plcTaskNo = "";
+                try
+                {
+                    object[] obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneLocation"));
+                    for (int j = 0; j < obj.Length; j++)
+                        location[j] = Convert.ToInt16(obj[j]);
 
-                //string palletCode = Util.ConvertStringChar.BytesToString(ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CranePalletCode")));
-                obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
-                string plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
+                    
+                    obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneInfo"));
+                    for (int j = 0; j < obj.Length; j++)
+                        craneInfo[j] = Convert.ToInt16(obj[j]);
+
+                    //string palletCode = Util.ConvertStringChar.BytesToString(ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CranePalletCode")));
+                    obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneTaskNo"));
+                    plcTaskNo = Util.ConvertStringChar.BytesToString(obj);
+                }
+                catch (Exception ex)
+                {
+                    craneInfo[4] = -1;
+                    Logger.Error(ex.Message);
+                }
 
                 //obj = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService(serviceName, "CraneSpeed"));
                 string ProductName = "";
 
-                object[] product = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService("ConveyorPLC1", "ProductInfo"));
+                try
+                {
+                    object[] product = ObjectUtil.GetObjects(Context.ProcessDispatcher.WriteToService("ConveyorPLC1", "ProductInfo"));
 
-                int key = int.Parse(product[0].ToString());
-                string ProductNo = dicProductNo[key];                
+                    int key = int.Parse(product[0].ToString());
+                    string ProductNo = dicProductNo[key];
 
-                DataTable dt = bll.FillDataTable("CMD.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("ProductNo='{0}'", ProductNo)) });
-                if (dt.Rows.Count > 0)
-                    ProductName = dt.Rows[0]["ProductName"].ToString();
+                    DataTable dt = bll.FillDataTable("CMD.SelectProduct", new DataParameter[] { new DataParameter("{0}", string.Format("ProductNo='{0}'", ProductNo)) });
+                    if (dt.Rows.Count > 0)
+                        ProductName = dt.Rows[0]["ProductName"].ToString();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
 
-                object workmode = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "GetWorkMode"));                
+                object workmode = null;
+                try
+                {
+                    workmode = ObjectUtil.GetObject(Context.ProcessDispatcher.WriteToService("ConveyorPLC2", "GetWorkMode"));
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
 
                 Crane crane = new Crane();
                 crane.CraneNo = 1;

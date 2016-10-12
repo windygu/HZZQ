@@ -86,6 +86,9 @@ namespace App.View.Report
                 string filter = string.Format("WCS_TASK.TaskType='{0}' and WCS_TASK.State='2' and WCS_TASK.ProductCode='{1}' and convert(varchar(10),WCS_TASK.TaskDate,120)='{2}'", TaskType, ProductCode, TaskDate);
                 DataTable dt = bll.FillDataTable("WCS.SelectTaskDetail", new DataParameter[] { new DataParameter("{0}", filter) });
                 this.bsDetail.DataSource = dt;
+
+                //if (dt.Rows.Count > 0)
+                //    this.textBox1.Text = Convert.ToDateTime(dt.Rows[0]["StartDate"]).ToString("yyyy-MM-dd HH:mm:ss");
             }
             catch { }
         }
